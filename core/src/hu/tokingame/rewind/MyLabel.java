@@ -14,7 +14,7 @@ public class MyLabel extends Label {
     float elapsedtime =0;
     public static LabelStyle style;
     public static LabelStyle style2;
-    public static LabelStyle style3;
+    //public static LabelStyle style3;
 
     static {
         refresh();
@@ -29,14 +29,8 @@ public class MyLabel extends Label {
 
 
         style2 = new LabelStyle();
-        style2.font = Assets.manager.get(Assets.DIGITAL_7_FONT);
-
-
-        style2.fontColor = Color.WHITE;
-
-        style3 = new LabelStyle();
-        style3.font = Assets.manager.get(Assets.CALIBRIL_FONT);
-        style3.fontColor = Color.BLACK;
+        style2.font = Assets.manager.get(Assets.CALIBRIL_FONT);
+        style2.fontColor = Color.BLACK;
     }
 
     public MyLabel(String text) {
