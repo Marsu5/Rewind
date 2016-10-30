@@ -16,15 +16,7 @@ public class Globals {
     public static final String CHARS = "0123456789öüóqwertzuiopőúasdfghjkléáűíyxcvbnm'+!%/=()ÖÜÓQWERTZUIOPŐÚASDFGHJKLÉÁŰÍYXCVBNM?:_*<>#&@{}[],-.";
    // public static final BitmapFont FONT_HOBO_STD;
    // public static final BitmapFont FONT_DIGITAL_7;
-    public static java.util.Vector<Integer> sorozat;
-    public static boolean zeneKelle = true;
-    public static int maxM = Generator.getMaxM();
-    public static int minM = Generator.getMinM();
-    public static int maxSz = Generator.getMaxSz();
-    public static int minSz = Generator.getMinSz();
 
-    public static boolean egyediMode = false; // ennek az értéke befolyásolja hogy egyéni vagy normál mód.
-    public static boolean nehez = false;
 /*
     static {
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("calibril.ttf"));
