@@ -1,13 +1,14 @@
-package hu.tokingame.rewind;
+package hu.tokingame.rewind.MyBaseClasses;
 
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import hu.tokingame.rewind.*;
 
 /**
  * Created by tuskeb on 2016. 09. 30..
  */
-abstract public class MyActor extends Actor {
+abstract public class MyActor extends Actor implements InitableInterface{
 
     protected float elapsedTime = 0;
     protected Rectangle rectangle = new Rectangle();
@@ -15,7 +16,7 @@ abstract public class MyActor extends Actor {
 
     public MyActor() {
         super();
-        //debug();
+        debug();
     }
 
     @Override
@@ -67,7 +68,6 @@ abstract public class MyActor extends Actor {
         }
         return false;
     }
-
 
     public void resetElapsedTime()
     {

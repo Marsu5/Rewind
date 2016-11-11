@@ -1,4 +1,4 @@
-package hu.tokingame.rewind;
+package hu.tokingame.rewind.MyBaseClasses;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -7,11 +7,22 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 /**
  * Created by tuskeb on 2016. 09. 30..
  */
-public class OneSpriteAnimatedActor extends OneSpriteActor{
+public class OneSpriteAnimatedActor extends OneSpriteActor {
 
     protected final TextureAtlas textureAtlas;
     protected float fps = 30;
     protected boolean running = true;
+    protected boolean looping = true;
+
+
+    public boolean isLooping() {
+        return looping;
+    }
+
+    public void setLooping(boolean looping) {
+        this.looping = looping;
+    }
+
 
     public OneSpriteAnimatedActor(String file) {
         super(null);
@@ -28,7 +39,7 @@ public class OneSpriteAnimatedActor extends OneSpriteActor{
     }
 
     @Override
-    protected void init() {
+    public void init() {
         super.init();
         setSize(textureAtlas.getRegions().get(0).getRegionWidth(), textureAtlas.getRegions().get(0).getRegionHeight());
     }
@@ -45,6 +56,12 @@ public class OneSpriteAnimatedActor extends OneSpriteActor{
     public void act(float delta) {
         super.act(delta);
         if (running) {
+            if (!looping){
+                if (textureAtlas.getRegions().size <=((int) (elapsedTime * fps))) {
+                    stop();
+                    return;
+                }
+            }
             setFrame(((int) (elapsedTime * fps)));
         }
     }

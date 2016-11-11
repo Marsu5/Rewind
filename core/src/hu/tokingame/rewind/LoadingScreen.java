@@ -2,6 +2,7 @@ package hu.tokingame.rewind;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import hu.tokingame.rewind.MyBaseClasses.*;
 
 /**
  * Created by M on 10/7/2016.
@@ -21,7 +22,7 @@ public class LoadingScreen extends MyScreen {
         stage.addActor(new OneSpriteAnimatedActor("loading.txt")
         {
             @Override
-            protected void init() {
+            public void init() {
                 super.init();
                 setFps(10);
                 setSize(MyScreen.WORLD_WIDTH, MyScreen.WORLD_HEIGHT);
