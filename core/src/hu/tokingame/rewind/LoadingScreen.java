@@ -11,12 +11,22 @@ public class LoadingScreen extends MyScreen {
 
     Stage stage;
 
+
     private float elapsedTime = 0;
 
     public LoadingScreen(Game game) {
         super(game);
-        setBackGroundColor(0f, 0f, 0f);
+        setBackGroundColor(0.498f, 0.498f, 0.498f);
         stage = new Stage(viewport, spriteBatch);
+        stage.addActor(new OneSpriteAnimatedActor("loading.txt")
+        {
+            @Override
+            protected void init() {
+                super.init();
+                setFps(10);
+                setSize(MyScreen.WORLD_WIDTH, MyScreen.WORLD_HEIGHT);
+            }
+        });
     }
 
     @Override
@@ -30,7 +40,7 @@ public class LoadingScreen extends MyScreen {
         super.render(delta);
 
         //if (elapsedTime > 2.0 && Assets.manager.update()) {
-        if (Assets.manager.update()) {
+        if (Assets.manager.update() && elapsedTime > 5.0) {
             Assets.afterLoaded();
             game.setScreen(new MenuScreen(game));
         }
