@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
 import hu.tokingame.rewind.Globals.Assets;
+import hu.tokingame.rewind.MenuScreen.MenuScreen;
+import hu.tokingame.rewind.MenuScreen.MenuStage;
 import hu.tokingame.rewind.MyBaseClasses.*;
 import hu.tokingame.rewind.MyGdxGame;
 
@@ -37,7 +39,7 @@ public class LoadingScreen extends MyScreen {
         //if (elapsedTime > 2.0 && Assets.manager.update()) {
         if (Assets.manager.update() && elapsedTime > 5.0) {
             Assets.afterLoaded();
-            //game.setScreen(new MenuScreen(game));
+            game.setScreen(new MenuScreen(game));
         }
         //spriteBatch.begin();
         elapsedTime += delta;
