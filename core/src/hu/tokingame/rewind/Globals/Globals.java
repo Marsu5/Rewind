@@ -1,4 +1,4 @@
-package hu.tokingame.rewind;
+package hu.tokingame.rewind.Globals;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -14,8 +14,11 @@ import com.sun.corba.se.spi.ior.iiop.MaxStreamFormatVersionComponent;
 
 public class Globals {
     public static final String CHARS = "0123456789öüóqwertzuiopőúasdfghjkléáűíyxcvbnm'+!%/=()ÖÜÓQWERTZUIOPŐÚASDFGHJKLÉÁŰÍYXCVBNM?:_*<>#&@{}[],-.";
+    public static final float WORLD_WIDTH = 1280;
+    public static final float WORLD_HEIGHT = 720;
    // public static final BitmapFont FONT_HOBO_STD;
    // public static final BitmapFont FONT_DIGITAL_7;
+
 
 /*
     static {

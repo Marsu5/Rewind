@@ -1,6 +1,5 @@
-package hu.tokingame.rewind;
+package hu.tokingame.rewind.MyBaseClasses;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
 /**
@@ -10,10 +9,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
     import com.badlogic.gdx.graphics.Pixmap;
     import com.badlogic.gdx.graphics.Texture;
     import com.badlogic.gdx.graphics.g2d.TextureRegion;
-    import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-    import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
-    /**
+import hu.tokingame.rewind.Globals.Assets;
+
+/**
      * Created by tuskeb on 2016. 09. 30..
      */
     public class MyTextButton extends TextButton{

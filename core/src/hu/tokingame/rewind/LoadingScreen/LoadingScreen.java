@@ -1,8 +1,11 @@
-package hu.tokingame.rewind;
+package hu.tokingame.rewind.LoadingScreen;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
+
+import hu.tokingame.rewind.Globals.Assets;
 import hu.tokingame.rewind.MyBaseClasses.*;
+import hu.tokingame.rewind.MyGdxGame;
 
 /**
  * Created by M on 10/7/2016.
@@ -10,24 +13,15 @@ import hu.tokingame.rewind.MyBaseClasses.*;
 
 public class LoadingScreen extends MyScreen {
 
-    Stage stage;
+    LoadingStage stage;
 
 
     private float elapsedTime = 0;
 
-    public LoadingScreen(Game game) {
+    public LoadingScreen(MyGdxGame game) {
         super(game);
         setBackGroundColor(0.498f, 0.498f, 0.498f);
-        stage = new Stage(viewport, spriteBatch);
-        stage.addActor(new OneSpriteAnimatedActor("loading.txt")
-        {
-            @Override
-            public void init() {
-                super.init();
-                setFps(10);
-                setSize(MyScreen.WORLD_WIDTH, MyScreen.WORLD_HEIGHT);
-            }
-        });
+
     }
 
     @Override
@@ -43,7 +37,7 @@ public class LoadingScreen extends MyScreen {
         //if (elapsedTime > 2.0 && Assets.manager.update()) {
         if (Assets.manager.update() && elapsedTime > 5.0) {
             Assets.afterLoaded();
-            game.setScreen(new MenuScreen(game));
+            //game.setScreen(new MenuScreen(game));
         }
         //spriteBatch.begin();
         elapsedTime += delta;
@@ -56,5 +50,11 @@ public class LoadingScreen extends MyScreen {
     @Override
     public void hide() {
 
+    }
+
+    @Override
+    public void init() {
+        super.init();
+        stage = new LoadingStage(new ExtendViewport(1280,720,new OrthographicCamera(1280,720)), spriteBatch, game);
     }
 }

@@ -3,8 +3,21 @@ package hu.tokingame.rewind;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+
 import java.util.Stack;
 import java.lang.reflect.InvocationTargetException;
+
+import hu.tokingame.rewind.Globals.Assets;
+import hu.tokingame.rewind.LoadingScreen.LoadingScreen;
+import hu.tokingame.rewind.MyBaseClasses.MyScreen;
 
 
 /*
@@ -17,6 +30,57 @@ credits (készítők)
 public class MyGdxGame extends Game {
 
 	public final Stack<Class> backButtonStack = new Stack();
+
+
+
+	public Label.LabelStyle getLabelStyle() {
+		Label.LabelStyle style;
+		style = new com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle();
+		style.font = Assets.manager.get(Assets.CALIBRIL_FONT);
+		style.fontColor = Color.YELLOW;
+		Pixmap p = new Pixmap(1,1, Pixmap.Format.RGB888);
+		p.setColor(0.4f,0.2f,0.8f, 0.5f);
+		p.fill();
+		return style;
+	}
+
+	/* Majd
+	public TextField.TextFieldStyle getTextFieldStyle() {
+		TextField.TextFieldStyle style = new TextField.TextFieldStyle();
+		style.background = new TextureRegionDrawable(new TextureRegion(Assets.manager.get(Assets.TEXTBOX_TEXTURE)));
+		style.background.setLeftWidth(style.background.getLeftWidth()+20);
+		style.background.setRightWidth(style.background.getRightWidth()+20);
+		style.font = Assets.manager.get(Assets.CALIBRIL_FONT);
+		style.cursor = new TextureRegionDrawable(new TextureRegion(new TextureRegion(Assets.manager.get(Assets.CURSOR_TEXTURE))));
+		style.cursor.setMinWidth(50);
+		style.fontColor = Color.BLACK;
+		Pixmap p = new Pixmap(1,1, Pixmap.Format.RGB888);
+		p.setColor(0.4f,0.2f,0.8f, 0.5f);
+		p.fill();
+		style.selection = new TextureRegionDrawable(new TextureRegion(new Texture(p)));
+		return style;
+	}
+	*/
+
+	public TextButton.TextButtonStyle getTextButtonStyle() {
+
+		TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
+		textButtonStyle.font = Assets.manager.get(Assets.CALIBRIL_FONT);
+
+		Pixmap p = new Pixmap(1,1, Pixmap.Format.RGB888);
+		p.setColor(0.1f,0.2f,0.2f, 0.5f);
+		p.fill();
+		textButtonStyle.up = new TextureRegionDrawable(new TextureRegion(new Texture(p)));
+
+		p.setColor(0.3f,0.5f,0.8f, 0.5f);
+		p.fill();
+		textButtonStyle.over = new TextureRegionDrawable(new TextureRegion(new Texture(p)));
+
+		p.setColor(1f,0.5f,0.8f, 1f);
+		p.fill();
+		textButtonStyle.down = new TextureRegionDrawable(new TextureRegion(new Texture(p)));
+		return textButtonStyle;
+	}
 
 	@Override
 	public void create () {

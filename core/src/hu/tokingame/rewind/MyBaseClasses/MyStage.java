@@ -12,7 +12,6 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import hu.tokingame.rewind.MyGdxGame;
 
-import hu.tokingame.rewind.MyGdxGame;
 
 
 /**

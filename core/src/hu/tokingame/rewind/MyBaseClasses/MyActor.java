@@ -36,6 +36,7 @@ abstract public class MyActor extends Actor implements InitableInterface{
     @Override
     protected void positionChanged() {
         super.positionChanged();
+
         rectangle.setPosition(getX(), getY());
         circle.setPosition(getX(), getY());
     }
