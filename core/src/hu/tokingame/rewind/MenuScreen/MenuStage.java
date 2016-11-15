@@ -1,10 +1,17 @@
 package hu.tokingame.rewind.MenuScreen;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import hu.tokingame.rewind.CreditsScreen.CreditsScreen;
+import hu.tokingame.rewind.Globals.Globals;
+import hu.tokingame.rewind.MyBaseClasses.MyScreen;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
+import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
 import hu.tokingame.rewind.MyGdxGame;
+import hu.tokingame.rewind.SettingsScreen.SettingsScreen;
 
 /**
  * Created by M on 11/14/2016.
@@ -17,7 +24,34 @@ public class MenuStage extends MyStage {
     
     @Override
     public void init() {
-
+        addActor(new MyTextButton("Hodzsan játzsd"){
+            @Override
+            protected void init() {
+                super.init();
+                setPosition(Globals.WORLD_WIDTH-this.getWidth(), Globals.WORLD_HEIGHT-this.getHeight());
+                addListener(new ClickListener(){
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        super.clicked(event, x, y);
+                        game.setScreen(new CreditsScreen(game));
+                    }
+                });
+            }
+        });
+        addActor(new MyTextButton("Behányítások"){
+            @Override
+            protected void init() {
+                super.init();
+                setPosition(0, 0);
+                addListener(new ClickListener(){
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        super.clicked(event, x, y);
+                        game.setScreen(new SettingsScreen(game));
+                    }
+                });
+            }
+        });
     }
 }
 
