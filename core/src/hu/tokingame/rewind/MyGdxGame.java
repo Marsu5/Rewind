@@ -128,6 +128,7 @@ public class MyGdxGame extends Game {
 		}
 	}
 
+
 	public void setScreen(Screen screen, boolean pushToStack) {
 		Screen prevScreen = getScreen();
 		if (prevScreen != null) {
