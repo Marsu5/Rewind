@@ -7,6 +7,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hu.tokingame.rewind.CreditsScreen.CreditsScreen;
 import hu.tokingame.rewind.Globals.Globals;
+import hu.tokingame.rewind.MyBaseClasses.MyButton;
 import hu.tokingame.rewind.MyBaseClasses.MyScreen;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
@@ -18,13 +19,16 @@ import hu.tokingame.rewind.SettingsScreen.SettingsScreen;
  */
 
 public class MenuStage extends MyStage {
+
+    MyTextButton button;
+
     public MenuStage(Viewport viewport, Batch batch, MyGdxGame game) {
         super(viewport, batch, game);
     }
     
     @Override
     public void init() {
-        addActor(new MyTextButton("Hodzsan játzsd"){
+        addActor(new MyTextButton("How To Play"){
             @Override
             protected void init() {
                 super.init();
@@ -38,7 +42,7 @@ public class MenuStage extends MyStage {
                 });
             }
         });
-        addActor(new MyTextButton("Behányítások"){
+        addActor(button = new MyTextButton("Settings"){
             @Override
             protected void init() {
                 super.init();
@@ -52,6 +56,35 @@ public class MenuStage extends MyStage {
                 });
             }
         });
+        addActor(new MyTextButton("Play"){
+            @Override
+            protected void init() {
+                super.init();
+                setPosition(Globals.WORLD_WIDTH/2f - this.getWidth()/2f,Globals.WORLD_HEIGHT/2f - this.getHeight()/2f);
+                addListener(new ClickListener(){
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        super.clicked(event, x, y);
+                        //todo set game screen
+                    }
+                });
+            }
+        });
+        addActor(new MyTextButton("Credits"){
+            @Override
+            protected void init() {
+                super.init();
+                setPosition(0, button.getHeight());
+                addListener(new ClickListener(){
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        super.clicked(event, x, y);
+                        game.setScreen(new SettingsScreen(game));
+                    }
+                });
+            }
+        });
+
     }
 }
 
