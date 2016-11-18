@@ -40,5 +40,9 @@ public class MenuScreen extends MyScreen {
         stage.resize(width, height);
     }
 
-
+    @Override
+    public void dispose() {
+        stage.dispose();
+        super.dispose();
+    }
 }
