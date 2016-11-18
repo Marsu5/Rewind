@@ -21,14 +21,14 @@ public class Assets {
 
     static final FreetypeFontLoader.FreeTypeFontLoaderParameter fontParameter = new FreetypeFontLoader.FreeTypeFontLoaderParameter();
     static {
-        fontParameter.fontFileName = "calibril.ttf";
+        fontParameter.fontFileName = "./Fonts/calibril.ttf";
         fontParameter.fontParameters.size = 50;
         fontParameter.fontParameters.characters = hu.tokingame.rewind.Global.Globals.CHARS;
         fontParameter.fontParameters.color = Color.WHITE;
     }
 
     public static final AssetDescriptor<BitmapFont> CALIBRIL_FONT
-            = new AssetDescriptor<BitmapFont>("calibril.ttf", BitmapFont.class, fontParameter);
+            = new AssetDescriptor<BitmapFont>("./Fonts/calibril.ttf", BitmapFont.class, fontParameter);
     public static final AssetDescriptor<Texture> ROAD_VERTICAL = new AssetDescriptor<Texture>("./Map/vr.png", Texture.class);
     public static final AssetDescriptor<Texture> ROAD_HORIZONTAL = new AssetDescriptor<Texture>("./Map/hr.png", Texture.class);
     public static final AssetDescriptor<Texture> ROAD_BLOCK = new AssetDescriptor<Texture>("./Map/block.png", Texture.class);

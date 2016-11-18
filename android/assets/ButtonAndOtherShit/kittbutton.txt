@@ -1,0 +1,306 @@
+kittbutton.png
+size: 500, 225
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+buton1
+  rotate: false
+  xy: 0, 0
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton2
+  rotate: false
+  xy: 100, 0
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton3
+  rotate: false
+  xy: 200, 0
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton4
+  rotate: false
+  xy: 300, 0
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton5
+  rotate: false
+  xy: 400, 0
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton6
+  rotate: false
+  xy: 0, 25
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton7
+  rotate: false
+  xy: 100, 25
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton8
+  rotate: false
+  xy: 200, 25
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton9
+  rotate: false
+  xy: 300, 25
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton10
+  rotate: false
+  xy: 400, 25
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton11
+  rotate: false
+  xy: 0, 50
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton12
+  rotate: false
+  xy: 100, 50
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton13
+  rotate: false
+  xy: 200, 50
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton14
+  rotate: false
+  xy: 300, 50
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton15
+  rotate: false
+  xy: 400, 50
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton16
+  rotate: false
+  xy: 0, 75
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton17
+  rotate: false
+  xy: 100, 75
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton18
+  rotate: false
+  xy: 200, 75
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton19
+  rotate: false
+  xy: 300, 75
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton20
+  rotate: false
+  xy: 400, 75
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton21
+  rotate: false
+  xy: 0, 100
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton22
+  rotate: false
+  xy: 100, 100
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton23
+  rotate: false
+  xy: 200, 100
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton24
+  rotate: false
+  xy: 300, 100
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton25
+  rotate: false
+  xy: 400, 100
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton26
+  rotate: false
+  xy: 0, 125
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton27
+  rotate: false
+  xy: 100, 125
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton28
+  rotate: false
+  xy: 200, 125
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton29
+  rotate: false
+  xy: 300, 125
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton30
+  rotate: false
+  xy: 400, 125
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton31
+  rotate: false
+  xy: 0, 150
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton32
+  rotate: false
+  xy: 100, 150
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton33
+  rotate: false
+  xy: 200, 150
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton34
+  rotate: false
+  xy: 300, 150
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton35
+  rotate: false
+  xy: 400, 150
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton36
+  rotate: false
+  xy: 0, 175
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton37
+  rotate: false
+  xy: 100, 175
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton38
+  rotate: false
+  xy: 200, 175
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton39
+  rotate: false
+  xy: 300, 175
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton40
+  rotate: false
+  xy: 400, 175
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton41
+  rotate: false
+  xy: 0, 200
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton42
+  rotate: false
+  xy: 100, 200
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1
+buton43
+  rotate: false
+  xy: 200, 200
+  size: 100, 25
+  orig: 100, 25
+  offset: 0, 0
+  index: -1

@@ -15,7 +15,7 @@ import hu.tokingame.rewind.MyGdxGame;
 public class LoadingStage extends MyStage {
 
     private LoadingStage loadingStage;
-    private OneSpriteAnimatedActor cassatteActor;
+    private OneSpriteAnimatedActor cassetteActor;
 
     public LoadingStage(Viewport viewport, Batch batch, MyGdxGame game) {
         super(viewport, batch, game);
@@ -25,7 +25,7 @@ public class LoadingStage extends MyStage {
     @Override
     public void init() {
         loadingStage = this;
-        addActor(cassatteActor = new OneSpriteAnimatedActor("loading.txt"){
+        addActor(cassetteActor = new OneSpriteAnimatedActor("./ButtonAndOtherShit/loading.txt"){
             @Override
             public void init() {
                 super.init();
@@ -39,7 +39,7 @@ public class LoadingStage extends MyStage {
     @Override
     public void act(float delta) {
         super.act(delta);
-        cassatteActor.setFramePercent(Assets.manager.getProgress());
+        cassetteActor.setFramePercent(Assets.manager.getProgress());
         System.out.println(Assets.manager.getProgress());
     }
 }
