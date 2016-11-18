@@ -40,6 +40,6 @@ public class LoadingStage extends MyStage {
     public void act(float delta) {
         super.act(delta);
         cassetteActor.setFramePercent(Assets.manager.getProgress());
-        System.out.println(Assets.manager.getProgress());
+        //System.out.println(Assets.manager.getProgress());
     }
 }

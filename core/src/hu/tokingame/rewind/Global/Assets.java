@@ -32,7 +32,7 @@ public class Assets {
             = new AssetDescriptor<BitmapFont>("./Fonts/calibril.ttf", BitmapFont.class, fontParameter);
 
 
-    // Map Elements
+    //<editor-fold desc="Map Elements">
     public static final AssetDescriptor<Texture> ROAD_VERTICAL = new AssetDescriptor<Texture>("./Map/vr.png", Texture.class);
     public static final AssetDescriptor<Texture> ROAD_HORIZONTAL = new AssetDescriptor<Texture>("./Map/hr.png", Texture.class);
     public static final AssetDescriptor<Texture> ROAD_BLOCK = new AssetDescriptor<Texture>("./Map/block.png", Texture.class);
@@ -50,6 +50,7 @@ public class Assets {
     public static final AssetDescriptor<Texture> RIGHT_TURN = new AssetDescriptor<Texture>("./Map/turnr.png", Texture.class);
     public static final AssetDescriptor<Texture> LEFT_TURN_UP = new AssetDescriptor<Texture>("./Map/turnul.png", Texture.class);
     public static final AssetDescriptor<Texture> RIGHT_TURN_DOWN = new AssetDescriptor<Texture>("./Map/turnur.png", Texture.class);
+    //</editor-fold>
 
 
 
