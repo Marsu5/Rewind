@@ -1,5 +1,6 @@
 package hu.tokingame.rewind.MenuScreen;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
@@ -15,13 +16,14 @@ public class MenuScreen extends MyScreen {
     private MenuStage stage;
     public MenuScreen(MyGdxGame game) {
         super(game);
-        init();
+        //init();
     }
 
     @Override
     public void init() {
         super.init();
         stage = new MenuStage(new ExtendViewport(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT,new OrthographicCamera(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT)),spriteBatch,game);
+        Gdx.input.setInputProcessor(stage);
     }
 
     @Override
@@ -37,4 +39,6 @@ public class MenuScreen extends MyScreen {
         super.resize(width, height);
         stage.resize(width, height);
     }
+
+
 }

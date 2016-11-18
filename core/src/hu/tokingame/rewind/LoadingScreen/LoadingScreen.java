@@ -37,13 +37,14 @@ public class LoadingScreen extends MyScreen {
         super.render(delta);
 
         //if (elapsedTime > 2.0 && Assets.manager.update()) {
-        if (Assets.manager.update() && elapsedTime > 5.0) {
+        if (Assets.manager.update() && elapsedTime > 0.5) {
             Assets.afterLoaded();
             game.setScreen(new MenuScreen(game));
         }
         //spriteBatch.begin();
         elapsedTime += delta;
         stage.act(delta);
+        spriteBatch.setProjectionMatrix(stage.getCamera().combined);
         stage.draw();
         //Globals.FONT_HOBO_STD.draw(spriteBatch,"Betöltés: " + Assets.manager.getLoadedAssets() + "/" + (Assets.manager.getQueuedAssets()+Assets.manager.getLoadedAssets()) + " (" + ((int)(Assets.manager.getProgress()*100f)) + "%)",0,50);
         //spriteBatch.end();
@@ -58,5 +59,11 @@ public class LoadingScreen extends MyScreen {
     public void init() {
         super.init();
         stage = new LoadingStage(new ExtendViewport(1280,720,new OrthographicCamera(1280,720)), spriteBatch, game);
+    }
+
+    @Override
+    public void dispose() {
+        stage.dispose();
+        super.dispose();
     }
 }

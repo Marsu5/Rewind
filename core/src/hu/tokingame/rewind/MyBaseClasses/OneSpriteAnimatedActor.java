@@ -72,7 +72,7 @@ public class OneSpriteAnimatedActor extends OneSpriteActor {
     }
 
     public void setFramePercent(float percent) {
-        setFrame((int)(getFrameCount()*percent));
+        setFrame((int)((getFrameCount()-1)*percent));
     }
 
     public int getFrameCount()
