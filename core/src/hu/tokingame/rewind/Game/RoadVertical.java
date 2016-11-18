@@ -2,7 +2,6 @@ package hu.tokingame.rewind.Game;
 
 import com.badlogic.gdx.physics.box2d.World;
 
-import hu.tokingame.rewind.Globals.Assets;
 import hu.tokingame.rewind.MyBaseClasses.OneSpriteStaticActor;
 import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
 

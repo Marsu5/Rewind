@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import java.util.Stack;
 import java.lang.reflect.InvocationTargetException;
 
-import hu.tokingame.rewind.Globals.Assets;
+import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.LoadingScreen.LoadingScreen;
 import hu.tokingame.rewind.MyBaseClasses.MyScreen;
 

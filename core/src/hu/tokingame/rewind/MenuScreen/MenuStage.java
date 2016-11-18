@@ -6,9 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hu.tokingame.rewind.CreditsScreen.CreditsScreen;
-import hu.tokingame.rewind.Globals.Globals;
-import hu.tokingame.rewind.MyBaseClasses.MyButton;
-import hu.tokingame.rewind.MyBaseClasses.MyScreen;
+import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
 import hu.tokingame.rewind.MyGdxGame;

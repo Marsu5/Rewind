@@ -1,4 +1,4 @@
-package hu.tokingame.rewind.Globals;
+package hu.tokingame.rewind.Global;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;

@@ -1,4 +1,4 @@
-package hu.tokingame.rewind.Globals;
+package hu.tokingame.rewind.Global;
 
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
@@ -10,8 +10,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGeneratorLoader;
 import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
-
-import hu.tokingame.rewind.Globals.Globals;
 
 /**
  * Created by M on 10/7/2016.
@@ -25,7 +23,7 @@ public class Assets {
     static {
         fontParameter.fontFileName = "calibril.ttf";
         fontParameter.fontParameters.size = 50;
-        fontParameter.fontParameters.characters = Globals.CHARS;
+        fontParameter.fontParameters.characters = hu.tokingame.rewind.Global.Globals.CHARS;
         fontParameter.fontParameters.color = Color.WHITE;
     }
 

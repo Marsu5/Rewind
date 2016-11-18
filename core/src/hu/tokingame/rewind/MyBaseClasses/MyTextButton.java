@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
     import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
-import hu.tokingame.rewind.Globals.Assets;
+import hu.tokingame.rewind.Global.Assets;
 
 /**
      * Created by tuskeb on 2016. 09. 30..

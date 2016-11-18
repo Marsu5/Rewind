@@ -3,7 +3,7 @@ package hu.tokingame.rewind.SettingsScreen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
-import hu.tokingame.rewind.Globals.Globals;
+import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MyBaseClasses.MyScreen;
 import hu.tokingame.rewind.MyGdxGame;
 

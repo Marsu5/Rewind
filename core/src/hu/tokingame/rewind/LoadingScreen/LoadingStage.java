@@ -3,8 +3,7 @@ package hu.tokingame.rewind.LoadingScreen;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-import hu.tokingame.rewind.Globals.Assets;
-import hu.tokingame.rewind.MyBaseClasses.MyScreen;
+import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.OneSpriteAnimatedActor;
 import hu.tokingame.rewind.MyGdxGame;
