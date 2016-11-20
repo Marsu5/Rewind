@@ -39,11 +39,12 @@ public class GameStage extends MyStage{
         Scanner be;
         try{
             be = new Scanner(new FileReader(map));
+            int sor = 0;
             while(be.hasNext()){
-                int sor = 0;
+
                 String vonat = be.nextLine();
                 System.out.println(vonat.length());
-                for(int i=0; i<vonat.length() - 2; i++){
+                for(int i=0; i<vonat.length(); i++){
                     nyamm[sor][i] = vonat.charAt(i);
                 }
                 sor++;
@@ -53,8 +54,9 @@ public class GameStage extends MyStage{
         }
         for(int i = 0; i < nyamm.length; i++){
             for(int j = 0; j < nyamm[0].length; j++){
-                System.out.println(nyamm[i][j]);
+                System.out.print(nyamm[i][j]);
             }
+            System.out.println();
         }
 
 
