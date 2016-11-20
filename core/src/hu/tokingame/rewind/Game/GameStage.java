@@ -52,7 +52,7 @@ public class GameStage extends MyStage{
             System.out.println("nincsen filé");
         }
         for(int i = 0; i < nyamm.length; i++){
-            for(int j = 0; j< nyamm[0].length; i++){
+            for(int j = 0; j < nyamm[0].length; j++){
                 System.out.println(nyamm[i][j]);
             }
         }
