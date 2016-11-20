@@ -1,6 +1,7 @@
 package hu.tokingame.rewind.Game;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.io.FileInputStream;
@@ -10,6 +11,7 @@ import java.util.Scanner;
 import java.util.Vector;
 
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
+import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
 import hu.tokingame.rewind.MyGdxGame;
 
 /**
@@ -21,6 +23,12 @@ public class GameStage extends MyStage{
     private String map;
     //private Vector eloNyamm = new Vector();
     private char[][] nyamm;
+    World world;
+    WorldBodyEditorLoader loader = new WorldBodyEditorLoader(); //beírni neki valami helyes paramétert
+
+
+
+
 
     public GameStage(Viewport viewport, Batch batch, MyGdxGame game) {
         super(viewport, batch, game);
@@ -59,6 +67,16 @@ public class GameStage extends MyStage{
             System.out.println();
         }
 
+
+        for (int i = nyamm.length;i > 0; i--){
+            for (int j = 0; i < nyamm.length; i++){
+                char c = nyamm[i][j];
+                switch(c){
+                    case 1 : world.addToWorld(new RoadVertical(world, loader, i, j)); break; //befejezni
+                    case 2 : world.addToWorld(new RoadHorizontal(world, loader, i, j)); break; // ezt is
+                }
+            }
+        }
 
     }
 }
