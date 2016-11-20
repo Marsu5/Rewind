@@ -21,7 +21,6 @@ import hu.tokingame.rewind.MyGdxGame;
 public class GameStage extends MyStage{
     public static int level = 0;
     private String map;
-    //private Vector eloNyamm = new Vector();
     private char[][] nyamm;
     World world;
     WorldBodyEditorLoader loader = new WorldBodyEditorLoader(); //beírni neki valami helyes paramétert
@@ -68,7 +67,7 @@ public class GameStage extends MyStage{
         }
 
 
-        for (int i = nyamm.length;i > 0; i--){
+        for (int i = nyamm.length - 1;i > 0; i--){
             for (int j = 0; i < nyamm.length; i++){
                 char c = nyamm[i][j];
                 switch(c){
