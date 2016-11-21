@@ -10,6 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+
+import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MyGdxGame;
 
 
@@ -26,6 +28,15 @@ abstract public class MyStage extends Stage implements InitableInterface {
         setCameraResetToCenterOfScreen();
         init();
     }
+
+
+    public MyStage(Batch batch, MyGdxGame game) {
+        super(new ExtendViewport(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT,new OrthographicCamera(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT)), batch);
+        this.game = game;
+        setCameraResetToCenterOfScreen();
+        init();
+    }
+
 
     public void addBackEventStackListener()    {
         addListener(new InputListener() {
