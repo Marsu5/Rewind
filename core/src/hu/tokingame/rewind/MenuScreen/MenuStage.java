@@ -1,13 +1,12 @@
 package hu.tokingame.rewind.MenuScreen;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hu.tokingame.rewind.CreditsScreen.CreditsScreen;
-import hu.tokingame.rewind.Game.GameScreen;
+import hu.tokingame.rewind.GameScreen.GameScreen;
 import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.MyTextButton;

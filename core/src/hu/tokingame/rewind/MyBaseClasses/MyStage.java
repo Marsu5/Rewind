@@ -30,13 +30,6 @@ abstract public class MyStage extends Stage implements InitableInterface {
     }
 
 
-    public MyStage(Batch batch, MyGdxGame game) {
-        super(new ExtendViewport(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT,new OrthographicCamera(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT)), batch);
-        this.game = game;
-        setCameraResetToCenterOfScreen();
-        init();
-    }
-
 
     public void addBackEventStackListener()    {
         addListener(new InputListener() {
