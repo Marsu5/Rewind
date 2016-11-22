@@ -1,4 +1,4 @@
-package hu.tokingame.rewind.Game;
+package hu.tokingame.rewind.GameScreen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;

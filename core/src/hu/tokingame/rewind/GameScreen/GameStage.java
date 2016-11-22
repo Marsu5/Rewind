@@ -1,4 +1,4 @@
-package hu.tokingame.rewind.Game;
+package hu.tokingame.rewind.GameScreen;
 
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -12,6 +12,8 @@ import java.io.InputStream;
 import java.util.Scanner;
 import java.util.Vector;
 
+import hu.tokingame.rewind.Game.RoadHorizontal;
+import hu.tokingame.rewind.Game.RoadVertical;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
 import hu.tokingame.rewind.MyGdxGame;
