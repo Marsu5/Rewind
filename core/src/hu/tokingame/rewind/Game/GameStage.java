@@ -1,6 +1,8 @@
 package hu.tokingame.rewind.Game;
 
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -23,7 +25,7 @@ public class GameStage extends MyStage{
     private String map;
     private char[][] nyamm;
     World world;
-    WorldBodyEditorLoader loader = new WorldBodyEditorLoader(); //beírni neki valami helyes paramétert
+    WorldBodyEditorLoader loader;
 
 
 
@@ -35,6 +37,8 @@ public class GameStage extends MyStage{
 
     @Override
     public void init() {
+        world = new World(new Vector2(0,0), false);
+        loader = new WorldBodyEditorLoader(new FileHandle("csizika.json")); //beírni neki valami helyes paramétert
         loadMap(level);
     }
     private void loadMap(int what){
@@ -68,11 +72,11 @@ public class GameStage extends MyStage{
 
 
         for (int i = nyamm.length - 1;i > 0; i--){
-            for (int j = 0; i < nyamm.length; i++){
+            for (int j = 0; j < nyamm.length; j++){
                 char c = nyamm[i][j];
                 switch(c){
-                    case 1 : world.addToWorld(new RoadVertical(world, loader, i, j)); break; //befejezni
-                    case 2 : world.addToWorld(new RoadHorizontal(world, loader, i, j)); break; // ezt is
+                    case '1' : addActor(new RoadVertical(world, loader, i, j)); break; //befejezni
+                    case '2' : addActor(new RoadHorizontal(world, loader, i, j)); break; // ezt is
                 }
             }
         }

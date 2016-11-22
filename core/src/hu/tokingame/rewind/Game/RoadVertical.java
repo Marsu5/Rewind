@@ -11,6 +11,6 @@ import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
 
 public class RoadVertical extends Road {
     public RoadVertical(World world, WorldBodyEditorLoader loader, float X, float Y) {
-        super(world, loader, "Vertical", new OneSpriteStaticActor("greencar.png"), X, Y);
+        super(world, loader, "vr.png", new OneSpriteStaticActor("Map/vr.png"), X, Y);
     }
 }

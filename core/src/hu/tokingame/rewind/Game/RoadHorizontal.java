@@ -10,7 +10,7 @@ import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
  */
 
 public class RoadHorizontal extends Road {
-    public RoadHorizontal(World world, WorldBodyEditorLoader loader, String bodyID, OneSpriteStaticActor oneSpriteStaticActor, float X, float Y) {
-        super(world, loader, "Horizontal", new OneSpriteStaticActor("greencar.png"), X, Y);
+    public RoadHorizontal(World world, WorldBodyEditorLoader loader, float X, float Y) {
+        super(world, loader, "hr.png", new OneSpriteStaticActor("Map/hr.png"), X, Y);
     }
 }

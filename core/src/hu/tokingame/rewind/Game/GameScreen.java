@@ -22,7 +22,7 @@ public class GameScreen extends MyScreen {
     @Override
     public void init() {
         super.init();
-        stage = new GameStage(new ExtendViewport(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT,new OrthographicCamera(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT)),spriteBatch,game);
+        stage = new GameStage(new ExtendViewport(16,16,new OrthographicCamera(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT)),spriteBatch,game);
         Gdx.input.setInputProcessor(stage);
     }
 
