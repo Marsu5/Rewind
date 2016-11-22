@@ -2,6 +2,7 @@ package hu.tokingame.rewind.GameScreen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
 import hu.tokingame.rewind.Global.Globals;
@@ -15,6 +16,8 @@ import hu.tokingame.rewind.MyGdxGame;
 public class GameScreen extends MyScreen {
 
     GameStage stage;
+    Box2DDebugRenderer box2DDebugRenderer;
+
     public GameScreen(MyGdxGame game) {
         super(game);
     }
@@ -24,6 +27,7 @@ public class GameScreen extends MyScreen {
         super.init();
         stage = new GameStage(new ExtendViewport(16,16,new OrthographicCamera(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT)),spriteBatch,game);
         Gdx.input.setInputProcessor(stage);
+        box2DDebugRenderer = new Box2DDebugRenderer();
     }
 
     @Override
@@ -44,5 +48,6 @@ public class GameScreen extends MyScreen {
         spriteBatch.setProjectionMatrix(stage.getCamera().combined);
         stage.act(delta);
         stage.draw();
+        box2DDebugRenderer.render(stage.world, stage.getCamera().combined);
     }
 }
