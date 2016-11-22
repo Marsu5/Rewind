@@ -89,7 +89,8 @@ public class GameStage extends MyStage{
                     case '6' : addActor(new TurnRD(world, loader, j, nyamm[0].length -i)); break;
                     case '3' : addActor(new TurnLD(world, loader, j, nyamm[0].length -i)); break;
                     case 'B' : addActor(new FourWay(world, loader, j, nyamm[0].length -i)); break;
-                    case '0' : addActor(new Grass(world, loader, j, nyamm[0].length -1)); break;
+                    case '0' : addActor(new Grass(world, loader, j, nyamm[0].length -i)); break;
+                    case 'c' : addActor(new Decoration(world, loader, j, nyamm[0].length -i, (int)(Math.random()*5-1+1)+1));
                 }
             }
         }
