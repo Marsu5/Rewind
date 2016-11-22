@@ -27,7 +27,7 @@ import hu.tokingame.rewind.MyGdxGame;
  */
 
 public class GameStage extends MyStage{
-    public static int level = 1;
+    public static int level = 0;
     private String map;
     private char[][] nyamm;
     World world;
