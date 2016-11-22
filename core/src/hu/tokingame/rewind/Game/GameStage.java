@@ -71,12 +71,17 @@ public class GameStage extends MyStage{
         }
 
 
-        for (int i = nyamm.length - 1;i > 0; i--){
-            for (int j = 0; j < nyamm.length; j++){
+        for (int i = nyamm.length -1 ;i > 0; i--){
+        //for (int i = 0;i <nyamm[0].length; i++){
+            for (int j = 0; j < nyamm[0].length; j++){
                 char c = nyamm[i][j];
                 switch(c){
-                    case '1' : addActor(new RoadVertical(world, loader, i, j)); break; //befejezni
-                    case '2' : addActor(new RoadHorizontal(world, loader, i, j)); break; // ezt is
+                    case '1' : addActor(new RoadVertical(world, loader, j, nyamm[0].length - i)); break;
+                    case '2' : addActor(new RoadHorizontal(world, loader, j, nyamm[0].length -i)); break;
+                    case '4' : addActor(new TurnUL(world, loader, j, nyamm[0].length -i)); break;
+                    case '5' : addActor(new TurnUR(world, loader, j, nyamm[0].length -i)); break;
+                    case '6' : addActor(new TurnRD(world, loader, j, nyamm[0].length -i)); break;
+                    case '3' : addActor(new TurnLD(world, loader, j, nyamm[0].length -i)); break;
                 }
             }
         }
