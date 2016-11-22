@@ -77,10 +77,10 @@ public class GameStage extends MyStage{
         }
 
 
-        for (int i = nyamm.length -1 ;i > 0; i--){
-        //for (int i = 0;i <nyamm[0].length; i++){
+        for (int i = nyamm.length -1 ;i >= 0; i--){
             for (int j = 0; j < nyamm[0].length; j++){
                 char c = nyamm[i][j];
+                System.out.print(c);
                 switch(c){
                     case '1' : addActor(new RoadVertical(world, loader, j, nyamm[0].length - i)); break;
                     case '2' : addActor(new RoadHorizontal(world, loader, j, nyamm[0].length -i)); break;
@@ -92,6 +92,7 @@ public class GameStage extends MyStage{
                     case '0' : addActor(new Grass(world, loader, j, nyamm[0].length -1)); break;
                 }
             }
+            System.out.println("\n");
         }
 
     }
