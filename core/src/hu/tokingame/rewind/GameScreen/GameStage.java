@@ -6,14 +6,18 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-import java.io.FileInputStream;
 import java.io.FileReader;
-import java.io.InputStream;
 import java.util.Scanner;
-import java.util.Vector;
 
-import hu.tokingame.rewind.Game.RoadHorizontal;
-import hu.tokingame.rewind.Game.RoadVertical;
+import hu.tokingame.rewind.MapElements.FourWay;
+import hu.tokingame.rewind.MapElements.Grass;
+import hu.tokingame.rewind.MapElements.RoadHorizontal;
+import hu.tokingame.rewind.MapElements.RoadVertical;
+import hu.tokingame.rewind.MapElements.TurnLD;
+import hu.tokingame.rewind.MapElements.TurnRD;
+import hu.tokingame.rewind.MapElements.TurnUL;
+import hu.tokingame.rewind.MapElements.TurnUR;
+import hu.tokingame.rewind.MapElements.*;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
 import hu.tokingame.rewind.MyGdxGame;
@@ -80,10 +84,12 @@ public class GameStage extends MyStage{
                 switch(c){
                     case '1' : addActor(new RoadVertical(world, loader, j, nyamm[0].length - i)); break;
                     case '2' : addActor(new RoadHorizontal(world, loader, j, nyamm[0].length -i)); break;
-                    case '4' : addActor(new TurnUL(world, loader, j, nyamm[0].length -i)); break;
-                    case '5' : addActor(new TurnUR(world, loader, j, nyamm[0].length -i)); break;
+                    case '5' : addActor(new TurnUL(world, loader, j, nyamm[0].length -i)); break;
+                    case '4' : addActor(new TurnUR(world, loader, j, nyamm[0].length -i)); break;
                     case '6' : addActor(new TurnRD(world, loader, j, nyamm[0].length -i)); break;
                     case '3' : addActor(new TurnLD(world, loader, j, nyamm[0].length -i)); break;
+                    case 'B' : addActor(new FourWay(world, loader, j, nyamm[0].length -i)); break;
+                    case '0' : addActor(new Grass(world, loader, j, nyamm[0].length -1)); break;
                 }
             }
         }

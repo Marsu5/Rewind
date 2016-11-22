@@ -1,4 +1,4 @@
-package hu.tokingame.rewind.Game;
+package hu.tokingame.rewind.MapElements;
 
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
