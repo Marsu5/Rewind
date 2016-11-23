@@ -13,6 +13,9 @@ import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
 import hu.tokingame.rewind.MyGdxGame;
 import hu.tokingame.rewind.SettingsScreen.SettingsScreen;
 
+import static hu.tokingame.rewind.Global.Assets.MUSIC_MENU;
+import static hu.tokingame.rewind.Global.Assets.manager;
+
 /**
  * Created by M on 11/14/2016.
  */
@@ -65,6 +68,7 @@ public class MenuStage extends MyStage {
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
                         game.setScreen(new GameScreen(game));
+                        manager.get(MUSIC_MENU).stop();
                     }
                 });
             }

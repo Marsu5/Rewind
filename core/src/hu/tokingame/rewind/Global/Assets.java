@@ -4,6 +4,7 @@ import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -50,6 +51,7 @@ public class Assets {
     public static final AssetDescriptor<Texture> RIGHT_TURN = new AssetDescriptor<Texture>("Map/turnr.png", Texture.class);
     public static final AssetDescriptor<Texture> LEFT_TURN_UP = new AssetDescriptor<Texture>("Map/turnul.png", Texture.class);
     public static final AssetDescriptor<Texture> RIGHT_TURN_DOWN = new AssetDescriptor<Texture>("Map/turnur.png", Texture.class);
+    public static final AssetDescriptor<Music> MUSIC_MENU = new AssetDescriptor<Music>("Audio/9h00.mp3", Music.class);
     //</editor-fold>
 
 
@@ -88,11 +90,13 @@ public class Assets {
         manager.load(RIGHT_TURN);
         manager.load(LEFT_TURN_UP);
         manager.load(RIGHT_TURN_DOWN);
+        manager.load(MUSIC_MENU);
 
     }
 
     public static void afterLoaded(){
-
+        manager.get(MUSIC_MENU).setLooping(true);
+        manager.get(MUSIC_MENU).play();
     }
 
     public static void unload(){
