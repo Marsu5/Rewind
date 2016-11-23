@@ -51,11 +51,12 @@ public class Assets {
     public static final AssetDescriptor<Texture> RIGHT_TURN = new AssetDescriptor<Texture>("Map/turnr.png", Texture.class);
     public static final AssetDescriptor<Texture> LEFT_TURN_UP = new AssetDescriptor<Texture>("Map/turnul.png", Texture.class);
     public static final AssetDescriptor<Texture> RIGHT_TURN_DOWN = new AssetDescriptor<Texture>("Map/turnur.png", Texture.class);
-    public static final AssetDescriptor<Music> MUSIC_MENU = new AssetDescriptor<Music>("Audio/9h00.mp3", Music.class);
     //</editor-fold>
 
+    //<editor-fold desc="Music">
+    public static final AssetDescriptor<Music> MUSIC_MENU = new AssetDescriptor<Music>("Audio/9h00.mp3", Music.class);
 
-
+    //</editor-fold>
 
 
 
@@ -71,7 +72,7 @@ public class Assets {
         manager.setLoader(BitmapFont.class, ".ttf", new FreetypeFontLoader(resolver));
         manager.setLoader(BitmapFont.class, ".otf", new FreetypeFontLoader(resolver));
 
-
+        //<editor-fold desc="Loading">
         manager.load(CALIBRIL_FONT);
         manager.load(ROAD_VERTICAL);
         manager.load(ROAD_HORIZONTAL);
@@ -90,7 +91,9 @@ public class Assets {
         manager.load(RIGHT_TURN);
         manager.load(LEFT_TURN_UP);
         manager.load(RIGHT_TURN_DOWN);
+
         manager.load(MUSIC_MENU);
+        //</editor-fold>
 
     }
 
