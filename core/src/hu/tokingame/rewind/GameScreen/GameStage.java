@@ -27,7 +27,7 @@ import hu.tokingame.rewind.MyGdxGame;
  */
 
 public class GameStage extends MyStage{
-    public static int level = 0;
+    public static int level = 1;
     private String map;
     private char[][] nyamm;
     World world;
@@ -49,8 +49,8 @@ public class GameStage extends MyStage{
     }
     private void loadMap(int what){
         switch(what){
-            case 0 : map = "./CityMap/TOOTOROL1.txt"; nyamm = new char[10][10]; break;
-            case 1 : map = "./CityMap/level1.txt"; nyamm = new char[20][20]; break;
+            case 0 : map = "./CityMap/TOOTOROL1.txt"; nyamm = new char[15][15]; break;
+            case 1 : map = "./CityMap/level1.txt"; nyamm = new char[24][24]; break;
             case 2 : map = "./CityMap/level2.txt"; nyamm = new char[25][25]; break;
         }
         Scanner be;
