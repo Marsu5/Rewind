@@ -2,3 +2,24 @@
 GameStage/ 26 paraméter a loadernek
 GameStage/ 74 az egészet helyesen megcsinálni
 GameStage/ 75 aztis
+
+
+
+pályarészek:
+0:fű
+1: függőleges út
+2: vízszintes út
+3: le bal kanyar
+4: fel bal kanyar
+5: fel jobb kanyar
+6: le bal kanyar
+7: t le
+8: t bal
+9: t fel
+A: t jobb
+B: négyes
+C: díszlet
+E: zsákutca fel
+F: zsákutca jobb
+G: zsákutca le
+H: zsákutca bal

@@ -21,7 +21,7 @@ public class Assets {
 
     static final FreetypeFontLoader.FreeTypeFontLoaderParameter fontParameter = new FreetypeFontLoader.FreeTypeFontLoaderParameter();
     static {
-        fontParameter.fontFileName = "./Fonts/calibril.ttf";
+        fontParameter.fontFileName = "Fonts/calibril.ttf";
         fontParameter.fontParameters.size = 50;
         fontParameter.fontParameters.characters = hu.tokingame.rewind.Global.Globals.CHARS;
         fontParameter.fontParameters.color = Color.WHITE;
@@ -29,27 +29,27 @@ public class Assets {
 
     // Fonts
     public static final AssetDescriptor<BitmapFont> CALIBRIL_FONT
-            = new AssetDescriptor<BitmapFont>("./Fonts/calibril.ttf", BitmapFont.class, fontParameter);
+            = new AssetDescriptor<BitmapFont>("Fonts/calibril.ttf", BitmapFont.class, fontParameter);
 
 
     //<editor-fold desc="Map Elements">
-    public static final AssetDescriptor<Texture> ROAD_VERTICAL = new AssetDescriptor<Texture>("./Map/vr.png", Texture.class);
-    public static final AssetDescriptor<Texture> ROAD_HORIZONTAL = new AssetDescriptor<Texture>("./Map/hr.png", Texture.class);
-    public static final AssetDescriptor<Texture> ROAD_BLOCK = new AssetDescriptor<Texture>("./Map/block.png", Texture.class);
-    public static final AssetDescriptor<Texture> BUSH = new AssetDescriptor<Texture>("./Map/bush.png", Texture.class);
-    public static final AssetDescriptor<Texture> FOUR_WAY = new AssetDescriptor<Texture>("./Map/4way.png", Texture.class);
-    public static final AssetDescriptor<Texture> GRASS = new AssetDescriptor<Texture>("./Map/bush.png", Texture.class);
-    public static final AssetDescriptor<Texture> ROCK_ONE = new AssetDescriptor<Texture>("./Map/rock1.png", Texture.class);
-    public static final AssetDescriptor<Texture> ROCK_TWO = new AssetDescriptor<Texture>("./Map/rock2.png", Texture.class);
-    public static final AssetDescriptor<Texture> ROCK_THREE = new AssetDescriptor<Texture>("./Map/rock3.png", Texture.class);
-    public static final AssetDescriptor<Texture> T_D = new AssetDescriptor<Texture>("./Map/td.png", Texture.class);
-    public static final AssetDescriptor<Texture> T_L = new AssetDescriptor<Texture>("./Map/tl.png", Texture.class);
-    public static final AssetDescriptor<Texture> T_R = new AssetDescriptor<Texture>("./Map/tr.png", Texture.class);
-    public static final AssetDescriptor<Texture> T_U = new AssetDescriptor<Texture>("./Map/tu.png", Texture.class);
-    public static final AssetDescriptor<Texture> LEFT_TURN = new AssetDescriptor<Texture>("./Map/turnl.png", Texture.class);
-    public static final AssetDescriptor<Texture> RIGHT_TURN = new AssetDescriptor<Texture>("./Map/turnr.png", Texture.class);
-    public static final AssetDescriptor<Texture> LEFT_TURN_UP = new AssetDescriptor<Texture>("./Map/turnul.png", Texture.class);
-    public static final AssetDescriptor<Texture> RIGHT_TURN_DOWN = new AssetDescriptor<Texture>("./Map/turnur.png", Texture.class);
+    public static final AssetDescriptor<Texture> ROAD_VERTICAL = new AssetDescriptor<Texture>("Map/vr.png", Texture.class);
+    public static final AssetDescriptor<Texture> ROAD_HORIZONTAL = new AssetDescriptor<Texture>("Map/hr.png", Texture.class);
+    public static final AssetDescriptor<Texture> ROAD_BLOCK = new AssetDescriptor<Texture>("Map/block.png", Texture.class);
+    public static final AssetDescriptor<Texture> BUSH = new AssetDescriptor<Texture>("Map/bush.png", Texture.class);
+    public static final AssetDescriptor<Texture> FOUR_WAY = new AssetDescriptor<Texture>("Map/4way.png", Texture.class);
+    public static final AssetDescriptor<Texture> GRASS = new AssetDescriptor<Texture>("Map/bush.png", Texture.class);
+    public static final AssetDescriptor<Texture> ROCK_ONE = new AssetDescriptor<Texture>("Map/rock1.png", Texture.class);
+    public static final AssetDescriptor<Texture> ROCK_TWO = new AssetDescriptor<Texture>("Map/rock2.png", Texture.class);
+    public static final AssetDescriptor<Texture> ROCK_THREE = new AssetDescriptor<Texture>("Map/rock3.png", Texture.class);
+    public static final AssetDescriptor<Texture> T_D = new AssetDescriptor<Texture>("Map/td.png", Texture.class);
+    public static final AssetDescriptor<Texture> T_L = new AssetDescriptor<Texture>("Map/tl.png", Texture.class);
+    public static final AssetDescriptor<Texture> T_R = new AssetDescriptor<Texture>("Map/tr.png", Texture.class);
+    public static final AssetDescriptor<Texture> T_U = new AssetDescriptor<Texture>("Map/tu.png", Texture.class);
+    public static final AssetDescriptor<Texture> LEFT_TURN = new AssetDescriptor<Texture>("Map/turnl.png", Texture.class);
+    public static final AssetDescriptor<Texture> RIGHT_TURN = new AssetDescriptor<Texture>("Map/turnr.png", Texture.class);
+    public static final AssetDescriptor<Texture> LEFT_TURN_UP = new AssetDescriptor<Texture>("Map/turnul.png", Texture.class);
+    public static final AssetDescriptor<Texture> RIGHT_TURN_DOWN = new AssetDescriptor<Texture>("Map/turnur.png", Texture.class);
     //</editor-fold>
 
 

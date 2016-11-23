@@ -25,7 +25,7 @@ public class LoadingStage extends MyStage {
     @Override
     public void init() {
         loadingStage = this;
-        addActor(cassetteActor = new OneSpriteAnimatedActor("./ButtonAndOtherShit/loading.txt"){
+        addActor(cassetteActor = new OneSpriteAnimatedActor("ButtonAndOtherShit/loading.txt"){
             @Override
             public void init() {
                 super.init();

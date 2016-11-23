@@ -27,7 +27,7 @@ import hu.tokingame.rewind.MyGdxGame;
  */
 
 public class GameStage extends MyStage{
-    public static int level = 1;
+    public static int level = 0;
     private String map;
     private char[][] nyamm;
     World world;
@@ -44,14 +44,14 @@ public class GameStage extends MyStage{
     @Override
     public void init() {
         world = new World(new Vector2(0,0), false);
-        loader = new WorldBodyEditorLoader(new FileHandle("csizika.json")); //beírni neki valami helyes paramétert
+        loader = new WorldBodyEditorLoader(new FileHandle("csizika.json")); // ezzel gondja van ha rátöltjük telefonra
         loadMap(level);
     }
     private void loadMap(int what){
         switch(what){
-            case 0 : map = "./CityMap/TOOTOROL1.txt"; nyamm = new char[15][15]; break;
-            case 1 : map = "./CityMap/level1.txt"; nyamm = new char[24][24]; break;
-            case 2 : map = "./CityMap/level2.txt"; nyamm = new char[25][25]; break;
+            case 0 : map = "CityMap/TOOTOROL1.txt"; nyamm = new char[15][15]; break;
+            case 1 : map = "CityMap/level1.txt"; nyamm = new char[24][24]; break;
+            case 10 : map = "CityMap/bonus.txt"; nyamm = new char[25][25]; break;
         }
         Scanner be;
         try{
