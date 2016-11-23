@@ -27,7 +27,7 @@ import hu.tokingame.rewind.MyGdxGame;
  */
 
 public class GameStage extends MyStage{
-    public static int level = 0;
+    public static int level = 1;
     private String map;
     private char[][] nyamm;
     World world;
@@ -95,7 +95,10 @@ public class GameStage extends MyStage{
                     case '8' : addActor(new Tleft(world, loader, j, nyamm[0].length -i)); break;
                     case 'A' : addActor(new Tright(world, loader , j, nyamm[0].length -i)); break;
                     case '7' : addActor(new Tdown(world, loader, j, nyamm[0].length -i)); break;
-
+                    case 'E' : addActor(new DeadEndUp(world, loader, j, nyamm[0].length-i)); break;
+                    case 'F' : addActor(new DeadEndRight(world, loader, j, nyamm[0].length -i)); break;
+                    case 'G' : addActor(new DeadEndDown(world, loader, j, nyamm[0].length -i)); break;
+                    case 'H' : addActor(new DeadEndLeft(world, loader, j, nyamm[0].length -i)); break;
 
                 }
             }
