@@ -30,7 +30,7 @@ import hu.tokingame.rewind.MyGdxGame;
  */
 
 public class GameStage extends MyStage{
-    public static int level = 10;
+    public static int level = 0;
     World world;
     WorldBodyEditorLoader loader;
 
@@ -45,7 +45,7 @@ public class GameStage extends MyStage{
     @Override
     public void init() {
         world = new World(new Vector2(0,0), false);
-        loader = new WorldBodyEditorLoader(Gdx.files.internal("Jsons/gravity.json")); // ezzel gondja van ha rátöltjük telefonra
+        loader = new WorldBodyEditorLoader(Gdx.files.internal("Jsons/gravity.json"));
         MapLoader mapLoader = new MapLoader(level,this,world,loader).load();
     }
 
