@@ -25,7 +25,7 @@ public class MyLabel extends Label implements InitableInterface{
 
     public static void refresh(){
         style1 = new com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle();
-        style1.font = Assets.manager.get(Assets.EIGHTBITWONDER_FONT);
+        style1.font = Assets.manager.get(Assets.VERMIN_FONT);
         style1.fontColor = Color.WHITE;
     }
 

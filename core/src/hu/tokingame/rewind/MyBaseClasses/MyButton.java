@@ -24,7 +24,7 @@ public class MyButton extends TextButton implements InitableInterface{
         style.up = new TextureRegionDrawable(new TextureRegion(texture));
         style.over = new TextureRegionDrawable(new TextureRegion(texture));
         style.down = new TextureRegionDrawable(new TextureRegion(texture));
-        style.font = Assets.manager.get(Assets.CALIBRIL_FONT);
+        style.font = Assets.manager.get(Assets.VERMIN_FONT);
         this.setStyle(style);
     }
 

@@ -36,7 +36,7 @@ public class MyGdxGame extends Game {
 	public Label.LabelStyle getLabelStyle() {
 		Label.LabelStyle style;
 		style = new com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle();
-		style.font = Assets.manager.get(Assets.CALIBRIL_FONT);
+		style.font = Assets.manager.get(Assets.VERMIN_FONT);
 		style.fontColor = Color.YELLOW;
 		Pixmap p = new Pixmap(1,1, Pixmap.Format.RGB888);
 		p.setColor(0.4f,0.2f,0.8f, 0.5f);
@@ -65,7 +65,7 @@ public class MyGdxGame extends Game {
 	public TextButton.TextButtonStyle getTextButtonStyle() {
 
 		TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
-		textButtonStyle.font = Assets.manager.get(Assets.CALIBRIL_FONT);
+		textButtonStyle.font = Assets.manager.get(Assets.VERMIN_FONT);
 
 		Pixmap p = new Pixmap(1,1, Pixmap.Format.RGB888);
 		p.setColor(0.1f,0.2f,0.2f, 0.5f);

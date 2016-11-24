@@ -24,15 +24,15 @@ public class Assets {
 
     static final FreetypeFontLoader.FreeTypeFontLoaderParameter fontParameter = new FreetypeFontLoader.FreeTypeFontLoaderParameter();
     static {
-        fontParameter.fontFileName = "Fonts/calibril.ttf";
+        fontParameter.fontFileName = "Fonts/vermin_vibes_1989.ttf";
         fontParameter.fontParameters.size = 50;
         fontParameter.fontParameters.characters = hu.tokingame.rewind.Global.Globals.CHARS;
         fontParameter.fontParameters.color = Color.WHITE;
     }
 
     // Fonts
-    public static final AssetDescriptor<BitmapFont> CALIBRIL_FONT
-            = new AssetDescriptor<BitmapFont>("Fonts/calibril.ttf", BitmapFont.class, fontParameter);
+    public static final AssetDescriptor<BitmapFont> VERMIN_FONT
+            = new AssetDescriptor<BitmapFont>("Fonts/vermin_vibes_1989.ttf", BitmapFont.class, fontParameter);
 
 
     //<editor-fold desc="Map Elements">
@@ -54,7 +54,6 @@ public class Assets {
     public static final AssetDescriptor<Texture> LEFT_TURN_UP = new AssetDescriptor<Texture>("Map/turnul.png", Texture.class);
     public static final AssetDescriptor<Texture> RIGHT_TURN_DOWN = new AssetDescriptor<Texture>("Map/turnur.png", Texture.class);
     //</editor-fold>
-    public static final AssetDescriptor<BitmapFont> EIGHTBITWONDER_FONT = new AssetDescriptor<BitmapFont>("Fonts/8-BIT_WONDER.TTF", BitmapFont.class);
     //<editor-fold desc="Music">
     public static final AssetDescriptor<Music> MUSIC_MENU = new AssetDescriptor<Music>("Audio/9h00.mp3", Music.class);
 
@@ -75,7 +74,6 @@ public class Assets {
         manager.setLoader(BitmapFont.class, ".otf", new FreetypeFontLoader(resolver));
 
         //<editor-fold desc="Loading">
-        manager.load(CALIBRIL_FONT);
         manager.load(ROAD_VERTICAL);
         manager.load(ROAD_HORIZONTAL);
         manager.load(ROAD_BLOCK);
@@ -94,7 +92,7 @@ public class Assets {
         manager.load(LEFT_TURN_UP);
         manager.load(RIGHT_TURN_DOWN);
 
-        manager.load(EIGHTBITWONDER_FONT);
+        manager.load(VERMIN_FONT);
 
         manager.load(MUSIC_MENU);
         //</editor-fold>

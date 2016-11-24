@@ -28,7 +28,7 @@ import hu.tokingame.rewind.Global.Assets;
         public static void refresh()
         {
             textButtonStyle = new TextButtonStyle();
-            textButtonStyle.font = Assets.manager.get(Assets.EIGHTBITWONDER_FONT);
+            textButtonStyle.font = Assets.manager.get(Assets.VERMIN_FONT);
 
             Pixmap p = new Pixmap(1,1, Pixmap.Format.RGB888);
             p.setColor(0.1f,0.2f,0.2f, 0.5f);
@@ -55,7 +55,7 @@ import hu.tokingame.rewind.Global.Assets;
             style.up = new TextureRegionDrawable(new TextureRegion(texture));
             style.over = new TextureRegionDrawable(new TextureRegion(texture));
             style.down = new TextureRegionDrawable(new TextureRegion(texture));
-            style.font = Assets.manager.get(Assets.CALIBRIL_FONT);
+            style.font = Assets.manager.get(Assets.VERMIN_FONT);
             this.setStyle(style);
         }
 
