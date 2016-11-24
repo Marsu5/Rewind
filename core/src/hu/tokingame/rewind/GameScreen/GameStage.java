@@ -45,7 +45,7 @@ public class GameStage extends MyStage{
     @Override
     public void init() {
         world = new World(new Vector2(0,0), false);
-        loader = new WorldBodyEditorLoader(Gdx.files.internal("Jsons/gravity.json"));
+        loader = new WorldBodyEditorLoader(Gdx.files.internal("Jsons/physics.json"));
         MapLoader mapLoader = new MapLoader(level,this,world,loader).load();
     }
 

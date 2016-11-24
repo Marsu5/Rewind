@@ -24,8 +24,5 @@ public class GameLoadingScreen extends MyScreen {
         stage = new GameLoadingStage(new ExtendViewport(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT,new OrthographicCamera(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT)),spriteBatch,game);
 
 
-
-
-
     }
 }
