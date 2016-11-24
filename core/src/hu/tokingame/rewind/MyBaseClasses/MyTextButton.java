@@ -28,7 +28,7 @@ import hu.tokingame.rewind.Global.Assets;
         public static void refresh()
         {
             textButtonStyle = new TextButtonStyle();
-            textButtonStyle.font = Assets.manager.get(Assets.CALIBRIL_FONT);
+            textButtonStyle.font = Assets.manager.get(Assets.EIGHTBITWONDER_FONT);
 
             Pixmap p = new Pixmap(1,1, Pixmap.Format.RGB888);
             p.setColor(0.1f,0.2f,0.2f, 0.5f);
