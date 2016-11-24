@@ -12,6 +12,8 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGeneratorLoader;
 import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
 
+import java.awt.Font;
+
 /**
  * Created by M on 10/7/2016.
  */
@@ -52,7 +54,7 @@ public class Assets {
     public static final AssetDescriptor<Texture> LEFT_TURN_UP = new AssetDescriptor<Texture>("Map/turnul.png", Texture.class);
     public static final AssetDescriptor<Texture> RIGHT_TURN_DOWN = new AssetDescriptor<Texture>("Map/turnur.png", Texture.class);
     //</editor-fold>
-
+    public static final AssetDescriptor<BitmapFont> EIGHTBITWONDER_FONT = new AssetDescriptor<BitmapFont>("Fonts/8-BIT_WONDER.TTF", BitmapFont.class);
     //<editor-fold desc="Music">
     public static final AssetDescriptor<Music> MUSIC_MENU = new AssetDescriptor<Music>("Audio/9h00.mp3", Music.class);
 
@@ -91,6 +93,8 @@ public class Assets {
         manager.load(RIGHT_TURN);
         manager.load(LEFT_TURN_UP);
         manager.load(RIGHT_TURN_DOWN);
+
+        manager.load(EIGHTBITWONDER_FONT);
 
         manager.load(MUSIC_MENU);
         //</editor-fold>

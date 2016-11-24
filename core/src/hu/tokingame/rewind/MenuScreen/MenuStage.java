@@ -9,6 +9,7 @@ import hu.tokingame.rewind.CreditsScreen.CreditsScreen;
 import hu.tokingame.rewind.GameScreen.GameScreen;
 import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.LoadingScreen.GameLoadingScreen;
+import hu.tokingame.rewind.MyBaseClasses.MyLabel;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
 import hu.tokingame.rewind.MyGdxGame;
