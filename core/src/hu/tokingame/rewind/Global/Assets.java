@@ -34,6 +34,12 @@ public class Assets {
     public static final AssetDescriptor<BitmapFont> VERMIN_FONT
             = new AssetDescriptor<BitmapFont>("Fonts/vermin_vibes_1989.ttf", BitmapFont.class, fontParameter);
 
+    //<editor-fold desc="Car Textures>
+    public static final AssetDescriptor<Texture> CAR_BLUE = new AssetDescriptor<Texture>("GameTextures/bluecar.png", Texture.class);
+    public static final AssetDescriptor<Texture> CAR_GREEN = new AssetDescriptor<Texture>("GameTextures/greencar.png", Texture.class);
+    public static final AssetDescriptor<Texture> CAR_RED = new AssetDescriptor<Texture>("GameTextures/redcar.png", Texture.class);
+    public static final AssetDescriptor<Texture> CAR_ORANGE = new AssetDescriptor<Texture>("GameTextures/orangecar.png", Texture.class);
+    //</editor-fold>
 
     //<editor-fold desc="Map Elements">
     public static final AssetDescriptor<Texture> ROAD_VERTICAL = new AssetDescriptor<Texture>("Map/vr.png", Texture.class);
@@ -54,6 +60,7 @@ public class Assets {
     public static final AssetDescriptor<Texture> LEFT_TURN_UP = new AssetDescriptor<Texture>("Map/turnul.png", Texture.class);
     public static final AssetDescriptor<Texture> RIGHT_TURN_DOWN = new AssetDescriptor<Texture>("Map/turnur.png", Texture.class);
     //</editor-fold>
+
     //<editor-fold desc="Music">
     public static final AssetDescriptor<Music> MUSIC_MENU = new AssetDescriptor<Music>("Audio/9h00.mp3", Music.class);
 
@@ -91,6 +98,12 @@ public class Assets {
         manager.load(RIGHT_TURN);
         manager.load(LEFT_TURN_UP);
         manager.load(RIGHT_TURN_DOWN);
+
+        //car textures
+        manager.load(CAR_BLUE);
+        manager.load(CAR_GREEN);
+        manager.load(CAR_RED);
+        manager.load(CAR_ORANGE);
 
         manager.load(VERMIN_FONT);
 
