@@ -30,7 +30,7 @@ import hu.tokingame.rewind.MyGdxGame;
  */
 
 public class GameStage extends MyStage{
-    public static int level = 0;
+    public static int level = 1;
     World world;
     WorldBodyEditorLoader loader;
 
