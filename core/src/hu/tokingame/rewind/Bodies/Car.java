@@ -15,8 +15,9 @@ public class Car extends Body {
 
     public Car(World world, WorldBodyEditorLoader loader, float X, float Y) {
         super(world, loader, "bluecar.png",  new OneSpriteStaticActor(randomTexture()), X, Y);
-        //actor = (OneSpriteStaticActor)getChildren().get(0);
-
+        actor = (OneSpriteStaticActor)getChildren().get(0);
+        actor.setSize(0.25f,0.5f);
+        setSize(getWidth()/4, getHeight()/4);
     }
 
     private static String randomTexture(){

@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
+import hu.tokingame.rewind.Bodies.Car;
 import hu.tokingame.rewind.MapElements.FourWay;
 import hu.tokingame.rewind.MapElements.Grass;
 import hu.tokingame.rewind.MapElements.RoadHorizontal;
@@ -47,6 +48,7 @@ public class GameStage extends MyStage{
         world = new World(new Vector2(0,0), false);
         loader = new WorldBodyEditorLoader(Gdx.files.internal("Jsons/physics.json"));
         MapLoader mapLoader = new MapLoader(level,this,world,loader).load();
+        addActor(new Car(world, loader, 1,1));
     }
 
 
