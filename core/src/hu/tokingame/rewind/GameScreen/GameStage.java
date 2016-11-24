@@ -1,10 +1,14 @@
 package hu.tokingame.rewind.GameScreen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.utils.IntFloatMap;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.io.File;
@@ -26,6 +30,9 @@ import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
 import hu.tokingame.rewind.MyGdxGame;
 
+import static com.badlogic.gdx.Gdx.input;
+
+
 /**
  * Created by davimatyi on 2016. 11. 20..
  */
@@ -34,6 +41,7 @@ public class GameStage extends MyStage{
     public static int level = 1;
     World world;
     WorldBodyEditorLoader loader;
+    Car car;
 
 
 
@@ -48,8 +56,25 @@ public class GameStage extends MyStage{
         world = new World(new Vector2(0,0), false);
         loader = new WorldBodyEditorLoader(Gdx.files.internal("Jsons/physics.json"));
         MapLoader mapLoader = new MapLoader(level,this,world,loader).load();
-        addActor(new Car(world, loader, 1,1));
+        addActor(car = new Car(world, loader, 1,1));
+        car.setPosition(5.5f,5.5f);
     }
 
+    @Override
+    public void act(float delta) {
+        super.act(delta);
+        /*OrthographicCamera c = (OrthographicCamera)getCamera();
+        c.zoom = 0.2f;
+        set
+        */
+        setCameraMoveToXY(car.getX(), car.getY(), 0.2f, 1);
+        if(input.isKeyPressed(Input.Keys.UP)){
+            car.getBody().applyForceToCenter(200,0, true);
+        }
+        if(input.isKeyPressed(Input.Keys.DOWN)){
+            car.getBody().applyForceToCenter(200,0, true);
+        }
+        world.step(delta,0,0);
+    }
 
 }
