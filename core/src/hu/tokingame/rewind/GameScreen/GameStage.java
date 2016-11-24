@@ -38,7 +38,7 @@ import static com.badlogic.gdx.Gdx.input;
  */
 
 public class GameStage extends MyStage{
-    public static int level = 1;
+    public static int level = 10;
     World world;
     WorldBodyEditorLoader loader;
     Car car;
@@ -57,7 +57,7 @@ public class GameStage extends MyStage{
         loader = new WorldBodyEditorLoader(Gdx.files.internal("Jsons/physics.json"));
         MapLoader mapLoader = new MapLoader(level,this,world,loader).load();
         addActor(car = new Car(world, loader, 1,1));
-        car.setPosition(5.5f,5.5f);
+        car.setPosition(3.5f,5.5f);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class GameStage extends MyStage{
         c.zoom = 0.2f;
         set
         */
-        setCameraMoveToXY(car.getX(), car.getY(), 0.2f, 1);
+        setCameraMoveToXY(car.getX(), car.getY(), 0.12f, 1);
         if(input.isKeyPressed(Input.Keys.UP)){
             car.getBody().applyForceToCenter(200,0, true);
         }

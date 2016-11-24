@@ -21,12 +21,12 @@ public class Car extends Body {
     }
 
     private static String randomTexture(){
-        int a = (int)Math.random() * (4-1+1)+4;
+        int a = (int)(Math.random() * (4-1+1)+1);
         switch (a){
             case 1 : return "GameTextures/bluecar.png";
             case 2 : return "GameTextures/greencar.png";
             case 3 : return "GameTextures/redcar.png";
-            case 4 : return "GameTextures/bluecar.png";
+            case 4 : return "GameTextures/orangecar.png";
             default: return"GameTextures/bluecar.png";
         }
     }
