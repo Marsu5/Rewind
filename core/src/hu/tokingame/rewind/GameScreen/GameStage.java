@@ -42,10 +42,7 @@ public class GameStage extends MyStage{
     World world;
     WorldBodyEditorLoader loader;
     Car car;
-
-
-
-
+    
 
     public GameStage(Viewport viewport, Batch batch, MyGdxGame game) {
         super(viewport, batch, game);
