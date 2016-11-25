@@ -54,7 +54,7 @@ public class GameStage extends MyStage{
         loader = new WorldBodyEditorLoader(Gdx.files.internal("Jsons/physics.json"));
         MapLoader mapLoader = new MapLoader(level,this,world,loader).load();
         addActor(car = new Car(world, loader, 1,1));
-        car.setPosition(3.5f,5.5f);
+        car.setPosition(4.5f,5.5f);
     }
 
     @Override
@@ -64,12 +64,24 @@ public class GameStage extends MyStage{
         c.zoom = 0.2f;
         set
         */
-        setCameraMoveToXY(car.getX(), car.getY(), 0.12f, 1);
+
+        setCameraMoveToXY(car.getX(), car.getY(), 0.12f, 3);
         if(input.isKeyPressed(Input.Keys.UP)){
-            car.getBody().applyForceToCenter(200,0, true);
+            //car.getBody().applyForce(new Vector2(0, delta*0.1f).rotate(car.getBody().getAngle()), new Vector2(getWidth()/2,getHeight()),true);
+            car.getBody().applyForceToCenter(new Vector2(0, delta*1f).rotate(car.getBody().getAngle()), true);
         }
         if(input.isKeyPressed(Input.Keys.DOWN)){
-            car.getBody().applyForceToCenter(200,0, true);
+            //car.getBody().applyForceToCenter(0,-20*delta, true);
+            //car.getBody().applyForce(0, -delta*0.1f,getWidth()/2,0,true);
+            car.getBody().applyForceToCenter(new Vector2(0, -delta*1f).rotate(car.getBody().getAngle()), true);
+        }
+        if(input.isKeyPressed(Input.Keys.LEFT)){
+            car.getBody().applyForce(delta*0.1f,0,0,0,true);
+            //car.getBody().applyForceToCenter(-20*delta, 0, true);
+        }
+        if(input.isKeyPressed(Input.Keys.RIGHT)){
+            car.getBody().applyForce(-delta*0.1f,0,getWidth(),0,true);
+            //car.getBody().applyForceToCenter(20*delta,0, true);
         }
         world.step(delta,0,0);
     }
