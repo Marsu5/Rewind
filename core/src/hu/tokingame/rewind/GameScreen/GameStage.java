@@ -57,35 +57,43 @@ public class GameStage extends MyStage{
         car.setPosition(4.5f,5.5f);
     }
 
+    private boolean reverse = false;
+
     @Override
     public void act(float delta) {
-        world.step(delta,0,0);
+        world.step(delta,20,20);
         super.act(delta);
         /*OrthographicCamera c = (OrthographicCamera)getCamera();
         c.zoom = 0.2f;
         set
         */
         //car.getBody().getMassData().center.set(getWidth()/2,getHeight()/2);
-        setCameraMoveToXY(car.getX(), car.getY(), 0.12f, 3);
+        setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed), 3);
         if(input.isKeyPressed(Input.Keys.UP)){
-            car.getBody().applyForceToCenter(new Vector2(0, delta*1f).rotateRad(car.getBody().getAngle()), true);
+            if (car.isStopped()){
+                reverse = false;
+            }
+            if (reverse){
+                car.brake(delta);
+            }else {
+                car.accelerate(delta);
+            }
         }
         if(input.isKeyPressed(Input.Keys.DOWN)){
-            car.getBody().applyForceToCenter(new Vector2(0, -delta*1f).rotateRad(car.getBody().getAngle()), true);
+            if (car.isStopped()){
+                reverse = true;
+            }
+            if (reverse){
+                car.reverse(delta);
+            }else{
+                car.brake(delta);
+            }
         }
         if(input.isKeyPressed(Input.Keys.LEFT)){
-            //car.getBody().applyForce(delta*0.5f*car.getBody().getLinearVelocity().len(),0,0,0,true);
-            //car.getBody().applyAngularImpulse(delta,true);
-            car.getBody().setAngularVelocity(car.getBody().getLinearVelocity().len()*4);
+            car.turnLeft(delta);
         }
         if(input.isKeyPressed(Input.Keys.RIGHT)){
-            //car.getBody().applyForce(-delta*0.5f*car.getBody().getLinearVelocity().len(),0,getWidth(),0,true);
-            //car.getBody().applyAngularImpulse(-delta,true);
-            car.getBody().setAngularVelocity(-car.getBody().getLinearVelocity().len()*4);
-        }
-        car.getBody().setAngularVelocity(car.getBody().getAngularVelocity()*0.94f);
-        if(!input.isKeyPressed(Input.Keys.DOWN) && !input.isKeyPressed(Input.Keys.UP)) {
-            car.getBody().setLinearVelocity(car.getBody().getLinearVelocity().scl(0.93f));
+            car.turnRight(delta);
         }
     }
 
