@@ -20,7 +20,7 @@ public class Car extends WorldActorGroup {
     OneSpriteStaticActor actor;
 
     public Car(World world, WorldBodyEditorLoader loader, float X, float Y) {
-        super(world, loader, "bluecar.png", BodyDef.BodyType.DynamicBody, 100, 0.02f, 10, false);
+        super(world, loader, "bluecar.png", BodyDef.BodyType.DynamicBody, 1000, 0.02f, 10, false);
         actor = new OneSpriteStaticActor(Assets.manager.get(randomTexture()));
         actor.setSize(0.25f,0.5f);
         setSize(getWidth()/4, getHeight()/4);

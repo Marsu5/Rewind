@@ -59,31 +59,34 @@ public class GameStage extends MyStage{
 
     @Override
     public void act(float delta) {
+        world.step(delta,0,0);
         super.act(delta);
         /*OrthographicCamera c = (OrthographicCamera)getCamera();
         c.zoom = 0.2f;
         set
         */
-
+        //car.getBody().getMassData().center.set(getWidth()/2,getHeight()/2);
         setCameraMoveToXY(car.getX(), car.getY(), 0.12f, 3);
         if(input.isKeyPressed(Input.Keys.UP)){
-            //car.getBody().applyForce(new Vector2(0, delta*0.1f).rotate(car.getBody().getAngle()), new Vector2(getWidth()/2,getHeight()),true);
-            car.getBody().applyForceToCenter(new Vector2(0, delta*1f).rotate(car.getBody().getAngle()), true);
+            car.getBody().applyForceToCenter(new Vector2(0, delta*1f).rotateRad(car.getBody().getAngle()), true);
         }
         if(input.isKeyPressed(Input.Keys.DOWN)){
-            //car.getBody().applyForceToCenter(0,-20*delta, true);
-            //car.getBody().applyForce(0, -delta*0.1f,getWidth()/2,0,true);
-            car.getBody().applyForceToCenter(new Vector2(0, -delta*1f).rotate(car.getBody().getAngle()), true);
+            car.getBody().applyForceToCenter(new Vector2(0, -delta*1f).rotateRad(car.getBody().getAngle()), true);
         }
         if(input.isKeyPressed(Input.Keys.LEFT)){
-            car.getBody().applyForce(delta*0.1f,0,0,0,true);
-            //car.getBody().applyForceToCenter(-20*delta, 0, true);
+            //car.getBody().applyForce(delta*0.5f*car.getBody().getLinearVelocity().len(),0,0,0,true);
+            //car.getBody().applyAngularImpulse(delta,true);
+            car.getBody().setAngularVelocity(car.getBody().getLinearVelocity().len()*4);
         }
         if(input.isKeyPressed(Input.Keys.RIGHT)){
-            car.getBody().applyForce(-delta*0.1f,0,getWidth(),0,true);
-            //car.getBody().applyForceToCenter(20*delta,0, true);
+            //car.getBody().applyForce(-delta*0.5f*car.getBody().getLinearVelocity().len(),0,getWidth(),0,true);
+            //car.getBody().applyAngularImpulse(-delta,true);
+            car.getBody().setAngularVelocity(-car.getBody().getLinearVelocity().len()*4);
         }
-        world.step(delta,0,0);
+        car.getBody().setAngularVelocity(car.getBody().getAngularVelocity()*0.94f);
+        if(!input.isKeyPressed(Input.Keys.DOWN) && !input.isKeyPressed(Input.Keys.UP)) {
+            car.getBody().setLinearVelocity(car.getBody().getLinearVelocity().scl(0.93f));
+        }
     }
 
 }
