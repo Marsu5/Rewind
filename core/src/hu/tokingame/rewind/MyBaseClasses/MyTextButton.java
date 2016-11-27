@@ -58,6 +58,13 @@ import hu.tokingame.rewind.Global.Assets;
             style.font = Assets.manager.get(Assets.VERMIN_FONT);
             this.setStyle(style);
         }
+        public void setTextureUpDown(Texture up, Texture down){
+            style = new TextButtonStyle();
+            style.up = new TextureRegionDrawable(new TextureRegion(up));
+            style.down = new TextureRegionDrawable(new TextureRegion(down));
+            style.font = Assets.manager.get(Assets.VERMIN_FONT);
+            this.setStyle(style);
+        }
 
         protected void init() {
 

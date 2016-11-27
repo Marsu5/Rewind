@@ -5,11 +5,13 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hu.tokingame.rewind.Bodies.Car;
+import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MapElements.*;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
@@ -45,13 +47,14 @@ public class GameStage extends MyStage{
         MapLoader mapLoader = new MapLoader(level,this,world,loader).load();
         addActor(car = new Car(world, loader, 1,1));
         car.setPosition(4.5f,5.5f);
-        /*addActor(Gaspedal = new MyTextButton(""){
+        addActor(Gaspedal = new MyTextButton(""){
 
             @Override
             protected void init() {
                 super.init();
-                this.setSize(100, 100);
-                this.setPosition(Globals.WORLD_WIDTH-this.getWidth(), 0);
+                this.setSize(1, 1);
+                this.setPosition(5, 6);
+                setTextureUpDown(Assets.manager.get(Assets.GASPEDAL_UP), Assets.manager.get(Assets.GASPEDAL_DOWN));
                 addListener(new InputListener(){
                     @Override
                     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -64,11 +67,17 @@ public class GameStage extends MyStage{
                         isGasTouched = false;
                         super.touchUp(event, x, y, pointer, button);
                     }
+
+                    @Override
+                    public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+                        super.exit(event, x, y, pointer, toActor);
+                        isGasTouched = false;
+                    }
                 });
             }
         });
 
-        addActor(BreakPedal = new MyTextButton(""){
+        /*addActor(BreakPedal = new MyTextButton(""){
             @Override
             protected void init() {
                 super.init();
