@@ -26,7 +26,7 @@ public class GameScreen extends MyScreen {
     public void init() {
         super.init();
         stage = new GameStage(new ExtendViewport(16,16,new OrthographicCamera(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT)),spriteBatch,game);
-        Gdx.input.setInputProcessor(stage);
+        //Gdx.input.setInputProcessor(stage);  //A stage adja hozzá. A stage hozza létre a control staget, ezért ott adja hozzá.
         box2DDebugRenderer = new Box2DDebugRenderer();
     }
 

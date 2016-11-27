@@ -2,6 +2,7 @@ package hu.tokingame.rewind.GameScreen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
@@ -31,9 +32,8 @@ public class GameStage extends MyStage{
     World world;
     WorldBodyEditorLoader loader;
     Car car;
-    public boolean isGasTouched = false, isBrakeTouched = false;
+    ControlStage controlStage;
 
-    MyTextButton Gaspedal, BreakPedal;
 
 
     public GameStage(Viewport viewport, Batch batch, MyGdxGame game) {
@@ -47,58 +47,11 @@ public class GameStage extends MyStage{
         MapLoader mapLoader = new MapLoader(level,this,world,loader).load();
         addActor(car = new Car(world, loader, 1,1));
         car.setPosition(4.5f,5.5f);
-        addActor(Gaspedal = new MyTextButton(""){
-
-            @Override
-            protected void init() {
-                super.init();
-                this.setSize(1, 1);
-                this.setPosition(5, 6);
-                setTextureUpDown(Assets.manager.get(Assets.GASPEDAL_UP), Assets.manager.get(Assets.GASPEDAL_DOWN));
-                addListener(new InputListener(){
-                    @Override
-                    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                        isGasTouched = true;
-                        return super.touchDown(event, x, y, pointer, button);
-                    }
-
-                    @Override
-                    public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                        isGasTouched = false;
-                        super.touchUp(event, x, y, pointer, button);
-                    }
-
-                    @Override
-                    public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
-                        super.exit(event, x, y, pointer, toActor);
-                        isGasTouched = false;
-                    }
-                });
-            }
-        });
-
-        /*addActor(BreakPedal = new MyTextButton(""){
-            @Override
-            protected void init() {
-                super.init();
-                this.setSize(100, 100);
-                this.setPosition(0, 0);
-                addListener(new InputListener(){
-                    @Override
-                    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                        isBrakeTouched = true;
-                        return super.touchDown(event, x, y, pointer, button);
-                    }
-
-                    @Override
-                    public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                        isBrakeTouched = false;
-                        super.touchUp(event, x, y, pointer, button);
-                    }
-                });
-            }
-        });*/
-
+        controlStage = new ControlStage(getBatch(), game);
+        InputMultiplexer inputMultiplexer = new InputMultiplexer();
+        inputMultiplexer.addProcessor(this);
+        inputMultiplexer.addProcessor(controlStage);
+        Gdx.input.setInputProcessor(inputMultiplexer);
     }
 
 
@@ -107,15 +60,16 @@ public class GameStage extends MyStage{
 
     @Override
     public void act(float delta) {
-        world.step(delta,20,20);
+        world.step(delta,10,10);
         super.act(delta);
+        controlStage.act(delta);
         /*OrthographicCamera c = (OrthographicCamera)getCamera();
         c.zoom = 0.2f;
         set
         */
         //car.getBody().getMassData().center.set(getWidth()/2,getHeight()/2);
         setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed), 3);
-        if(input.isKeyPressed(Input.Keys.UP) || isGasTouched){
+        if(input.isKeyPressed(Input.Keys.UP) || controlStage.isGasTouched){
             if (car.isStopped()){
                 reverse = false;
             }
@@ -125,7 +79,7 @@ public class GameStage extends MyStage{
                 car.accelerate(delta);
             }
         }
-        if(input.isKeyPressed(Input.Keys.DOWN) || isBrakeTouched){
+        if(input.isKeyPressed(Input.Keys.DOWN) || controlStage.isBrakeTouched){
             if (car.isStopped()){
                 reverse = true;
             }
@@ -143,4 +97,21 @@ public class GameStage extends MyStage{
         }
     }
 
+    @Override
+    public void draw() {
+        super.draw();
+        controlStage.draw();
+    }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        controlStage.dispose();
+    }
+
+    @Override
+    public void resize(int screenWidth, int screenHeight) {
+        super.resize(screenWidth, screenHeight);
+        controlStage.resize(screenWidth, screenHeight);
+    }
 }
