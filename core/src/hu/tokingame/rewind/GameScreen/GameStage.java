@@ -2,31 +2,18 @@ package hu.tokingame.rewind.GameScreen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.utils.IntFloatMap;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.InputStreamReader;
-import java.util.Scanner;
-
 import hu.tokingame.rewind.Bodies.Car;
-import hu.tokingame.rewind.MapElements.FourWay;
-import hu.tokingame.rewind.MapElements.Grass;
-import hu.tokingame.rewind.MapElements.RoadHorizontal;
-import hu.tokingame.rewind.MapElements.RoadVertical;
-import hu.tokingame.rewind.MapElements.TurnLD;
-import hu.tokingame.rewind.MapElements.TurnRD;
-import hu.tokingame.rewind.MapElements.TurnUL;
-import hu.tokingame.rewind.MapElements.TurnUR;
+import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MapElements.*;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
+import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
 import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
 import hu.tokingame.rewind.MyGdxGame;
 
@@ -42,6 +29,9 @@ public class GameStage extends MyStage{
     World world;
     WorldBodyEditorLoader loader;
     Car car;
+    public boolean isGasTouched = false, isBrakeTouched = false;
+
+    MyTextButton Gaspedal, BreakPedal;
 
 
     public GameStage(Viewport viewport, Batch batch, MyGdxGame game) {
@@ -55,7 +45,54 @@ public class GameStage extends MyStage{
         MapLoader mapLoader = new MapLoader(level,this,world,loader).load();
         addActor(car = new Car(world, loader, 1,1));
         car.setPosition(4.5f,5.5f);
+        /*addActor(Gaspedal = new MyTextButton(""){
+
+            @Override
+            protected void init() {
+                super.init();
+                this.setSize(100, 100);
+                this.setPosition(Globals.WORLD_WIDTH-this.getWidth(), 0);
+                addListener(new InputListener(){
+                    @Override
+                    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                        isGasTouched = true;
+                        return super.touchDown(event, x, y, pointer, button);
+                    }
+
+                    @Override
+                    public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                        isGasTouched = false;
+                        super.touchUp(event, x, y, pointer, button);
+                    }
+                });
+            }
+        });
+
+        addActor(BreakPedal = new MyTextButton(""){
+            @Override
+            protected void init() {
+                super.init();
+                this.setSize(100, 100);
+                this.setPosition(0, 0);
+                addListener(new InputListener(){
+                    @Override
+                    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                        isBrakeTouched = true;
+                        return super.touchDown(event, x, y, pointer, button);
+                    }
+
+                    @Override
+                    public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                        isBrakeTouched = false;
+                        super.touchUp(event, x, y, pointer, button);
+                    }
+                });
+            }
+        });*/
+
     }
+
+
 
     private boolean reverse = false;
 
@@ -69,7 +106,7 @@ public class GameStage extends MyStage{
         */
         //car.getBody().getMassData().center.set(getWidth()/2,getHeight()/2);
         setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed), 3);
-        if(input.isKeyPressed(Input.Keys.UP)){
+        if(input.isKeyPressed(Input.Keys.UP) || isGasTouched){
             if (car.isStopped()){
                 reverse = false;
             }
@@ -79,7 +116,7 @@ public class GameStage extends MyStage{
                 car.accelerate(delta);
             }
         }
-        if(input.isKeyPressed(Input.Keys.DOWN)){
+        if(input.isKeyPressed(Input.Keys.DOWN) || isBrakeTouched){
             if (car.isStopped()){
                 reverse = true;
             }
