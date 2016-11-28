@@ -1,5 +1,6 @@
 package hu.tokingame.rewind.MyBaseClasses;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
 /**
@@ -20,6 +21,7 @@ import hu.tokingame.rewind.Global.Assets;
         private TextButton button;
         static TextButtonStyle textButtonStyle;
         private TextButtonStyle style;
+        private BitmapFont font;
 
         static {
             refresh();
@@ -30,17 +32,17 @@ import hu.tokingame.rewind.Global.Assets;
             textButtonStyle = new TextButtonStyle();
             textButtonStyle.font = Assets.manager.get(Assets.VERMIN_FONT);
 
-            Pixmap p = new Pixmap(1,1, Pixmap.Format.RGB888);
-            p.setColor(0.1f,0.2f,0.2f, 0.5f);
+            Pixmap p = new Pixmap(1,1, Pixmap.Format.Alpha);
+            p.setColor(1);
             p.fill();
             textButtonStyle.up = new TextureRegionDrawable(new TextureRegion(new Texture(p)));
 
-            p.setColor(0.3f,0.5f,0.8f, 0.5f);
-            p.fill();
+            //p.setColor(0.3f,0.5f,0.8f, 0);
+            //p.fill();
             textButtonStyle.over = new TextureRegionDrawable(new TextureRegion(new Texture(p)));
 
-            p.setColor(0f,1f,0.1f, 1f);
-            p.fill();
+            //p.setColor(0f,1f,0.1f, 0);
+            //p.fill();
             textButtonStyle.down = new TextureRegionDrawable(new TextureRegion(new Texture(p)));
 
         }
@@ -63,6 +65,12 @@ import hu.tokingame.rewind.Global.Assets;
             style.up = new TextureRegionDrawable(new TextureRegion(up));
             style.down = new TextureRegionDrawable(new TextureRegion(down));
             style.font = Assets.manager.get(Assets.VERMIN_FONT);
+            this.setStyle(style);
+        }
+
+        public void setFont(BitmapFont f){
+            style = new TextButtonStyle();
+            style.font = f;
             this.setStyle(style);
         }
 

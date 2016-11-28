@@ -29,10 +29,17 @@ public class Assets {
         fontParameter.fontParameters.characters = hu.tokingame.rewind.Global.Globals.CHARS;
         fontParameter.fontParameters.color = Color.WHITE;
     }
+    static final FreetypeFontLoader.FreeTypeFontLoaderParameter fontParameter2 = new FreetypeFontLoader.FreeTypeFontLoaderParameter();
+    static {
+        fontParameter2.fontFileName = "Fonts/vermin_vibes_1989.ttf";
+        fontParameter2.fontParameters.size = 100;
+        fontParameter2.fontParameters.characters = hu.tokingame.rewind.Global.Globals.CHARS;
+        fontParameter2.fontParameters.color = Color.WHITE;
+    }
 
     // Fonts
-    public static final AssetDescriptor<BitmapFont> VERMIN_FONT
-            = new AssetDescriptor<BitmapFont>("Fonts/vermin_vibes_1989.ttf", BitmapFont.class, fontParameter);
+    public static final AssetDescriptor<BitmapFont> VERMIN_FONT = new AssetDescriptor<BitmapFont>("Fonts/vermin_vibes_1989.ttf", BitmapFont.class, fontParameter);
+    public static AssetDescriptor<BitmapFont> VERMIN_FONT_BIG = new AssetDescriptor<BitmapFont>("Fonts/vermin_vibes_1989.ttf", BitmapFont.class, fontParameter2);
 
     //<editor-fold desc="Car Textures>
     public static final AssetDescriptor<Texture> CAR_BLUE = new AssetDescriptor<Texture>("GameTextures/bluecar.png", Texture.class);
@@ -110,6 +117,7 @@ public class Assets {
         manager.load(CAR_ORANGE);
 
         manager.load(VERMIN_FONT);
+        manager.load(VERMIN_FONT_BIG);
 
         manager.load(MUSIC_MENU);
         //</editor-fold>

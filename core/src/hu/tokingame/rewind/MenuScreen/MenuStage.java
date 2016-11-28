@@ -7,6 +7,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hu.tokingame.rewind.CreditsScreen.CreditsScreen;
 import hu.tokingame.rewind.GameScreen.GameScreen;
+import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.LoadingScreen.GameLoadingScreen;
 import hu.tokingame.rewind.MyBaseClasses.MyLabel;
@@ -36,7 +37,7 @@ public class MenuStage extends MyStage {
             @Override
             protected void init() {
                 super.init();
-                setPosition(Globals.WORLD_WIDTH-this.getWidth(), Globals.WORLD_HEIGHT-this.getHeight());
+                setPosition(10, 100);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -50,7 +51,7 @@ public class MenuStage extends MyStage {
             @Override
             protected void init() {
                 super.init();
-                setPosition(0, 0);
+                setPosition(10, 200);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -64,7 +65,8 @@ public class MenuStage extends MyStage {
             @Override
             protected void init() {
                 super.init();
-                setPosition(Globals.WORLD_WIDTH/2f - this.getWidth()/2f,Globals.WORLD_HEIGHT/2f - this.getHeight()/2f);
+                this.setFont(Assets.manager.get(Assets.VERMIN_FONT_BIG));
+                setPosition(10, 400);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
@@ -74,12 +76,13 @@ public class MenuStage extends MyStage {
                     }
                 });
             }
+
         });
         addActor(new MyTextButton("Credits"){
             @Override
             protected void init() {
                 super.init();
-                setPosition(0, button.getHeight());
+                setPosition(10, 10);
                 addListener(new ClickListener(){
                     @Override
                     public void clicked(InputEvent event, float x, float y) {

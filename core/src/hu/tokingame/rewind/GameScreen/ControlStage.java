@@ -34,8 +34,8 @@ public class ControlStage extends MyStage {
             @Override
             protected void init() {
                 super.init();
-                this.setSize(4, 4);
-                this.setPosition(12, 0);
+                this.setSize(3.5f, 4);
+                this.setPosition(12.5f, 0);
                 setTextureUpDown(Assets.manager.get(Assets.GASPEDAL_UP), Assets.manager.get(Assets.GASPEDAL_DOWN));
                 addListener(new InputListener(){
                     @Override
