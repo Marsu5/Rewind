@@ -3,12 +3,16 @@ package hu.tokingame.rewind.GameScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.maps.Map;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hu.tokingame.rewind.Bodies.Car;
@@ -33,6 +37,9 @@ public class GameStage extends MyStage{
     WorldBodyEditorLoader loader;
     Car car;
     ControlStage controlStage;
+    MapCreatingStage mapCreatingStage;
+    MapLoader mapLoader;
+    Box2DDebugRenderer box2DDebugRenderer;
 
 
 
@@ -43,11 +50,46 @@ public class GameStage extends MyStage{
     @Override
     public void init() {
         world = new World(new Vector2(0,0), false);
-        loader = new WorldBodyEditorLoader(Gdx.files.internal("Jsons/physics.json"));
-        MapLoader mapLoader = new MapLoader(level,this,world,loader).load();
-        addActor(car = new Car(world, loader, 1,1));
-        car.setPosition(4.5f,5.5f);
+        box2DDebugRenderer = new Box2DDebugRenderer();
+        mapCreatingStage = new MapCreatingStage(getBatch(), game);
         controlStage = new ControlStage(getBatch(), game);
+
+        loader = new WorldBodyEditorLoader(Gdx.files.internal("Jsons/physics.json"));
+        //(new Thread(new MapLoader(level,this,world,loader))).start();
+        mapLoader = new MapLoader(level, this, world, loader);
+
+
+
+        //https://github.com/libgdx/libgdx/wiki/Threading
+        new Thread(new Runnable() {
+            boolean loop = true;
+            @Override
+            public void run() {
+                mapLoader.load();
+                while (loop)
+                {
+                    try {
+                        Thread.sleep(20);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Gdx.app.postRunnable(new Runnable() {
+                        @Override
+                        public void run() {
+                            loop = mapLoader.addNext();
+                        }
+                    });
+                }
+                addActor(car = new Car(world, loader, 1,1));
+                car.setPosition(4.5f,5.5f);
+            }
+        }).start();
+
+
+
+
+
+
         InputMultiplexer inputMultiplexer = new InputMultiplexer();
         inputMultiplexer.addProcessor(this);
         inputMultiplexer.addProcessor(controlStage);
@@ -60,6 +102,11 @@ public class GameStage extends MyStage{
 
     @Override
     public void act(float delta) {
+        if (mapLoader.addNext() || car == null){
+            mapCreatingStage.setPercent(mapLoader.getPercent());
+            mapCreatingStage.act(delta);
+            return;
+        }
         world.step(delta,10,10);
         super.act(delta);
         controlStage.act(delta);
@@ -99,14 +146,20 @@ public class GameStage extends MyStage{
 
     @Override
     public void draw() {
+        if (mapLoader.addNext() || car == null){
+            mapCreatingStage.draw();
+            return;
+        }
         super.draw();
         controlStage.draw();
+        box2DDebugRenderer.render(world, getCamera().combined);
     }
 
     @Override
     public void dispose() {
         super.dispose();
         controlStage.dispose();
+        mapCreatingStage.dispose();
     }
 
     @Override

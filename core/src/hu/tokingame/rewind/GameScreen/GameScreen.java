@@ -16,7 +16,6 @@ import hu.tokingame.rewind.MyGdxGame;
 public class GameScreen extends MyScreen {
 
     GameStage stage;
-    Box2DDebugRenderer box2DDebugRenderer;
 
     public GameScreen(MyGdxGame game) {
         super(game);
@@ -27,7 +26,6 @@ public class GameScreen extends MyScreen {
         super.init();
         stage = new GameStage(new ExtendViewport(16,16,new OrthographicCamera(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT)),spriteBatch,game);
         //Gdx.input.setInputProcessor(stage);  //A stage adja hozzá. A stage hozza létre a control staget, ezért ott adja hozzá.
-        box2DDebugRenderer = new Box2DDebugRenderer();
     }
 
     @Override
@@ -48,6 +46,6 @@ public class GameScreen extends MyScreen {
         spriteBatch.setProjectionMatrix(stage.getCamera().combined);
         stage.act(delta);
         stage.draw();
-        box2DDebugRenderer.render(stage.world, stage.getCamera().combined);
+
     }
 }
