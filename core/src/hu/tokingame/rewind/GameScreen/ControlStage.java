@@ -34,8 +34,8 @@ public class ControlStage extends MyStage {
             @Override
             protected void init() {
                 super.init();
-                this.setSize(1, 1);
-                this.setPosition(5, 6);
+                this.setSize(4, 4);
+                this.setPosition(12, 0);
                 setTextureUpDown(Assets.manager.get(Assets.GASPEDAL_UP), Assets.manager.get(Assets.GASPEDAL_DOWN));
                 addListener(new InputListener(){
                     @Override
@@ -59,11 +59,11 @@ public class ControlStage extends MyStage {
             }
         });
 
-        /*addActor(BreakPedal = new MyTextButton(""){
+        addActor(BreakPedal = new MyTextButton(""){
             @Override
             protected void init() {
                 super.init();
-                this.setSize(100, 100);
+                this.setSize(4, 4);
                 this.setPosition(0, 0);
                 addListener(new InputListener(){
                     @Override
@@ -77,9 +77,14 @@ public class ControlStage extends MyStage {
                         isBrakeTouched = false;
                         super.touchUp(event, x, y, pointer, button);
                     }
+                    @Override
+                    public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+                        super.exit(event, x, y, pointer, toActor);
+                        isBrakeTouched = false;
+                    }
                 });
             }
-        });*/
+        });
 
     }
 }

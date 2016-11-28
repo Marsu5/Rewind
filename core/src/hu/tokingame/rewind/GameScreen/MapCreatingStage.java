@@ -29,7 +29,7 @@ public class MapCreatingStage extends MyStage {
 
     @Override
     public void init() {
-        addActor(new MyTextButton("Building world..."){
+        addActor(new MyTextButton("Creating world..."){
             @Override
             protected void init() {
                 super.init();
