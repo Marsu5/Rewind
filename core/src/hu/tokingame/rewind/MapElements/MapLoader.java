@@ -66,7 +66,7 @@ public class MapLoader{
             case 10 : map = "CityMap/bonus.txt"; break;
         }
         System.out.println(map);
-        Scanner be;
+        Scanner be = new Scanner(System.in);
         try{
             be = new Scanner(Gdx.files.internal(map).reader());
             int sor = 0;
@@ -84,11 +84,12 @@ public class MapLoader{
                 sor++;
                 lineAdded();
             }
+
         }catch(Exception e){
             System.out.println(e);
             System.out.println("nincsen filé");
         }
-
+        be.close();
 
         /*
         for (int i = nyamm.length -1 ;i >= 0; i--){
@@ -186,7 +187,6 @@ public class MapLoader{
     }
 
     protected void lineAdded(){
-
     }
 
 }
