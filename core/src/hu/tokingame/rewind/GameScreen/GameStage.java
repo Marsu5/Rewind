@@ -12,8 +12,12 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import hu.tokingame.rewind.Bodies.Car;
 import hu.tokingame.rewind.Global.Assets;
@@ -40,7 +44,8 @@ public class GameStage extends MyStage{
     MapCreatingStage mapCreatingStage;
     MapLoader mapLoader;
     Box2DDebugRenderer box2DDebugRenderer;
-
+    float turboOnFor;
+    boolean turbo = false;
 
 
     public GameStage(Viewport viewport, Batch batch, MyGdxGame game) {
@@ -57,6 +62,8 @@ public class GameStage extends MyStage{
         loader = new WorldBodyEditorLoader(Gdx.files.internal("Jsons/physics.json"));
         //(new Thread(new MapLoader(level,this,world,loader))).start();
         mapLoader = new MapLoader(level, this, world, loader);
+        turboOnFor = 0;
+
 
 
 
@@ -102,6 +109,19 @@ public class GameStage extends MyStage{
 
     @Override
     public void act(float delta) {
+
+        if (controlStage.turboOn){
+            controlStage.getTurbo().setTexture(Assets.manager.get(Assets.CAR_GREEN));
+            turbo = true;
+            turboOnFor += delta;
+            if(turboOnFor > 10){
+                turboOnFor = 0;
+                controlStage.turboOn = false;
+                turbo = false;
+                controlStage.getTurbo().setTexture(Assets.manager.get(Assets.CAR_RED));
+            }
+        }
+
         if (mapLoader.addNext() || car == null){
             mapCreatingStage.setPercent(mapLoader.getPercent());
             mapCreatingStage.act(delta);
@@ -123,7 +143,12 @@ public class GameStage extends MyStage{
             if (reverse){
                 car.brake(delta);
             }else {
-                car.accelerate(delta);
+                if (turbo){
+                    car.accelerate(delta *10);
+                }else {
+                    car.accelerate(delta);
+                }
+
             }
         }
         if(input.isKeyPressed(Input.Keys.DOWN) || controlStage.isBrakeTouched){
@@ -133,7 +158,11 @@ public class GameStage extends MyStage{
             if (reverse){
                 car.reverse(delta);
             }else{
-                car.brake(delta);
+                if (turbo){
+                    car.accelerate(delta *10);
+                }else {
+                    car.accelerate(delta);
+                }
             }
         }
         if(input.isKeyPressed(Input.Keys.LEFT)){

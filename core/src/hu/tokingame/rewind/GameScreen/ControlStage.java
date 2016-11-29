@@ -17,9 +17,9 @@ import hu.tokingame.rewind.MyGdxGame;
  */
 
 public class ControlStage extends MyStage {
-    public boolean isGasTouched = false, isBrakeTouched = false;
+    public boolean isGasTouched = false, isBrakeTouched = false, turboOn = false;
 
-    MyTextButton Gaspedal, BreakPedal;
+    MyTextButton Gaspedal, BreakPedal, Turbo;
 
 
     public ControlStage(Batch batch, MyGdxGame game) {
@@ -86,5 +86,35 @@ public class ControlStage extends MyStage {
             }
         });
 
+        addActor(Turbo = new MyTextButton(""){
+            @Override
+            protected void init() {
+                super.init();
+                this.setSize(4,4);
+                this.setPosition(0,BreakPedal.getHeight());
+                this.setTexture(Assets.manager.get(Assets.CAR_RED));
+                addListener(new InputListener(){
+                    @Override
+                    public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                        turboOn = true;
+                        return super.touchDown(event, x, y, pointer, button);
+                    }
+
+                    @Override
+                    public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                        super.touchUp(event, x, y, pointer, button);
+                    }
+
+                    @Override
+                    public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+                        super.exit(event, x, y, pointer, toActor);
+                    }
+                });
+            }
+        });
+    }
+
+    public MyTextButton getTurbo(){
+        return Turbo;
     }
 }
