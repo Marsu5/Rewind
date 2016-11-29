@@ -23,6 +23,8 @@ import hu.tokingame.rewind.Global.Assets;
         private TextButtonStyle style;
         private BitmapFont font;
 
+
+
         static {
             refresh();
         }
@@ -46,6 +48,8 @@ import hu.tokingame.rewind.Global.Assets;
             textButtonStyle.down = new TextureRegionDrawable(new TextureRegion(new Texture(p)));
 
         }
+
+
         public MyTextButton(String text) {
             super(text, textButtonStyle);
             init();
@@ -53,28 +57,37 @@ import hu.tokingame.rewind.Global.Assets;
 
 
         public void setTexture(Texture texture) {
-            style = new TextButtonStyle();
             style.up = new TextureRegionDrawable(new TextureRegion(texture));
             style.over = new TextureRegionDrawable(new TextureRegion(texture));
             style.down = new TextureRegionDrawable(new TextureRegion(texture));
-            style.font = Assets.manager.get(Assets.VERMIN_FONT);
             this.setStyle(style);
         }
         public void setTextureUpDown(Texture up, Texture down){
-            style = new TextButtonStyle();
             style.up = new TextureRegionDrawable(new TextureRegion(up));
             style.down = new TextureRegionDrawable(new TextureRegion(down));
-            style.font = Assets.manager.get(Assets.VERMIN_FONT);
+            style.over = null;
             this.setStyle(style);
         }
 
-        public void setFont(BitmapFont f){
+        public void setFont(BitmapFont font){
+            TextButtonStyle s = style;
             style = new TextButtonStyle();
-            style.font = f;
+            style.up = s.up;
+            style.down = s.down;
+            style.over = s.over;
+            style.font = font;
             this.setStyle(style);
         }
 
         protected void init() {
-
+            style = new TextButtonStyle();
+            style.font = Assets.manager.get(Assets.VERMIN_FONT);
+            Pixmap p = new Pixmap(1,1, Pixmap.Format.Alpha);
+            p.setColor(1);
+            p.fill();
+            style.up = new TextureRegionDrawable(new TextureRegion(new Texture(p)));
+            style.over = new TextureRegionDrawable(new TextureRegion(new Texture(p)));
+            style.down = new TextureRegionDrawable(new TextureRegion(new Texture(p)));
+            this.setStyle(style);
         }
     }

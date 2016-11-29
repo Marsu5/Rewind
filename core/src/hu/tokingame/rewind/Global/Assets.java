@@ -39,7 +39,7 @@ public class Assets {
 
     // Fonts
     public static final AssetDescriptor<BitmapFont> VERMIN_FONT = new AssetDescriptor<BitmapFont>("Fonts/vermin_vibes_1989.ttf", BitmapFont.class, fontParameter);
-    public static AssetDescriptor<BitmapFont> VERMIN_FONT_BIG = new AssetDescriptor<BitmapFont>("Fonts/vermin_vibes_1989.ttf", BitmapFont.class, fontParameter2);
+    public static final AssetDescriptor<BitmapFont> VERMIN_FONT_BIG = new AssetDescriptor<BitmapFont>("Fonts/vermin_vibes_1989.ttf", BitmapFont.class, fontParameter2);
 
     //<editor-fold desc="Car Textures>
     public static final AssetDescriptor<Texture> CAR_BLUE = new AssetDescriptor<Texture>("GameTextures/bluecar.png", Texture.class);

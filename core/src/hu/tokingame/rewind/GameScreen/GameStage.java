@@ -3,28 +3,16 @@ package hu.tokingame.rewind.GameScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.maps.Map;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.utils.Timer;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import hu.tokingame.rewind.Bodies.Car;
 import hu.tokingame.rewind.Global.Assets;
-import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MapElements.*;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
-import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
 import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
 import hu.tokingame.rewind.MyGdxGame;
 
@@ -114,11 +102,12 @@ public class GameStage extends MyStage{
             controlStage.getTurbo().setTexture(Assets.manager.get(Assets.CAR_GREEN));
             turbo = true;
             turboOnFor += delta;
-            if(turboOnFor > 10){
+            if(turboOnFor > 2){
                 turboOnFor = 0;
                 controlStage.turboOn = false;
                 turbo = false;
                 controlStage.getTurbo().setTexture(Assets.manager.get(Assets.CAR_RED));
+                car.divSpeed(2f);
             }
         }
 
