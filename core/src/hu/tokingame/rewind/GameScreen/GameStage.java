@@ -3,11 +3,16 @@ package hu.tokingame.rewind.GameScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.viewport.Viewport;
+
+import java.awt.Rectangle;
 
 import hu.tokingame.rewind.Bodies.Car;
 import hu.tokingame.rewind.Global.Assets;
@@ -64,7 +69,7 @@ public class GameStage extends MyStage{
                 while (loop)
                 {
                     try {
-                        Thread.sleep(20);
+                        Thread.sleep(10);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -168,6 +173,7 @@ public class GameStage extends MyStage{
             mapCreatingStage.draw();
             return;
         }
+        updateFrustum();
         super.draw();
         controlStage.draw();
         box2DDebugRenderer.render(world, getCamera().combined);

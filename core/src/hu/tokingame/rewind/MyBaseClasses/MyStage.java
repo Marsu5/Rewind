@@ -2,6 +2,7 @@ package hu.tokingame.rewind.MyBaseClasses;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -133,5 +134,13 @@ abstract public class MyStage extends Stage implements InitableInterface {
 
         }
 
+    }
+
+    public void updateFrustum(){
+        Camera c = getCamera();
+        for (Actor a: getActors()) {
+            a.setVisible(c.frustum.pointInFrustum(a.getX(), a.getY(), 0) || c.frustum.pointInFrustum(a.getX() + a.getWidth(), a.getY() + a.getHeight(), 0) ||
+                    c.frustum.pointInFrustum(a.getX() + a.getWidth(), a.getY(), 0) || c.frustum.pointInFrustum(a.getX(), a.getY() + a.getHeight(), 0));
+        }
     }
 }
