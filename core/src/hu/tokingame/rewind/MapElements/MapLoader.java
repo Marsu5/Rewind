@@ -63,6 +63,7 @@ public class MapLoader{
         switch(level){
             case 0 : map = "CityMap/TOOTOROL1.txt"; break;
             case 1 : map = "CityMap/level1.txt"; break;
+            case 2 : map = "CityMap/level2.txt"; break;
             case 10 : map = "CityMap/bonus.txt"; break;
         }
         System.out.println(map);
