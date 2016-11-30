@@ -157,11 +157,7 @@ public class GameStage extends MyStage{
             if (reverse){
                 car.reverse(delta);
             }else{
-                if (turbo){
-                    car.accelerate(delta *1.5f);
-                }else {
-                    car.accelerate(delta);
-                }
+                car.brake(delta);
             }
         }
         if(input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.getAccelerometerY()+0.4 < rotationBase){
