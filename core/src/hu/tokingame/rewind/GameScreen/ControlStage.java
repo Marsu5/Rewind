@@ -5,7 +5,6 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
@@ -19,7 +18,7 @@ import hu.tokingame.rewind.MyGdxGame;
 public class ControlStage extends MyStage {
     public boolean isGasTouched = false, isBrakeTouched = false, turboOn = false;
 
-    MyTextButton Gaspedal, BreakPedal, Turbo;
+    MyTextButton Gaspedal, BrakePedal, Turbo;
 
 
     public ControlStage(Batch batch, MyGdxGame game) {
@@ -59,10 +58,11 @@ public class ControlStage extends MyStage {
             }
         });
 
-        addActor(BreakPedal = new MyTextButton(""){
+        addActor(BrakePedal = new MyTextButton(""){
             @Override
             protected void init() {
                 super.init();
+                setTextureUpDown(Assets.manager.get(Assets.BRAKEPEDAL_UP), Assets.manager.get(Assets.BRAKEPEDAL_DOWN));
                 this.setSize(4, 4);
                 this.setPosition(0, 0);
                 addListener(new InputListener(){
