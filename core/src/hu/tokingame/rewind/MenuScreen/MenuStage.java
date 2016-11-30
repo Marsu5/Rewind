@@ -27,6 +27,8 @@ public class MenuStage extends MyStage {
 
     MyTextButton button;
 
+    public static boolean musicToggle = true;
+
     public MenuStage(Viewport viewport, Batch batch, MyGdxGame game) {
         super(viewport, batch, game);
     }
@@ -98,6 +100,39 @@ public class MenuStage extends MyStage {
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
                         game.setScreen(new SettingsScreen(game));
+                    }
+                });
+            }
+        });
+
+        addActor(new MyTextButton("Music: "){
+            @Override
+            protected void init() {
+                super.init();
+                final String text = this.getText().toString();
+                final MyTextButton button = this;
+                if(musicToggle){
+                    button.setText(text + "on");
+                    Assets.manager.get(Assets.MUSIC_MENU).play();
+                }
+                else{
+                    button.setText(text + "off");
+                    Assets.manager.get(Assets.MUSIC_MENU).pause();
+                }
+                this.setPosition(Globals.WORLD_WIDTH-this.getWidth()-50,0);
+                addListener(new ClickListener(){
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        super.clicked(event, x, y);
+                        musicToggle = !musicToggle;
+                        if(musicToggle){
+                            button.setText(text + "on");
+                            Assets.manager.get(Assets.MUSIC_MENU).play();
+                        }
+                        else{
+                            button.setText(text + "off");
+                            Assets.manager.get(Assets.MUSIC_MENU).pause();
+                        }
                     }
                 });
             }
