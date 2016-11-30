@@ -74,6 +74,14 @@ abstract public class MyStage extends Stage implements InitableInterface {
 
     }
 
+    public void setCameraMoveToXY(float x, float y, float zoom, float speed)
+    {
+        cameraTargetX = x;
+        cameraTargetY = y;
+        cameraTargetZoom = zoom;
+        cameraMoveSpeed = speed;
+    }
+
     public void setCameraResetToCenterOfScreen()
     {
         if (getViewport() instanceof ExtendViewport) {

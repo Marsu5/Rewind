@@ -20,6 +20,7 @@ import hu.tokingame.rewind.MapElements.*;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
 import hu.tokingame.rewind.MyGdxGame;
+import hu.tokingame.rewind.SettingsScreen.SettingsStage;
 
 import static com.badlogic.gdx.Gdx.input;
 
@@ -134,7 +135,16 @@ public class GameStage extends MyStage{
         set
         */
         //car.getBody().getMassData().center.set(getWidth()/2,getHeight()/2);
-        setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed), 3, car.getRotation());
+        if(SettingsStage.cameraRoatation){
+            setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed), 3, car.getRotation());
+        }else{
+            setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed),3);
+        }
+
+        if(input.isKeyPressed(Input.Keys.ESCAPE)){
+            game.setScreenBackByStackPop();
+        }
+
         if(input.isKeyPressed(Input.Keys.UP) || controlStage.isGasTouched){
             if (car.isStopped()){
                 reverse = false;
