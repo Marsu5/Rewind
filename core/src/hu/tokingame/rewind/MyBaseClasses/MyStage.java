@@ -61,13 +61,17 @@ abstract public class MyStage extends Stage implements InitableInterface {
     private float cameraTargetY = 0;
     private float cameraTargetZoom = 0;
     private float cameraMoveSpeed = 0;
+    private float cameraRotation = 0;
+    private int rotateTo = 0;
 
-    public void setCameraMoveToXY(float x, float y, float zoom, float speed)
+    public void setCameraMoveToXY(float x, float y, float zoom, float speed, float rotate)
     {
         cameraTargetX = x;
         cameraTargetY = y;
         cameraTargetZoom = zoom;
         cameraMoveSpeed = speed;
+        rotateTo = (int)rotate;
+
     }
 
     public void setCameraResetToCenterOfScreen()
@@ -130,6 +134,8 @@ abstract public class MyStage extends Stage implements InitableInterface {
                     c.zoom -= cameraMoveSpeed*delta;
                 }
             }
+            if(cameraRotation > rotateTo){c.rotate(0.5f); cameraRotation-=0.5f;}
+            else if(cameraRotation < rotateTo){c.rotate(-0.5f); cameraRotation+=0.5f;}
             c.update();
 
         }

@@ -130,7 +130,7 @@ public class GameStage extends MyStage{
         set
         */
         //car.getBody().getMassData().center.set(getWidth()/2,getHeight()/2);
-        setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed), 3);
+        setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed), 3, car.getRotation());
         if(input.isKeyPressed(Input.Keys.UP) || controlStage.isGasTouched){
             if (car.isStopped()){
                 reverse = false;
