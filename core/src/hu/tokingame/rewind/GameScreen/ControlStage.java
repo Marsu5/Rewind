@@ -63,7 +63,7 @@ public class ControlStage extends MyStage {
             protected void init() {
                 super.init();
                 setTextureUpDown(Assets.manager.get(Assets.BRAKEPEDAL_UP), Assets.manager.get(Assets.BRAKEPEDAL_DOWN));
-                this.setSize(4, 4);
+                this.setSize(3.5f, 4);
                 this.setPosition(0, 0);
                 addListener(new InputListener(){
                     @Override
@@ -86,13 +86,13 @@ public class ControlStage extends MyStage {
             }
         });
 
-        /*addActor(Turbo = new MyTextButton(""){
+        addActor(Turbo = new MyTextButton(""){
             @Override
             protected void init() {
                 super.init();
-                this.setSize(4,4);
-                this.setPosition(0,BreakPedal.getHeight());
-                this.setTexture(Assets.manager.get(Assets.CAR_RED));
+                this.setSize(1.5f,1.5f);
+                this.setPosition(4, 0);
+                this.setTexture(Assets.manager.get(Assets.TURBO_OFF));
                 addListener(new InputListener(){
                     @Override
                     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -111,7 +111,7 @@ public class ControlStage extends MyStage {
                     }
                 });
             }
-        });*/
+        });
     }
 
     public MyTextButton getTurbo(){

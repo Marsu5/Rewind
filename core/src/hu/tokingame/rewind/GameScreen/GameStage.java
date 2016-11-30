@@ -108,14 +108,14 @@ public class GameStage extends MyStage{
         //System.out.println(Gdx.input.getAccelerometerX()+ "; " +Gdx.input.getAccelerometerY()+ "; " +Gdx.input.getAccelerometerZ());
 
         if (controlStage.turboOn){
-            controlStage.getTurbo().setTexture(Assets.manager.get(Assets.CAR_GREEN));
+            controlStage.getTurbo().setTexture(Assets.manager.get(Assets.TURBO_ON));
             turbo = true;
             turboOnFor += delta;
             if(turboOnFor > 2){
                 turboOnFor = 0;
                 controlStage.turboOn = false;
                 turbo = false;
-                controlStage.getTurbo().setTexture(Assets.manager.get(Assets.CAR_RED));
+                controlStage.getTurbo().setTexture(Assets.manager.get(Assets.TURBO_OFF));
                 car.divSpeed(2f);
 
             }
@@ -143,7 +143,7 @@ public class GameStage extends MyStage{
                 car.brake(delta);
             }else {
                 if (turbo){
-                    car.accelerate(delta *10);
+                    car.accelerate(delta *1.5f);
                 }else {
                     car.accelerate(delta);
                 }
