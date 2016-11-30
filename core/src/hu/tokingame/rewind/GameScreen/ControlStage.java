@@ -86,7 +86,7 @@ public class ControlStage extends MyStage {
             }
         });
 
-        addActor(Turbo = new MyTextButton(""){
+        /*addActor(Turbo = new MyTextButton(""){
             @Override
             protected void init() {
                 super.init();
@@ -111,7 +111,7 @@ public class ControlStage extends MyStage {
                     }
                 });
             }
-        });
+        });*/
     }
 
     public MyTextButton getTurbo(){

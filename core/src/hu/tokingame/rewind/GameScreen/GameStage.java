@@ -39,6 +39,7 @@ public class GameStage extends MyStage{
     Box2DDebugRenderer box2DDebugRenderer;
     float turboOnFor;
     boolean turbo = false;
+    float rotationBase;
 
 
     public GameStage(Viewport viewport, Batch batch, MyGdxGame game) {
@@ -94,6 +95,8 @@ public class GameStage extends MyStage{
         inputMultiplexer.addProcessor(this);
         inputMultiplexer.addProcessor(controlStage);
         Gdx.input.setInputProcessor(inputMultiplexer);
+
+        rotationBase = Gdx.input.getAccelerometerY();
     }
 
 
@@ -102,6 +105,7 @@ public class GameStage extends MyStage{
 
     @Override
     public void act(float delta) {
+        //System.out.println(Gdx.input.getAccelerometerX()+ "; " +Gdx.input.getAccelerometerY()+ "; " +Gdx.input.getAccelerometerZ());
 
         if (controlStage.turboOn){
             controlStage.getTurbo().setTexture(Assets.manager.get(Assets.CAR_GREEN));
@@ -154,16 +158,16 @@ public class GameStage extends MyStage{
                 car.reverse(delta);
             }else{
                 if (turbo){
-                    car.accelerate(delta *10);
+                    car.accelerate(delta *1.5f);
                 }else {
                     car.accelerate(delta);
                 }
             }
         }
-        if(input.isKeyPressed(Input.Keys.LEFT)){
+        if(input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.getAccelerometerY()+0.4 < rotationBase){
             car.turnLeft(delta);
         }
-        if(input.isKeyPressed(Input.Keys.RIGHT)){
+        if(input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.getAccelerometerY()-0.4 > rotationBase){
             car.turnRight(delta);
         }
     }

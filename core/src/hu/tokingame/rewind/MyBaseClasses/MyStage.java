@@ -134,8 +134,8 @@ abstract public class MyStage extends Stage implements InitableInterface {
                     c.zoom -= cameraMoveSpeed*delta;
                 }
             }
-            if(cameraRotation > rotateTo){c.rotate(0.5f); cameraRotation-=0.5f;}
-            else if(cameraRotation < rotateTo){c.rotate(-0.5f); cameraRotation+=0.5f;}
+            if(cameraRotation > rotateTo){c.rotate(2f); cameraRotation-=2f;}
+            else if(cameraRotation < rotateTo){c.rotate(-2f); cameraRotation+=2f;}
             c.update();
 
         }
