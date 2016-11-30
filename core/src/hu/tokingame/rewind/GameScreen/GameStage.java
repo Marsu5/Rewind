@@ -113,6 +113,7 @@ public class GameStage extends MyStage{
                 turbo = false;
                 controlStage.getTurbo().setTexture(Assets.manager.get(Assets.CAR_RED));
                 car.divSpeed(2f);
+
             }
         }
 
