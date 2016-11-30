@@ -1,8 +1,11 @@
 package hu.tokingame.rewind.MapElements;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Queue;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -16,13 +19,30 @@ import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
  */
 
 
-public class MapLoader {
+public class MapLoader{
+
+    private class MapElement{
+        public int x;
+        public int y;
+        public char t;
+
+        public MapElement(char t, int x, int y) {
+            this.t = t;
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    private Queue<MapElement> mapElements = new Queue<MapElement>();
+    private int maxElements = 1;
+
     private int level;
     private String map;
     private char[][] nyamm;
     private MyStage stage;
     private World world;
     private WorldBodyEditorLoader loader;
+    private boolean running = true;
 
     public MapLoader(int level, MyStage stage, World world, WorldBodyEditorLoader loader) {
         this.stage = stage;
@@ -31,6 +51,7 @@ public class MapLoader {
         this.loader = loader;
         //System.out.println("konstruktor");
     }
+
 
     public MapLoader load(){
         loadMap();
@@ -45,7 +66,7 @@ public class MapLoader {
             case 10 : map = "CityMap/bonus.txt"; break;
         }
         System.out.println(map);
-        Scanner be;
+        Scanner be = new Scanner(System.in);
         try{
             be = new Scanner(Gdx.files.internal(map).reader());
             int sor = 0;
@@ -57,15 +78,18 @@ public class MapLoader {
                 for(int i = 0; i < vonat.length(); i++){
                     //nyamm[sor][i] = vonat.charAt(i);
                     //System.out.println("for");
-                    addMapElement(vonat.charAt(i),i,vonat.length()-sor);
+                    //addMapElement(vonat.charAt(i),i,vonat.length()-sor);  //későbbre halasztva, lassan adagolva...
+                    mapElements.addLast(new MapElement(vonat.charAt(i),i,vonat.length()-sor));
                 }
                 sor++;
+                lineAdded();
             }
+
         }catch(Exception e){
             System.out.println(e);
             System.out.println("nincsen filé");
         }
-
+        be.close();
 
         /*
         for (int i = nyamm.length -1 ;i >= 0; i--){
@@ -77,10 +101,69 @@ public class MapLoader {
             System.out.println("\n");
         }
         */
-
+        maxElements = mapElements.size;
+        running = false;
     }
 
+    public boolean addNext(){
+        if (mapElements.size==0){
+            return false;
+        }
+        MapElement m = mapElements.removeFirst();
+        addMapElement(m.t,m.x,m.y);
+        return true;
+    }
 
+    public boolean hasNext(){
+        return mapElements.size == 0;
+    }
+
+    public int getPercent(){
+        if (maxElements==0) return 100;
+        return 100 - mapElements.size * 100 / maxElements;
+    }
+
+/*
+    private int sor = 0;
+    private Scanner be = null;
+
+    private boolean openMap(){
+        if (be!=null) return false;
+        switch(level){
+            case 0 : map = "CityMap/TOOTOROL1.txt"; break;
+            case 1 : map = "CityMap/level1.txt"; break;
+            case 10 : map = "CityMap/bonus.txt"; break;
+        }
+        System.out.println(map);
+        try{
+            be = new Scanner(Gdx.files.internal(map).reader());}
+        catch (Exception e){
+            System.out.println(e);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean loadMapLine(){
+        if (be==null){
+            openMap();
+        }
+        boolean output;
+        if(output = be.hasNextLine()){
+            String vonat = be.nextLine();
+            //System.out.println(vonat.length());
+            System.out.println("while");
+            for(int i = 0; i < vonat.length(); i++){
+                //nyamm[sor][i] = vonat.charAt(i);
+                //System.out.println("for");
+                addMapElement(vonat.charAt(i),i,vonat.length()-sor);
+            }
+            sor++;
+            lineAdded();
+        }
+        return output;
+    }
+*/
     private void addMapElement(char c, int j, int y){
         switch(c){
             case '1' : stage.addActor(new RoadVertical(world, loader, j, y)); break;
@@ -102,4 +185,8 @@ public class MapLoader {
             case 'C' : stage.addActor(new Decoration(world, loader, j, y, (int)(Math.random()*(5-1+1)+1))); break;
         }
     }
+
+    protected void lineAdded(){
+    }
+
 }

@@ -29,10 +29,17 @@ public class Assets {
         fontParameter.fontParameters.characters = hu.tokingame.rewind.Global.Globals.CHARS;
         fontParameter.fontParameters.color = Color.WHITE;
     }
+    static final FreetypeFontLoader.FreeTypeFontLoaderParameter fontParameter2 = new FreetypeFontLoader.FreeTypeFontLoaderParameter();
+    static {
+        fontParameter2.fontFileName = "Fonts/vermin_vibes_1989.ttf";
+        fontParameter2.fontParameters.size = 100;
+        fontParameter2.fontParameters.characters = hu.tokingame.rewind.Global.Globals.CHARS;
+        fontParameter2.fontParameters.color = Color.WHITE;
+    }
 
     // Fonts
-    public static final AssetDescriptor<BitmapFont> VERMIN_FONT
-            = new AssetDescriptor<BitmapFont>("Fonts/vermin_vibes_1989.ttf", BitmapFont.class, fontParameter);
+    public static final AssetDescriptor<BitmapFont> VERMIN_FONT = new AssetDescriptor<BitmapFont>("Fonts/vermin_vibes_1989.ttf", BitmapFont.class, fontParameter);
+    public static final AssetDescriptor<BitmapFont> VERMIN_FONT_BIG = new AssetDescriptor<BitmapFont>("Fonts/vermin_vibes_1989.ttf", BitmapFont.class, fontParameter2);
 
     //<editor-fold desc="Car Textures>
     public static final AssetDescriptor<Texture> CAR_BLUE = new AssetDescriptor<Texture>("GameTextures/bluecar.png", Texture.class);
@@ -59,6 +66,8 @@ public class Assets {
     public static final AssetDescriptor<Texture> RIGHT_TURN = new AssetDescriptor<Texture>("Map/turnr.png", Texture.class);
     public static final AssetDescriptor<Texture> LEFT_TURN_UP = new AssetDescriptor<Texture>("Map/turnul.png", Texture.class);
     public static final AssetDescriptor<Texture> RIGHT_TURN_DOWN = new AssetDescriptor<Texture>("Map/turnur.png", Texture.class);
+    public static final AssetDescriptor<Texture> GASPEDAL_UP = new AssetDescriptor<Texture>("GameTextures/gazpedal_up.png", Texture.class);
+    public static final AssetDescriptor<Texture> GASPEDAL_DOWN = new AssetDescriptor<Texture>("GameTextures/gazpedal_down.png", Texture.class);
     //</editor-fold>
 
     //<editor-fold desc="Music">
@@ -98,6 +107,8 @@ public class Assets {
         manager.load(RIGHT_TURN);
         manager.load(LEFT_TURN_UP);
         manager.load(RIGHT_TURN_DOWN);
+        manager.load(GASPEDAL_DOWN);
+        manager.load(GASPEDAL_UP);
 
         //car textures
         manager.load(CAR_BLUE);
@@ -106,6 +117,7 @@ public class Assets {
         manager.load(CAR_ORANGE);
 
         manager.load(VERMIN_FONT);
+        manager.load(VERMIN_FONT_BIG);
 
         manager.load(MUSIC_MENU);
         //</editor-fold>

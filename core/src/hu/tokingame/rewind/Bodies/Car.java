@@ -78,6 +78,10 @@ public class Car extends WorldActorGroup {
         getBody().applyForceToCenter(new Vector2(0, -delta * accelerateVelocity).rotateRad(getBody().getAngle()), true);
     }
 
+    public void divSpeed(float div){
+        getBody().setLinearVelocity(new Vector2(getBody().getLinearVelocity().x/div,getBody().getLinearVelocity().y/div));
+    }
+
     private float getTurnVelocity(){
         return Math.min(getBody().getLinearVelocity().len() * turnVelocity, maxTurnVelocity);
     }
