@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
+import hu.tokingame.rewind.MyBaseClasses.UpDownButton;
 import hu.tokingame.rewind.MyGdxGame;
 import hu.tokingame.rewind.SettingsScreen.SettingsStage;
 
@@ -19,7 +20,8 @@ import hu.tokingame.rewind.SettingsScreen.SettingsStage;
 public class ControlStage extends MyStage {
     public boolean isGasTouched = false, isBrakeTouched = false, turboOn = false;
 
-    MyTextButton Gaspedal, BrakePedal, Turbo;
+    UpDownButton Gaspedal, BrakePedal, Turbo;
+
 
 
     public ControlStage(Batch batch, MyGdxGame game) {
@@ -35,74 +37,78 @@ public class ControlStage extends MyStage {
         }
 
 
-        addActor(Gaspedal = new MyTextButton(""){
+        addActor(Gaspedal = new UpDownButton(Assets.manager.get(Assets.GASPEDAL_UP), Assets.manager.get(Assets.GASPEDAL_DOWN)){
             @Override
-            protected void init() {
+            public void init() {
                 super.init();
                 this.setSize(3.5f, 4);
                 this.setPosition(12.5f, 0);
-                setTextureUpDown(Assets.manager.get(Assets.GASPEDAL_UP), Assets.manager.get(Assets.GASPEDAL_DOWN));
                 addListener(new InputListener(){
                     @Override
                     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                         isGasTouched = true;
+                        pressed();
                         return super.touchDown(event, x, y, pointer, button);
                     }
 
                     @Override
                     public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                         isGasTouched = false;
+                        realesed();
                         super.touchUp(event, x, y, pointer, button);
                     }
 
                     @Override
                     public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
                         super.exit(event, x, y, pointer, toActor);
+                        realesed();
                         isGasTouched = false;
                     }
                 });
             }
         });
 
-        addActor(BrakePedal = new MyTextButton(""){
+        addActor(BrakePedal = new UpDownButton(Assets.manager.get(Assets.BRAKEPEDAL_UP), Assets.manager.get(Assets.BRAKEPEDAL_DOWN)){
             @Override
-            protected void init() {
+            public void init() {
                 super.init();
-                setTextureUpDown(Assets.manager.get(Assets.BRAKEPEDAL_UP), Assets.manager.get(Assets.BRAKEPEDAL_DOWN));
                 this.setSize(3.5f, 4);
                 this.setPosition(0, 0);
                 addListener(new InputListener(){
                     @Override
                     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                         isBrakeTouched = true;
+                        pressed();
                         return super.touchDown(event, x, y, pointer, button);
                     }
 
                     @Override
                     public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                        isBrakeTouched = false;
                         super.touchUp(event, x, y, pointer, button);
+                        isBrakeTouched = false;
+                        realesed();
                     }
                     @Override
                     public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
                         super.exit(event, x, y, pointer, toActor);
+                        realesed();
                         isBrakeTouched = false;
                     }
                 });
             }
         });
 
-        addActor(Turbo = new MyTextButton(""){
+        addActor(Turbo = new UpDownButton(Assets.manager.get(Assets.TURBO_OFF), Assets.manager.get(Assets.TURBO_ON)){
             @Override
-            protected void init() {
+            public void init() {
                 super.init();
                 this.setSize(1.5f,1.5f);
                 this.setPosition(4, 0);
-                this.setTexture(Assets.manager.get(Assets.TURBO_OFF));
                 addListener(new InputListener(){
                     @Override
                     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                         turboOn = true;
+                        pressed();
                         return super.touchDown(event, x, y, pointer, button);
                     }
 
@@ -120,7 +126,7 @@ public class ControlStage extends MyStage {
         });
     }
 
-    public MyTextButton getTurbo(){
+    public UpDownButton getTurbo(){
         return Turbo;
     }
 }

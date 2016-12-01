@@ -153,8 +153,13 @@ abstract public class MyStage extends Stage implements InitableInterface {
     public void updateFrustum(){
         Camera c = getCamera();
         for (Actor a: getActors()) {
-            a.setVisible(c.frustum.pointInFrustum(a.getX(), a.getY(), 0) || c.frustum.pointInFrustum(a.getX() + a.getWidth(), a.getY() + a.getHeight(), 0) ||
-                    c.frustum.pointInFrustum(a.getX() + a.getWidth(), a.getY(), 0) || c.frustum.pointInFrustum(a.getX(), a.getY() + a.getHeight(), 0));
+            a.setVisible(isActorShowing(c,a));
+
         }
+    }
+
+    private boolean isActorShowing(Camera c, Actor a){
+        return c.frustum.pointInFrustum(a.getX(), a.getY(), 0) || c.frustum.pointInFrustum(a.getX() + a.getWidth(), a.getY() + a.getHeight(), 0) ||
+                c.frustum.pointInFrustum(a.getX() + a.getWidth(), a.getY(), 0) || c.frustum.pointInFrustum(a.getX(), a.getY() + a.getHeight(), 0) || c.frustum.pointInFrustum(a.getX() + a.getWidth(),a.getY() + a.getHeight(),0);
     }
 }
