@@ -10,6 +10,7 @@ import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
 import hu.tokingame.rewind.MyGdxGame;
+import hu.tokingame.rewind.SettingsScreen.SettingsStage;
 
 /**
  * Created by tuskeb on 2016. 11. 27..
@@ -28,8 +29,13 @@ public class ControlStage extends MyStage {
 
     @Override
     public void init() {
-        addActor(Gaspedal = new MyTextButton(""){
 
+        if (SettingsStage.onScreenMode = true){
+            //// TODO: 12/1/2016 Csinálj on screen controlt 
+        }
+
+
+        addActor(Gaspedal = new MyTextButton(""){
             @Override
             protected void init() {
                 super.init();

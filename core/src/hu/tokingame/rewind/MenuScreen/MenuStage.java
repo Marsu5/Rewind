@@ -15,6 +15,7 @@ import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
 import hu.tokingame.rewind.MyGdxGame;
 import hu.tokingame.rewind.SettingsScreen.SettingsScreen;
+import hu.tokingame.rewind.SettingsScreen.SettingsStage;
 
 import static hu.tokingame.rewind.Global.Assets.MUSIC_MENU;
 import static hu.tokingame.rewind.Global.Assets.manager;
@@ -40,6 +41,7 @@ public class MenuStage extends MyStage {
             @Override
             public void init() {
                 super.init();
+                SettingsStage.onScreenMode = true;
                 setPosition(600, 600);
             }
         });
