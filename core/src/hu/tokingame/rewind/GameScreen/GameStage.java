@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.awt.Rectangle;
 
+import hu.tokingame.rewind.Bodies.Barricade;
 import hu.tokingame.rewind.Bodies.Car;
 import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.MapElements.*;
@@ -34,6 +35,7 @@ public class GameStage extends MyStage{
     World world;
     WorldBodyEditorLoader loader;
     Car car;
+    Barricade barricade;
     ControlStage controlStage;
     MapCreatingStage mapCreatingStage;
     MapLoader mapLoader;
@@ -84,6 +86,9 @@ public class GameStage extends MyStage{
                 }
                 addActor(car = new Car(world, loader, 1,1));
                 car.setPosition(3.5f,5.5f);
+                addActor(barricade = new Barricade(world, loader, 1, 1));
+                barricade.setPosition(3f, 6.5f);
+
             }
         }).start();
 
