@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 
 import java.awt.Rectangle;
 
+import hu.tokingame.rewind.Bodies.Barricade;
 import hu.tokingame.rewind.Bodies.Car;
 import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.MapElements.*;
@@ -34,6 +35,7 @@ public class GameStage extends MyStage{
     World world;
     WorldBodyEditorLoader loader;
     Car car;
+    Barricade barricade;
     ControlStage controlStage;
     MapCreatingStage mapCreatingStage;
     MapLoader mapLoader;
@@ -83,7 +85,10 @@ public class GameStage extends MyStage{
                     });
                 }
                 addActor(car = new Car(world, loader, 1,1));
-                car.setPosition(4.5f,5.5f);
+                car.setPosition(3.5f,5.5f);
+                addActor(barricade = new Barricade(world, loader, 1, 1));
+                barricade.setPosition(3f, 6.5f);
+
             }
         }).start();
 
@@ -153,7 +158,7 @@ public class GameStage extends MyStage{
                 car.brake(delta);
             }else {
                 if (turbo){
-                    car.accelerate(delta *1.5f);
+                    car.accelerate(delta *2);
                 }else {
                     car.accelerate(delta);
                 }
@@ -170,11 +175,11 @@ public class GameStage extends MyStage{
                 car.brake(delta);
             }
         }
-        if(input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.getAccelerometerY()+0.8 < rotationBase){
-            car.turnLeft(Gdx.input.getAccelerometerY() * 0.15f * delta);
+        if(input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.getAccelerometerY()+1.5 < rotationBase){
+            car.turnLeft((Gdx.input.getAccelerometerY()-rotationBase) * 0.15f * delta);
         }
-        if(input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.getAccelerometerY()-0.8 > rotationBase){
-            car.turnRight(Gdx.input.getAccelerometerY() * 0.15f * delta);
+        if(input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.getAccelerometerY()-1.5 > rotationBase){
+            car.turnRight((Gdx.input.getAccelerometerY()-rotationBase) * 0.15f * delta);
         }
     }
 
