@@ -33,7 +33,7 @@ public class ControlStage extends MyStage {
     @Override
     public void init() {
 
-        if (SettingsStage.onScreenMode = true){
+        if (SettingsStage.onScreenMode){
             addActor(Gaspedal = new UpDownButton(Assets.manager.get(Assets.GASPEDAL_UP), Assets.manager.get(Assets.GASPEDAL_DOWN)){
                 @Override
                 public void init() {
