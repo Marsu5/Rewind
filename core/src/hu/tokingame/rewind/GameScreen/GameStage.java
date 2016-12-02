@@ -21,6 +21,7 @@ import java.awt.Rectangle;
 import hu.tokingame.rewind.Bodies.Barricade;
 import hu.tokingame.rewind.Bodies.Car;
 import hu.tokingame.rewind.Global.Assets;
+import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MapElements.*;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
@@ -44,6 +45,7 @@ public class GameStage extends MyStage{
     MapCreatingStage mapCreatingStage;
     MapLoader mapLoader;
     Box2DDebugRenderer box2DDebugRenderer;
+    FinishSensor finish;
     float turboOnFor;
     boolean turbo = false;
     float rotationBase;
@@ -95,13 +97,17 @@ public class GameStage extends MyStage{
                     });
                 }
                 addActor(car = new Car(world, loader, 1,1));
-                car.setPosition(3.5f,5.5f);
+
+                car.setRotation(Globals.carRotation);
                 addActor(barricade = new Barricade(world, loader, 1, 1));
+                car.setPosition(Globals.carPositionX,Globals.carPositionY);
+
                 barricade.setPosition(3f, 6.5f);
-                addActor(new FinishSensor(world, 3.5f, 6.5f));
+                addActor(finish = new FinishSensor(world, Globals.finishPositionX, Globals.finishPositionY));
+                finish.setRotation(Globals.finishRotation);
+
             }
         }).start();
-
 
 
 

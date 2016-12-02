@@ -80,14 +80,23 @@ public class MapLoader{
                     vonat = vonat.substring(1);
                     String[] carpos = vonat.split(" ");
                     Globals.carPositionX = Float.parseFloat(carpos[0]);
+
                     Globals.carPositionY = Float.parseFloat(carpos[1]);
                     Globals.carRotation = Float.parseFloat(carpos[2]);
+                    System.out.println(Globals.carPositionX+ ", "+Globals.carPositionY+", "+Globals.carRotation);
                 }
                 else if(vonat.charAt(0) == '@'){
                     vonat = vonat.substring(1);
                     String[] barikad = vonat.split(" ");
                     Globals.shitOnTheRoad[Integer.parseInt(barikad[0])][0] = Float.parseFloat(barikad[1]);
                     Globals.shitOnTheRoad[Integer.parseInt(barikad[0])][1] = Float.parseFloat(barikad[2]);
+                }
+                else if(vonat.charAt(0)==('&')) {
+                    vonat = vonat.substring(1);
+                    String[] finpos = vonat.split(" ");
+                    Globals.finishPositionX = Float.parseFloat(finpos[0]);
+                    Globals.finishPositionY = Float.parseFloat(finpos[1]);
+                    Globals.finishRotation = Float.parseFloat(finpos[2]);
                 }
                 else{
                 //System.out.println(vonat.length());

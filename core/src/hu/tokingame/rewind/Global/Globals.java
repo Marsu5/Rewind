@@ -26,8 +26,10 @@ public class Globals {
     public static float carPositionY = 1;
     public static float carRotation = 0;
 
+
     public static float finishPositionX = 2;
     public static float finishPositionY = 2;
+    public static float finishRotation = 0;
 
 
     public static float[][] shitOnTheRoad = new float[10][2];
