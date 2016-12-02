@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
 import hu.tokingame.rewind.Global.Assets;
@@ -18,9 +19,9 @@ import hu.tokingame.rewind.SettingsScreen.SettingsStage;
  */
 
 public class ControlStage extends MyStage {
-    public boolean isGasTouched = false, isBrakeTouched = false, turboOn = false;
+    public boolean isGasTouched = false, isBrakeTouched = false, turboOn = false, turnLeft = false, turnRight = false;
 
-    UpDownButton Gaspedal, BrakePedal, Turbo;
+    UpDownButton Gaspedal, BrakePedal, Turbo, LeftButton, RightButton;
 
 
 
@@ -110,6 +111,62 @@ public class ControlStage extends MyStage {
                         @Override
                         public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
                             super.exit(event, x, y, pointer, toActor);
+                        }
+                    });
+                }
+            });
+
+            addActor(LeftButton = new UpDownButton(Assets.manager.get(Assets.T_D),Assets.manager.get(Assets.T_U)){
+                @Override
+                public void init() {
+                    super.init();
+                    this.setSize(3.5f, 4);
+                    this.setPosition(12.5f, 0);
+                    addListener(new InputListener(){
+                        @Override
+                        public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+                            super.exit(event, x, y, pointer, toActor);
+                            turnLeft = false;
+                        }
+
+                        @Override
+                        public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                            turnLeft = true;
+                            return super.touchDown(event, x, y, pointer, button);
+                        }
+
+                        @Override
+                        public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                            turnLeft = false;
+                            super.touchUp(event, x, y, pointer, button);
+                        }
+                    });
+                }
+            });
+
+            addActor(RightButton = new UpDownButton(Assets.manager.get(Assets.T_D),Assets.manager.get(Assets.T_U)){
+                @Override
+                public void init() {
+                    super.init();
+                    this.setSize(3.5f, 4);
+                    this.setPosition(12.5f, 5);
+                    addListener(new InputListener(){
+                        @Override
+                        public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+                            super.exit(event, x, y, pointer, toActor);
+                            turnRight = false;
+                        }
+
+                        @Override
+                        public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                            turnRight = true;
+                            return super.touchDown(event, x, y, pointer, button);
+                        }
+
+                        @Override
+                        public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                            super.touchUp(event, x, y, pointer, button);
+                            turnRight = false;
                         }
                     });
                 }

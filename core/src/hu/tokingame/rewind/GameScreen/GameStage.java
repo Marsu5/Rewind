@@ -230,10 +230,10 @@ public class GameStage extends MyStage{
                 car.brake(delta);
             }
         }
-        if(input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.getAccelerometerY()+1.5 < rotationBase){
+        if(input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.getAccelerometerY()+1.5 < rotationBase || controlStage.turnLeft){
             car.turnLeft((Gdx.input.getAccelerometerY()-rotationBase) * 0.15f * delta);
         }
-        if(input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.getAccelerometerY()-1.5 > rotationBase){
+        if(input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.getAccelerometerY()-1.5 > rotationBase || controlStage.turnRight){
             car.turnRight((Gdx.input.getAccelerometerY()-rotationBase) * 0.15f * delta);
         }
     }
