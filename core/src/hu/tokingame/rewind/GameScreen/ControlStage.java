@@ -39,7 +39,7 @@ public class ControlStage extends MyStage {
                 public void init() {
                     super.init();
                     this.setSize(3.5f, 4);
-                    this.setPosition(0, 5);
+                    this.setPosition(12.5f, 0);
                     addListener(new InputListener(){
                         @Override
                         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -67,7 +67,7 @@ public class ControlStage extends MyStage {
                 public void init() {
                     super.init();
                     this.setSize(3.5f, 4);
-                    this.setPosition(0, 0);
+                    this.setPosition(9, 0);
                     addListener(new InputListener(){
                         @Override
                         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -94,7 +94,7 @@ public class ControlStage extends MyStage {
                 public void init() {
                     //super.init();
                     this.setSize(1.5f,1.5f);
-                    this.setPosition(4, 0);
+                    this.setPosition(14.5f, 4);
                     addListener(new InputListener(){
                         @Override
                         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -116,12 +116,12 @@ public class ControlStage extends MyStage {
                 }
             });
 
-            addActor(LeftButton = new UpDownButton(Assets.manager.get(Assets.T_D),Assets.manager.get(Assets.T_U)){
+            addActor(LeftButton = new UpDownButton(Assets.manager.get(Assets.STEERLEFT_DOWN),Assets.manager.get(Assets.STEERLEFT_UP)){
                 @Override
                 public void init() {
                     super.init();
                     this.setSize(3.5f, 4);
-                    this.setPosition(12.5f, 0);
+                    this.setPosition(0, 0);
                     addListener(new InputListener(){
                         @Override
                         public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
@@ -144,12 +144,12 @@ public class ControlStage extends MyStage {
                 }
             });
 
-            addActor(RightButton = new UpDownButton(Assets.manager.get(Assets.T_D),Assets.manager.get(Assets.T_U)){
+            addActor(RightButton = new UpDownButton(Assets.manager.get(Assets.STEERRIGHT_DOWN),Assets.manager.get(Assets.STEERRIGHT_UP)){
                 @Override
                 public void init() {
                     super.init();
                     this.setSize(3.5f, 4);
-                    this.setPosition(12.5f, 5);
+                    this.setPosition(4, 0);
                     addListener(new InputListener(){
                         @Override
                         public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {

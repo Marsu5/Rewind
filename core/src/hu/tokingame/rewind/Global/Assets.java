@@ -72,6 +72,10 @@ public class Assets {
     public static final AssetDescriptor<Texture> BRAKEPEDAL_DOWN = new AssetDescriptor<Texture>("GameTextures/fekpedal_down.png", Texture.class);
     public static final AssetDescriptor<Texture> TURBO_ON = new AssetDescriptor<Texture>("GameTextures/turbo.png", Texture.class);
     public static final AssetDescriptor<Texture> TURBO_OFF = new AssetDescriptor<Texture>("GameTextures/noturbo.png", Texture.class);
+    public static final AssetDescriptor<Texture> STEERLEFT_UP = new AssetDescriptor<Texture>("GameTextures/steer_left.png", Texture.class);
+    public static final AssetDescriptor<Texture> STEERLEFT_DOWN = new AssetDescriptor<Texture>("GameTextures/steer_left_down.png", Texture.class);
+    public static final AssetDescriptor<Texture> STEERRIGHT_UP = new AssetDescriptor<Texture>("GameTextures/steer_right.png", Texture.class);
+    public static final AssetDescriptor<Texture> STEERRIGHT_DOWN = new AssetDescriptor<Texture>("GameTextures/steer_right_down.png", Texture.class);
     //</editor-fold>
 
     //<editor-fold desc="Music">
@@ -117,6 +121,10 @@ public class Assets {
         manager.load(BRAKEPEDAL_UP);
         manager.load(TURBO_OFF);
         manager.load(TURBO_ON);
+        manager.load(STEERLEFT_DOWN);
+        manager.load(STEERLEFT_UP);
+        manager.load(STEERRIGHT_DOWN);
+        manager.load(STEERRIGHT_UP);
 
         //car textures
         manager.load(CAR_BLUE);
