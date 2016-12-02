@@ -134,6 +134,10 @@ public class Car extends WorldActorGroup {
 
     }
 
+    public void crash(){
+        System.out.println(getBody().getLinearVelocity().len());
+    }
+
     public boolean isReversing(){
         Vector2 v = getBody().getLinearVelocity().cpy();
         v.rotateRad(-getBody().getAngle());

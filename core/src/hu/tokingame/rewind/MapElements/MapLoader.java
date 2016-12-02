@@ -36,7 +36,7 @@ public class MapLoader{
     private Queue<MapElement> mapElements = new Queue<MapElement>();
     private int maxElements = 1;
 
-    private int level;
+    private final int level;
     private String map;
     private char[][] nyamm;
     private MyStage stage;
