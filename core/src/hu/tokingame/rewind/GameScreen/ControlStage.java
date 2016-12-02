@@ -33,7 +33,90 @@ public class ControlStage extends MyStage {
     public void init() {
 
         if (SettingsStage.onScreenMode = true){
-            // TODO: 12/1/2016 Csinálj on screen controlt
+            addActor(Gaspedal = new UpDownButton(Assets.manager.get(Assets.GASPEDAL_UP), Assets.manager.get(Assets.GASPEDAL_DOWN)){
+                @Override
+                public void init() {
+                    super.init();
+                    this.setSize(3.5f, 4);
+                    this.setPosition(0, 5);
+                    addListener(new InputListener(){
+                        @Override
+                        public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                            isGasTouched = true;
+                            return super.touchDown(event, x, y, pointer, button);
+                        }
+
+                        @Override
+                        public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                            isGasTouched = false;
+                            super.touchUp(event, x, y, pointer, button);
+                        }
+
+                        @Override
+                        public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+                            super.exit(event, x, y, pointer, toActor);
+                            isGasTouched = false;
+                        }
+                    });
+                }
+            });
+
+            addActor(BrakePedal = new UpDownButton(Assets.manager.get(Assets.BRAKEPEDAL_UP), Assets.manager.get(Assets.BRAKEPEDAL_DOWN)){
+                @Override
+                public void init() {
+                    super.init();
+                    this.setSize(3.5f, 4);
+                    this.setPosition(0, 0);
+                    addListener(new InputListener(){
+                        @Override
+                        public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                            isBrakeTouched = true;
+                            return super.touchDown(event, x, y, pointer, button);
+                        }
+
+                        @Override
+                        public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                            super.touchUp(event, x, y, pointer, button);
+                            isBrakeTouched = false;
+                        }
+                        @Override
+                        public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+                            super.exit(event, x, y, pointer, toActor);
+                            isBrakeTouched = false;
+                        }
+                    });
+                }
+            });
+
+            addActor(Turbo = new UpDownButton(Assets.manager.get(Assets.TURBO_OFF), Assets.manager.get(Assets.TURBO_ON)){
+                @Override
+                public void init() {
+                    //super.init();
+                    this.setSize(1.5f,1.5f);
+                    this.setPosition(4, 0);
+                    addListener(new InputListener(){
+                        @Override
+                        public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                            turboOn = true;
+                            pressed();
+                            return super.touchDown(event, x, y, pointer, button);
+                        }
+
+                        @Override
+                        public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                            super.touchUp(event, x, y, pointer, button);
+                        }
+
+                        @Override
+                        public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+                            super.exit(event, x, y, pointer, toActor);
+                        }
+                    });
+                }
+            });
+
+
+
         }else {
             addActor(Gaspedal = new UpDownButton(Assets.manager.get(Assets.GASPEDAL_UP), Assets.manager.get(Assets.GASPEDAL_DOWN)){
                 @Override
