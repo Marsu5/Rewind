@@ -37,7 +37,7 @@ public class MenuStage extends MyStage {
     @Override
     public void init() {
 
-        if(!Globals.AccelerometerAvailable) addActor(new MyLabel("No Acelerometer Found.", MyLabel.style1){
+        if(!Globals.AccelerometerAvailable) addActor(new MyLabel("No Accelerometer Found.", MyLabel.style1){
             @Override
             public void init() {
                 super.init();
