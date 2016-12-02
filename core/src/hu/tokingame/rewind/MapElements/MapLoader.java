@@ -5,12 +5,14 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.FloatAction;
 import com.badlogic.gdx.utils.Queue;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
+import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
 
@@ -74,6 +76,20 @@ public class MapLoader{
             //System.out.println("van file");
             while(be.hasNextLine()){
                 String vonat = be.nextLine();
+                if(vonat.charAt(0)==('#')) {
+                    vonat = vonat.substring(1);
+                    String[] carpos = vonat.split(" ");
+                    Globals.carPositionX = Float.parseFloat(carpos[0]);
+                    Globals.carPositionY = Float.parseFloat(carpos[1]);
+                    Globals.carRotation = Float.parseFloat(carpos[2]);
+                }
+                else if(vonat.charAt(0) == '@'){
+                    vonat = vonat.substring(1);
+                    String[] barikad = vonat.split(" ");
+                    Globals.shitOnTheRoad[Integer.parseInt(barikad[0])][0] = Float.parseFloat(barikad[1]);
+                    Globals.shitOnTheRoad[Integer.parseInt(barikad[0])][1] = Float.parseFloat(barikad[2]);
+                }
+                else{
                 //System.out.println(vonat.length());
                 System.out.println("while");
                 for(int i = 0; i < vonat.length(); i++){
@@ -84,7 +100,9 @@ public class MapLoader{
                 }
                 sor++;
                 lineAdded();
-            }
+            }}
+
+
 
         }catch(Exception e){
             System.out.println(e);

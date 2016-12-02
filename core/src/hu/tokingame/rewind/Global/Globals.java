@@ -18,4 +18,17 @@ public class Globals {
     public static final float WORLD_WIDTH = 1280;
     public static final float WORLD_HEIGHT = 720;
     public static boolean AccelerometerAvailable = Gdx.input.isPeripheralAvailable(Input.Peripheral.Accelerometer);
+
+    public static int[] levels = {0, 1, 2, 3, 4, 5};
+    public static int currenLevel = 0;
+
+    public static float carPositionX = 1;
+    public static float carPositionY = 1;
+    public static float carRotation = 0;
+
+    public static float finishPositionX = 2;
+    public static float finishPositionY = 2;
+
+
+    public static float[][] shitOnTheRoad = new float[10][2];
 }

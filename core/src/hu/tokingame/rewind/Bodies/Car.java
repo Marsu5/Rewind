@@ -18,6 +18,7 @@ import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
 public class Car extends WorldActorGroup {
 
     OneSpriteStaticActor actor;
+    public static int health = 100;
 
     public Car(World world, WorldBodyEditorLoader loader, float X, float Y) {
         super(world, loader, "bluecar.png", BodyDef.BodyType.DynamicBody, 1000, 0.2f, 10, false);
@@ -44,7 +45,7 @@ public class Car extends WorldActorGroup {
         }
     }
 
-    public float maxSpeed = 18;
+    public float maxSpeed = 50;
     public float maxTurnVelocity = 0.7f;
     public float turnVelocity = 2f;
     public float accelerateVelocity = 14;
@@ -136,7 +137,14 @@ public class Car extends WorldActorGroup {
     }
 
     public void crash(){
-        System.out.println(getBody().getLinearVelocity().len());
+        float v = getBody().getLinearVelocity().len();
+        System.out.println(v);
+        if(v > 0.5) health -= v*15;
+        System.out.println(health + " hp");
+
+        if(health < 50) accelerateTime = 3;
+        else if(health < 25) accelerateTime = 5;
+        //else if(health < 1) this.removeFromStage(); //TODO ez nemmüxik valami kell rá hogy összetörik vagy valami
     }
 
     public boolean isReversing(){

@@ -59,6 +59,8 @@ public class GameStage extends MyStage{
         this.level = level;
         System.out.println(level);
 
+        Gdx.input.setCatchBackKey(true); //TODO pause képernyő vagy valami
+
         world = new World(new Vector2(0,0), false);
         box2DDebugRenderer = new Box2DDebugRenderer();
         mapCreatingStage = new MapCreatingStage(getBatch(), game);
@@ -124,7 +126,7 @@ public class GameStage extends MyStage{
                     if (contact.getFixtureB().getBody().getUserData() instanceof FinishSensor){
 
                         System.out.println("Next Level");
-                        game.setScreen(new GameScreen(game,1));
+                        game.setScreen(new GameScreen(game,1)); //TODO következő szintek
                     }
                 } else {
                     if(contact.getFixtureB().getBody().getUserData() instanceof Car){
