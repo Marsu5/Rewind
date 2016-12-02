@@ -52,7 +52,7 @@ public class Car extends WorldActorGroup {
     public float breakMultiplier = 0.88f;
     public float turnMultiplier = 0.95f;
 
-    public float turnTime = 0.5f;
+    public float turnTime = 0.15f;
     public float accelerateTime = 0.1f;
 
     private float accelerateTimer = 0;
