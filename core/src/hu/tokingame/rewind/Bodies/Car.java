@@ -48,9 +48,9 @@ public class Car extends WorldActorGroup {
     public float maxTurnVelocity = 0.7f;
     public float turnVelocity = 2f;
     public float accelerateVelocity = 14;
-    public float frictionMultiplier = 0.9f;
-    public float breakMultiplier = 0.8f;
-    public float turnMultiplier = 0.7f;
+    public float frictionMultiplier = 0.99f;
+    public float breakMultiplier = 0.88f;
+    public float turnMultiplier = 0.99f;
 
     public float turnTime = 0.15f;
     public float accelerateTime = 0.1f;
@@ -132,6 +132,10 @@ public class Car extends WorldActorGroup {
             getBody().setLinearVelocity(getBody().getLinearVelocity().scl(1 - ((1 - frictionMultiplier) * delta * 60)));
         }
 
+    }
+
+    public void crash(){
+        System.out.println(getBody().getLinearVelocity().len());
     }
 
     public boolean isReversing(){

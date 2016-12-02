@@ -11,6 +11,6 @@ import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
 
 public class DeadEndLeft extends Road {
     public DeadEndLeft(World world, WorldBodyEditorLoader loader, float X, float Y) {
-        super(world, loader, "block.png", new OneSpriteStaticActor("Map/block.png"), X, Y);
+        super(world, loader, "blockleft.png", new OneSpriteStaticActor("Map/blockleft.png"), X, Y);
     }
 }

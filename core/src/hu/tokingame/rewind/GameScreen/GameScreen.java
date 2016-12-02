@@ -16,15 +16,20 @@ import hu.tokingame.rewind.MyGdxGame;
 public class GameScreen extends MyScreen {
 
     GameStage stage;
+    private final int level;
 
-    public GameScreen(MyGdxGame game) {
+
+    public GameScreen(MyGdxGame game, int level) {
         super(game);
+        this.level = level;
+        stage = new GameStage(new ExtendViewport(16,16,new OrthographicCamera(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT)),spriteBatch,game, level);
+
+        System.out.println(level);
     }
 
     @Override
     public void init() {
         super.init();
-        stage = new GameStage(new ExtendViewport(16,16,new OrthographicCamera(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT)),spriteBatch,game);
         //Gdx.input.setInputProcessor(stage);  //A stage adja hozzá. A stage hozza létre a control staget, ezért ott adja hozzá.
     }
 
@@ -42,9 +47,11 @@ public class GameScreen extends MyScreen {
 
     @Override
     public void render(float delta) {
-        super.render(delta);
-        spriteBatch.setProjectionMatrix(stage.getCamera().combined);
         stage.act(delta);
+        super.render(delta);
+
+        spriteBatch.setProjectionMatrix(stage.getCamera().combined);
+
         stage.draw();
 
     }

@@ -9,7 +9,6 @@ import hu.tokingame.rewind.CreditsScreen.CreditsScreen;
 import hu.tokingame.rewind.GameScreen.GameScreen;
 import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.Global.Globals;
-import hu.tokingame.rewind.LoadingScreen.GameLoadingScreen;
 import hu.tokingame.rewind.MyBaseClasses.MyLabel;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
@@ -37,7 +36,7 @@ public class MenuStage extends MyStage {
     @Override
     public void init() {
 
-        if(!Globals.AccelerometerAvailable) addActor(new MyLabel("No Acelerometer Found.", MyLabel.style1){
+        if(!Globals.AccelerometerAvailable) addActor(new MyLabel("No Accelerometer Found.", MyLabel.style1){
             @Override
             public void init() {
                 super.init();
@@ -85,7 +84,7 @@ public class MenuStage extends MyStage {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
-                        game.setScreen(new GameScreen(game));
+                        game.setScreen(new GameScreen(game, 0));
                         manager.get(MUSIC_MENU).stop();
                     }
                 });

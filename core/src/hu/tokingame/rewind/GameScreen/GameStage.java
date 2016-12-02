@@ -8,6 +8,10 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.Contact;
+import com.badlogic.gdx.physics.box2d.ContactImpulse;
+import com.badlogic.gdx.physics.box2d.ContactListener;
+import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -31,7 +35,7 @@ import static com.badlogic.gdx.Gdx.input;
  */
 
 public class GameStage extends MyStage{
-    public static int level = 2;
+    private final int level;
     World world;
     WorldBodyEditorLoader loader;
     Car car;
@@ -45,12 +49,16 @@ public class GameStage extends MyStage{
     float rotationBase;
 
 
-    public GameStage(Viewport viewport, Batch batch, MyGdxGame game) {
-        super(viewport, batch, game);
-    }
-
     @Override
     public void init() {
+
+    }
+
+    public GameStage(Viewport viewport, Batch batch, final MyGdxGame game, int level) {
+        super(viewport, batch, game);
+        this.level = level;
+        System.out.println(level);
+
         world = new World(new Vector2(0,0), false);
         box2DDebugRenderer = new Box2DDebugRenderer();
         mapCreatingStage = new MapCreatingStage(getBatch(), game);
@@ -88,7 +96,7 @@ public class GameStage extends MyStage{
                 car.setPosition(3.5f,5.5f);
                 addActor(barricade = new Barricade(world, loader, 1, 1));
                 barricade.setPosition(3f, 6.5f);
-
+                addActor(new FinishSensor(world, 3.5f, 6.5f));
             }
         }).start();
 
@@ -103,6 +111,53 @@ public class GameStage extends MyStage{
         Gdx.input.setInputProcessor(inputMultiplexer);
 
         rotationBase = Gdx.input.getAccelerometerY();
+
+
+        world.setContactListener(new ContactListener() {
+            @Override
+            public void beginContact(Contact contact) {
+
+                if(contact.getFixtureA().getBody().getUserData() instanceof Car){
+                    if (contact.getFixtureB().getBody().getUserData() instanceof Road) {
+                        ((Car) contact.getFixtureA().getBody().getUserData()).crash();
+                    }
+                    if (contact.getFixtureB().getBody().getUserData() instanceof FinishSensor){
+
+                        System.out.println("Next Level");
+                        game.setScreen(new GameScreen(game,1));
+                    }
+                } else {
+                    if(contact.getFixtureB().getBody().getUserData() instanceof Car){
+                        if (contact.getFixtureA().getBody().getUserData() instanceof Road) {
+                            ((Car) contact.getFixtureB().getBody().getUserData()).crash();
+                        }
+                        if (contact.getFixtureA().getBody().getUserData() instanceof FinishSensor){
+                            System.out.println("Next Level");
+                            game.setScreen(new GameScreen(game,1));
+                        }
+                    }
+
+                }
+
+
+            }
+
+            @Override
+            public void endContact(Contact contact) {
+
+            }
+
+            @Override
+            public void preSolve(Contact contact, Manifold oldManifold) {
+
+            }
+
+            @Override
+            public void postSolve(Contact contact, ContactImpulse impulse) {
+
+            }
+        });
+
     }
 
 
@@ -197,9 +252,11 @@ public class GameStage extends MyStage{
 
     @Override
     public void dispose() {
-        super.dispose();
+
         controlStage.dispose();
         mapCreatingStage.dispose();
+        //world.dispose();
+        super.dispose();
     }
 
     @Override
