@@ -31,7 +31,7 @@ import static com.badlogic.gdx.Gdx.input;
  */
 
 public class GameStage extends MyStage{
-    public static int level = 2;
+    public static int level = 0;
     World world;
     WorldBodyEditorLoader loader;
     Car car;
