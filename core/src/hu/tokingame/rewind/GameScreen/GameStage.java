@@ -138,7 +138,7 @@ public class GameStage extends MyStage{
                     if (contact.getFixtureB().getBody().getUserData() instanceof FinishSensor){
                         Globals.unlockedLevels[newlevel] = true;
                         System.out.println("Next Level");
-                        game.setScreen(new GameScreen(game,newlevel)); //TODO következő szintek
+                        game.setScreen(new GameScreen(game,newlevel));
                     }
                 } else {
                     if(contact.getFixtureB().getBody().getUserData() instanceof Car){
