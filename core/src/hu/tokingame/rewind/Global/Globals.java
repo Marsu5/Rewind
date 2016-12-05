@@ -32,5 +32,7 @@ public class Globals {
     public static float finishRotation = 0;
 
 
-    public static float[][] shitOnTheRoad = new float[10][2];
+    public static java.util.Vector<Float> barricadeX = new java.util.Vector<Float>();
+    public static java.util.Vector<Float> barricadeY = new java.util.Vector<Float>();
+    public static java.util.Vector<Float> barricadeRotation = new java.util.Vector<Float>();
 }

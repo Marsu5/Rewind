@@ -1,5 +1,6 @@
 package hu.tokingame.rewind.MapElements;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.physics.box2d.World;
@@ -12,6 +13,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
+import hu.tokingame.rewind.Bodies.Barricade;
+import hu.tokingame.rewind.GameScreen.GameStage;
 import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
@@ -62,10 +65,14 @@ public class MapLoader{
     }
 
     private void loadMap(){
+        Globals.barricadeRotation.clear();
+        Globals.barricadeX.clear();
+        Globals.barricadeY.clear();
         switch(level){
             case 0 : map = "CityMap/TOOTOROL1.txt"; break;
             case 1 : map = "CityMap/level1.txt"; break;
             case 2 : map = "CityMap/level2.txt"; break;
+            case 3 : map = "CityMap/level3.txt"; break;
             case 10 : map = "CityMap/bonus.txt"; break;
         }
         System.out.println(map);
@@ -86,10 +93,24 @@ public class MapLoader{
                     System.out.println(Globals.carPositionX+ ", "+Globals.carPositionY+", "+Globals.carRotation);
                 }
                 else if(vonat.charAt(0) == '@'){
-                    vonat = vonat.substring(1);
-                    String[] barikad = vonat.split(" ");
-                    Globals.shitOnTheRoad[Integer.parseInt(barikad[0])][0] = Float.parseFloat(barikad[1]);
-                    Globals.shitOnTheRoad[Integer.parseInt(barikad[0])][1] = Float.parseFloat(barikad[2]);
+                    vonat = vonat.substring(3);
+                    String[] sbarikad = vonat.split(" ");
+                    final float[] barikad = new float[3];
+                    barikad[0] = Float.parseFloat(sbarikad[0]);
+                    barikad[1] = Float.parseFloat(sbarikad[1]);
+                    barikad[2] = Float.parseFloat(sbarikad[2]);
+                    System.out.println(barikad);
+                    /*Globals.barricadeX.add(barikad[1]);
+                    Globals.barricadeY.add(barikad[2]);
+                    Globals.barricadeRotation.add(barikad[3]);*/
+                    stage.addActor(new Barricade(world, loader, 1, 1){
+                        @Override
+                        public void init() {
+                            super.init();
+                            this.setPosition(barikad[0], barikad[1]);
+                            this.setRotation(barikad[2]);
+                        }
+                    });
                 }
                 else if(vonat.charAt(0)==('&')) {
                     vonat = vonat.substring(1);

@@ -76,6 +76,7 @@ public class Assets {
     public static final AssetDescriptor<Texture> STEERLEFT_DOWN = new AssetDescriptor<Texture>("GameTextures/steer_left_down.png", Texture.class);
     public static final AssetDescriptor<Texture> STEERRIGHT_UP = new AssetDescriptor<Texture>("GameTextures/steer_right.png", Texture.class);
     public static final AssetDescriptor<Texture> STEERRIGHT_DOWN = new AssetDescriptor<Texture>("GameTextures/steer_right_down.png", Texture.class);
+    public static final AssetDescriptor<Texture> PINGAS = new AssetDescriptor<Texture>("GameTextures/p.png", Texture.class);
     //</editor-fold>
 
     //<editor-fold desc="Music">
@@ -125,6 +126,7 @@ public class Assets {
         manager.load(STEERLEFT_UP);
         manager.load(STEERRIGHT_DOWN);
         manager.load(STEERRIGHT_UP);
+        manager.load(PINGAS);
 
         //car textures
         manager.load(CAR_BLUE);
