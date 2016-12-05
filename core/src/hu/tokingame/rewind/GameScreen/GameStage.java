@@ -1,5 +1,6 @@
 package hu.tokingame.rewind.GameScreen;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
@@ -20,6 +21,7 @@ import java.awt.Rectangle;
 
 import hu.tokingame.rewind.Bodies.Barricade;
 import hu.tokingame.rewind.Bodies.Car;
+import hu.tokingame.rewind.CreditsScreen.CreditsScreen;
 import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MapElements.*;
@@ -49,6 +51,7 @@ public class GameStage extends MyStage{
     float turboOnFor;
     boolean turbo = false;
     float rotationBase;
+    int newlevel;
 
 
     @Override
@@ -58,6 +61,7 @@ public class GameStage extends MyStage{
 
     public GameStage(Viewport viewport, Batch batch, final MyGdxGame game, int level) {
         super(viewport, batch, game);
+        if(level == -1) game.setScreen(new CreditsScreen(game));
         this.level = level;
         System.out.println(level);
 
@@ -72,6 +76,8 @@ public class GameStage extends MyStage{
         //(new Thread(new MapLoader(level,this,world,loader))).start();
         mapLoader = new MapLoader(level, this, world, loader);
         turboOnFor = 0;
+        if(level + 1 < Globals.levels.length) newlevel = level + 1;
+        else newlevel = -1;
 
 
 
@@ -126,22 +132,23 @@ public class GameStage extends MyStage{
             public void beginContact(Contact contact) {
 
                 if(contact.getFixtureA().getBody().getUserData() instanceof Car){
-                    if (contact.getFixtureB().getBody().getUserData() instanceof Road) {
+                    if (contact.getFixtureB().getBody().getUserData() instanceof Road || contact.getFixtureB().getBody().getUserData() instanceof Barricade) {
                         ((Car) contact.getFixtureA().getBody().getUserData()).crash();
                     }
                     if (contact.getFixtureB().getBody().getUserData() instanceof FinishSensor){
-
+                        Globals.unlockedLevels[newlevel] = true;
                         System.out.println("Next Level");
-                        game.setScreen(new GameScreen(game,1)); //TODO következő szintek
+                        game.setScreen(new GameScreen(game,newlevel)); //TODO következő szintek
                     }
                 } else {
                     if(contact.getFixtureB().getBody().getUserData() instanceof Car){
-                        if (contact.getFixtureA().getBody().getUserData() instanceof Road) {
+                        if (contact.getFixtureA().getBody().getUserData() instanceof Road || contact.getFixtureA().getBody().getUserData() instanceof Barricade) {
                             ((Car) contact.getFixtureB().getBody().getUserData()).crash();
                         }
                         if (contact.getFixtureA().getBody().getUserData() instanceof FinishSensor){
+                            Globals.unlockedLevels[newlevel] = true;
                             System.out.println("Next Level");
-                            game.setScreen(new GameScreen(game,1));
+                            game.setScreen(new GameScreen(game,newlevel));
                         }
                     }
 
