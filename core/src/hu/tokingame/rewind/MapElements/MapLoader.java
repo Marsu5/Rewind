@@ -93,7 +93,7 @@ public class MapLoader{
                     System.out.println(Globals.carPositionX+ ", "+Globals.carPositionY+", "+Globals.carRotation);
                 }
                 else if(vonat.charAt(0) == '@'){
-                    vonat = vonat.substring(3);
+                    vonat = vonat.substring(1);
                     String[] sbarikad = vonat.split(" ");
                     final float[] barikad = new float[3];
                     barikad[0] = Float.parseFloat(sbarikad[0]);
