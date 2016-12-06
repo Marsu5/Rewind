@@ -9,7 +9,6 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
 import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
-import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
 import hu.tokingame.rewind.MyBaseClasses.UpDownButton;
 import hu.tokingame.rewind.MyGdxGame;
 import hu.tokingame.rewind.SettingsScreen.SettingsStage;
@@ -19,9 +18,10 @@ import hu.tokingame.rewind.SettingsScreen.SettingsStage;
  */
 
 public class ControlStage extends MyStage {
-    public boolean isGasTouched = false, isBrakeTouched = false, turboOn = false, turnLeft = false, turnRight = false;
+    public boolean isGasTouched = false, isBrakeTouched = false, turboOn = false, turnLeft = false, turnRight = false, zoomOut = false;
 
     UpDownButton Gaspedal, BrakePedal, Turbo, LeftButton, RightButton;
+    private ControlStage controlStage;
 
 
 
@@ -32,6 +32,8 @@ public class ControlStage extends MyStage {
 
     @Override
     public void init() {
+
+        controlStage = this;
 
         if (SettingsStage.onScreenMode){
             addActor(Gaspedal = new UpDownButton(Assets.manager.get(Assets.GASPEDAL_UP), Assets.manager.get(Assets.GASPEDAL_DOWN)){
@@ -172,7 +174,34 @@ public class ControlStage extends MyStage {
                 }
             });
 
+            addActor(new UpDownButton(Assets.manager.get(Assets.CAR_RED), Assets.manager.get(Assets.CAR_BLUE)){
+                @Override
+                public void init() {
+                    super.init();
+                    setSize(1,1);
+                    setPosition(10, 5);
+                    addListener(new InputListener(){
+                        @Override
+                        public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                            zoomOut = true;
+                            return super.touchDown(event, x, y, pointer, button);
+                        }
 
+                        @Override
+                        public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                            super.touchUp(event, x, y, pointer, button);
+                            zoomOut = false;
+                        }
+
+                        @Override
+                        public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+                            super.exit(event, x, y, pointer, toActor);
+                            zoomOut = false;
+                        }
+                    });
+
+                }
+            });
 
         }else {
             addActor(Gaspedal = new UpDownButton(Assets.manager.get(Assets.GASPEDAL_UP), Assets.manager.get(Assets.GASPEDAL_DOWN)){
@@ -262,7 +291,38 @@ public class ControlStage extends MyStage {
                     });
                 }
             });
+
+            addActor(new UpDownButton(Assets.manager.get(Assets.CAR_RED), Assets.manager.get(Assets.CAR_BLUE)){
+                @Override
+                public void init() {
+                    super.init();
+                    setSize(1,1);
+                    setPosition(10, 5);
+                    addListener(new InputListener(){
+                        @Override
+                        public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                            zoomOut = true;
+                            return super.touchDown(event, x, y, pointer, button);
+                        }
+
+                        @Override
+                        public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                            super.touchUp(event, x, y, pointer, button);
+                            zoomOut = false;
+                        }
+
+                        @Override
+                        public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
+                            super.exit(event, x, y, pointer, toActor);
+                            zoomOut = false;
+                        }
+                    });
+
+                }
+            });
         }
+
+
 
 
 

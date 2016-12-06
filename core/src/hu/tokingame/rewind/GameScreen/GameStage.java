@@ -202,8 +202,6 @@ public class GameStage extends MyStage{
 
     @Override
     public void act(float delta) {
-        //System.out.println(Gdx.input.getAccelerometerX()+ "; " +Gdx.input.getAccelerometerY()+ "; " +Gdx.input.getAccelerometerZ());
-
         if (controlStage.turboOn){
             controlStage.getTurbo().setTexture(Assets.manager.get(Assets.TURBO_ON));
             turbo = true;
@@ -231,10 +229,14 @@ public class GameStage extends MyStage{
         set
         */
         //car.getBody().getMassData().center.set(getWidth()/2,getHeight()/2);
-        if(SettingsStage.cameraRotation){
-            setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed), 3, car.getRotation());
-        }else{
-            setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed),3);
+        if(controlStage.zoomOut){
+            setCameraMoveToXY(8, 8,100, 3, car.getRotation());
+        }else {
+            if(SettingsStage.cameraRotation){
+                setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed), 3, car.getRotation());
+            }else{
+                setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed),3);
+            }
         }
 
         if(input.isKeyPressed(Input.Keys.ESCAPE)){
