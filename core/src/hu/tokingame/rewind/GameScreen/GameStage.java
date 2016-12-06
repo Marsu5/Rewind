@@ -1,11 +1,8 @@
 package hu.tokingame.rewind.GameScreen;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -14,10 +11,7 @@ import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.viewport.Viewport;
-
-import java.awt.Rectangle;
 
 import hu.tokingame.rewind.Bodies.Barricade;
 import hu.tokingame.rewind.Bodies.Car;
@@ -25,6 +19,7 @@ import hu.tokingame.rewind.CreditsScreen.CreditsScreen;
 import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MapElements.*;
+import hu.tokingame.rewind.MenuScreen.MenuScreen;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
 import hu.tokingame.rewind.MyGdxGame;
@@ -58,7 +53,13 @@ public class GameStage extends MyStage{
     public void init() {
 
     }
-
+    @Override
+    public boolean keyDown(int keycode) {
+        if(keycode == Input.Keys.BACK){
+            game.setScreen(new MenuScreen(game));
+        }
+        return false;
+    }
     public GameStage(Viewport viewport, Batch batch, final MyGdxGame game, int level) {
         super(viewport, batch, game);
         if(level == -1) game.setScreen(new CreditsScreen(game));
@@ -210,7 +211,7 @@ public class GameStage extends MyStage{
         set
         */
         //car.getBody().getMassData().center.set(getWidth()/2,getHeight()/2);
-        if(SettingsStage.cameraRoatation){
+        if(SettingsStage.cameraRotation){
             setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed), 3, car.getRotation());
         }else{
             setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed),3);

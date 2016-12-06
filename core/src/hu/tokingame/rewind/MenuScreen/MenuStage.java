@@ -1,5 +1,7 @@
 package hu.tokingame.rewind.MenuScreen;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -31,8 +33,17 @@ public class MenuStage extends MyStage {
 
     public MenuStage(Viewport viewport, Batch batch, MyGdxGame game) {
         super(viewport, batch, game);
+        Gdx.input.setCatchBackKey(true);
     }
-    
+
+    @Override
+    public boolean keyDown(int keycode) {
+        if(keycode == Input.Keys.BACK){
+            game.setScreen(new ExitScreen(game));
+        }
+        return false;
+    }
+
     @Override
     public void init() {
 
