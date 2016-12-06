@@ -3,6 +3,8 @@ package hu.tokingame.rewind.GameScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.assets.AssetDescriptor;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -47,6 +49,7 @@ public class GameStage extends MyStage{
     boolean turbo = false;
     float rotationBase;
     int newlevel;
+    Music m;
 
 
     @Override
@@ -138,6 +141,7 @@ public class GameStage extends MyStage{
                     }
                     if (contact.getFixtureB().getBody().getUserData() instanceof FinishSensor){
                         Globals.unlockedLevels[newlevel] = true;
+                        m.stop();
                         System.out.println("Next Level");
                         game.setScreen(new GameScreen(game,newlevel));
                     }
@@ -148,6 +152,7 @@ public class GameStage extends MyStage{
                         }
                         if (contact.getFixtureA().getBody().getUserData() instanceof FinishSensor){
                             Globals.unlockedLevels[newlevel] = true;
+                            m.stop();
                             System.out.println("Next Level");
                             game.setScreen(new GameScreen(game,newlevel));
                         }
@@ -173,6 +178,18 @@ public class GameStage extends MyStage{
 
             }
         });
+
+        switch(level){
+            case 0: m = Assets.manager.get(Assets.MUSIC_TUTORIAL); break;
+            case 1: m = Assets.manager.get(Assets.MUSIC_1); break;
+            case 2: m = Assets.manager.get(Assets.MUSIC_2); break;
+            case 3: m = Assets.manager.get(Assets.MUSIC_3); break;
+            case 4: m = Assets.manager.get(Assets.MUSIC_4); break;
+            case 5: m = Assets.manager.get(Assets.MUSIC_5); break;
+            case 10: m = Assets.manager.get(Assets.SZIPU); break;
+            default: m = Assets.manager.get(Assets.MUSIC_TUTORIAL); break;
+        }
+        m.play();
 
     }
 

@@ -81,7 +81,13 @@ public class Assets {
 
     //<editor-fold desc="Music">
     public static final AssetDescriptor<Music> MUSIC_MENU = new AssetDescriptor<Music>("Audio/9h00.mp3", Music.class);
-
+    public static final AssetDescriptor<Music> MUSIC_1 = new AssetDescriptor<Music>("Audio/friendly zombie.mp3", Music.class);
+    public static final AssetDescriptor<Music> MUSIC_2 = new AssetDescriptor<Music>("Audio/chase.mp3", Music.class);
+    public static final AssetDescriptor<Music> MUSIC_3 = new AssetDescriptor<Music>("Audio/converter.mp3", Music.class);
+    public static final AssetDescriptor<Music> MUSIC_4 = new AssetDescriptor<Music>("Audio/MFOS.mp3", Music.class);
+    public static final AssetDescriptor<Music> MUSIC_5 = new AssetDescriptor<Music>("Audio/3083.mp3", Music.class);
+    public static final AssetDescriptor<Music> MUSIC_TUTORIAL = new AssetDescriptor<Music>("Audio/getaway.mp3", Music.class);
+    public static final AssetDescriptor<Music> SZIPU = new AssetDescriptor<Music>("Audio/420.mp3", Music.class);
     //</editor-fold>
 
 
@@ -138,12 +144,27 @@ public class Assets {
         manager.load(VERMIN_FONT_BIG);
 
         manager.load(MUSIC_MENU);
+        manager.load(MUSIC_1);
+        manager.load(MUSIC_2);
+        manager.load(MUSIC_3);
+        manager.load(MUSIC_4);
+        manager.load(MUSIC_5);
+        manager.load(MUSIC_TUTORIAL);
+        manager.load(SZIPU);
+
         //</editor-fold>
 
     }
 
     public static void afterLoaded(){
         manager.get(MUSIC_MENU).setLooping(true);
+        manager.get(MUSIC_TUTORIAL).setLooping(true);
+        manager.get(MUSIC_1).setLooping(true);
+        manager.get(MUSIC_2).setLooping(true);
+        manager.get(MUSIC_3).setLooping(true);
+        manager.get(MUSIC_4).setLooping(true);
+        manager.get(MUSIC_5).setLooping(true);
+        manager.get(SZIPU).setLooping(true);
         manager.get(MUSIC_MENU).play();
     }
 
