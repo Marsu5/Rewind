@@ -174,7 +174,7 @@ public class ControlStage extends MyStage {
                 }
             });
 
-            addActor(new UpDownButton(Assets.manager.get(Assets.CAR_RED), Assets.manager.get(Assets.CAR_BLUE)){
+            addActor(new UpDownButton(Assets.manager.get(Assets.ZOOMOUT), Assets.manager.get(Assets.ZOOMOUT)){
                 @Override
                 public void init() {
                     super.init();
