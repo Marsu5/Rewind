@@ -56,13 +56,16 @@ public class GameStage extends MyStage{
     public void init() {
 
     }
+
     @Override
     public boolean keyDown(int keycode) {
         if(keycode == Input.Keys.BACK){
-            game.setScreen(new MenuScreen(game));
+            game.setScreenBackByStackPop();
         }
         return false;
     }
+
+
     public GameStage(Viewport viewport, Batch batch, final MyGdxGame game, int level) {
         super(viewport, batch, game);
         if(level == -1) game.setScreen(new CreditsScreen(game));
