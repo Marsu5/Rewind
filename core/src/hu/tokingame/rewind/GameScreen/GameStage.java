@@ -272,7 +272,7 @@ public class GameStage extends MyStage{
         if(input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.getAccelerometerY()-1.5 > rotationBase || controlStage.turnRight){
             car.turnRight((Gdx.input.getAccelerometerY()-rotationBase) * 0.15f * delta);
         }
-        System.out.println(car.getX()+";"+car.getY());
+        System.out.println(car.getX()+";"+car.getY()+";"+car.getRotation());
     }
 
     @Override
