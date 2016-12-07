@@ -202,6 +202,7 @@ public class GameStage extends MyStage{
 
     @Override
     public void act(float delta) {
+
         if (controlStage.turboOn){
             controlStage.getTurbo().setTexture(Assets.manager.get(Assets.TURBO_ON));
             turbo = true;
@@ -274,6 +275,7 @@ public class GameStage extends MyStage{
         if(input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.getAccelerometerY()-1.5 > rotationBase || controlStage.turnRight){
             car.turnRight((Gdx.input.getAccelerometerY()-rotationBase) * 0.15f * delta);
         }
+        System.out.println(car.getX()+";"+car.getY());
     }
 
     @Override
