@@ -1,117 +1,123 @@
-bg.png
-size: 968, 968
+bg-0.png
+size: 742, 840
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 frame_0_delay-0.04s
   rotate: false
   xy: 1, 1
-  size: 307, 173
-  orig: 307, 173
+  size: 369, 208
+  orig: 369, 208
   offset: 0, 0
   index: -1
 frame_1_delay-0.04s
-  rotate: true
-  xy: 176, 485
-  size: 307, 173
-  orig: 307, 173
-  offset: 0, 0
-  index: -1
-frame_2_delay-0.04s
   rotate: false
-  xy: 310, 794
-  size: 307, 173
-  orig: 307, 173
-  offset: 0, 0
-  index: -1
-frame_3_delay-0.04s
-  rotate: false
-  xy: 619, 176
-  size: 307, 173
-  orig: 307, 173
-  offset: 0, 0
-  index: -1
-frame_4_delay-0.04s
-  rotate: true
-  xy: 351, 176
-  size: 307, 173
-  orig: 307, 173
-  offset: 0, 0
-  index: -1
-frame_5_delay-0.04s
-  rotate: true
-  xy: 351, 485
-  size: 307, 173
-  orig: 307, 173
-  offset: 0, 0
-  index: -1
-frame_6_delay-0.04s
-  rotate: true
-  xy: 526, 351
-  size: 307, 173
-  orig: 307, 173
-  offset: 0, 0
-  index: -1
-frame_7_delay-0.04s
-  rotate: true
-  xy: 619, 660
-  size: 307, 173
-  orig: 307, 173
-  offset: 0, 0
-  index: -1
-frame_8_delay-0.04s
-  rotate: true
-  xy: 701, 351
-  size: 307, 173
-  orig: 307, 173
-  offset: 0, 0
-  index: -1
-frame_9_delay-0.04s
-  rotate: true
-  xy: 794, 660
-  size: 307, 173
-  orig: 307, 173
+  xy: 372, 631
+  size: 369, 208
+  orig: 369, 208
   offset: 0, 0
   index: -1
 frame_10_delay-0.04s
   rotate: false
-  xy: 310, 1
-  size: 307, 173
-  orig: 307, 173
+  xy: 372, 1
+  size: 369, 208
+  orig: 369, 208
   offset: 0, 0
   index: -1
 frame_11_delay-0.04s
   rotate: false
-  xy: 619, 1
-  size: 307, 173
-  orig: 307, 173
+  xy: 1, 211
+  size: 369, 208
+  orig: 369, 208
   offset: 0, 0
   index: -1
 frame_12_delay-0.04s
-  rotate: true
-  xy: 1, 176
-  size: 307, 173
-  orig: 307, 173
+  rotate: false
+  xy: 372, 211
+  size: 369, 208
+  orig: 369, 208
   offset: 0, 0
   index: -1
 frame_13_delay-0.04s
-  rotate: true
-  xy: 1, 485
-  size: 307, 173
-  orig: 307, 173
+  rotate: false
+  xy: 1, 421
+  size: 369, 208
+  orig: 369, 208
   offset: 0, 0
   index: -1
 frame_14_delay-0.04s
   rotate: false
-  xy: 1, 794
-  size: 307, 173
-  orig: 307, 173
+  xy: 1, 631
+  size: 369, 208
+  orig: 369, 208
   offset: 0, 0
   index: -1
 frame_15_delay-0.04s
-  rotate: true
-  xy: 176, 176
-  size: 307, 173
-  orig: 307, 173
+  rotate: false
+  xy: 372, 421
+  size: 369, 208
+  orig: 369, 208
+  offset: 0, 0
+  index: -1
+
+bg-1.png
+size: 742, 840
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+frame_2_delay-0.04s
+  rotate: false
+  xy: 1, 1
+  size: 369, 208
+  orig: 369, 208
+  offset: 0, 0
+  index: -1
+frame_3_delay-0.04s
+  rotate: false
+  xy: 372, 1
+  size: 369, 208
+  orig: 369, 208
+  offset: 0, 0
+  index: -1
+frame_4_delay-0.04s
+  rotate: false
+  xy: 1, 211
+  size: 369, 208
+  orig: 369, 208
+  offset: 0, 0
+  index: -1
+frame_5_delay-0.04s
+  rotate: false
+  xy: 372, 211
+  size: 369, 208
+  orig: 369, 208
+  offset: 0, 0
+  index: -1
+frame_6_delay-0.04s
+  rotate: false
+  xy: 1, 421
+  size: 369, 208
+  orig: 369, 208
+  offset: 0, 0
+  index: -1
+frame_7_delay-0.04s
+  rotate: false
+  xy: 1, 631
+  size: 369, 208
+  orig: 369, 208
+  offset: 0, 0
+  index: -1
+frame_8_delay-0.04s
+  rotate: false
+  xy: 372, 421
+  size: 369, 208
+  orig: 369, 208
+  offset: 0, 0
+  index: -1
+frame_9_delay-0.04s
+  rotate: false
+  xy: 372, 631
+  size: 369, 208
+  orig: 369, 208
   offset: 0, 0
   index: -1
