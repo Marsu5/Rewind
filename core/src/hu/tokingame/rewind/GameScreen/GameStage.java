@@ -206,7 +206,7 @@ public class GameStage extends MyStage{
             controlStage.getTurbo().setTexture(Assets.manager.get(Assets.TURBO_ON));
             turbo = true;
             turboOnFor += delta;
-            if(turboOnFor > 2){
+            if(turboOnFor > 4){
                 turboOnFor = 0;
                 controlStage.turboOn = false;
                 turbo = false;
@@ -253,7 +253,7 @@ public class GameStage extends MyStage{
                 car.brake(delta);
             }else {
                 if (turbo){
-                    car.accelerate(delta *2);
+                    car.accelerate(delta *4);
                 }else {
                     car.accelerate(delta);
                 }

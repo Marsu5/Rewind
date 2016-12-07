@@ -20,10 +20,11 @@ import hu.tokingame.rewind.SettingsScreen.SettingsStage;
 public class ControlStage extends MyStage {
     public boolean isGasTouched = false, isBrakeTouched = false, turboOn = false, turnLeft = false, turnRight = false, zoomOut = false;
 
-    UpDownButton Gaspedal, BrakePedal, Turbo, LeftButton, RightButton;
+    UpDownButton Gaspedal, BrakePedal, Turbo, LeftButton, RightButton, zoom;
     private ControlStage controlStage;
     private boolean turboReloading = false;
     private float elapstime = 0;
+    private float elapstime2 = 0;
 
 
 
@@ -37,7 +38,24 @@ public class ControlStage extends MyStage {
 
         if (turboReloading){
             elapstime+=delta;
-            if(elapstime > 10) {turboReloading = false; this.getTurbo().setTexture(Assets.manager.get(Assets.TURBO_OFF));}
+            if(elapstime > 14) {turboReloading = false; this.getTurbo().setTexture(Assets.manager.get(Assets.TURBO_OFF));}
+        }
+        if(zoomOut){
+            BrakePedal.setVisible(false);
+            Gaspedal.setVisible(false);
+            LeftButton.setVisible(false);
+            RightButton.setVisible(false);
+            Turbo.setVisible(false);
+            zoom.setVisible(false);
+            elapstime2+= delta;
+            if(elapstime2 > 3) {zoomOut = false; elapstime2 = 0;
+                BrakePedal.setVisible(true);
+                Gaspedal.setVisible(true);
+                LeftButton.setVisible(true);
+                RightButton.setVisible(true);
+                Turbo.setVisible(true);
+                zoom.setVisible(true);
+            }
         }
     }
     @Override
@@ -189,7 +207,7 @@ public class ControlStage extends MyStage {
                 }
             });
 
-            addActor(new UpDownButton(Assets.manager.get(Assets.ZOOMOUT), Assets.manager.get(Assets.ZOOMOUT)){
+            addActor(zoom = new UpDownButton(Assets.manager.get(Assets.ZOOMOUT), Assets.manager.get(Assets.ZOOMOUT)){
                 @Override
                 public void init() {
                     super.init();
@@ -205,13 +223,11 @@ public class ControlStage extends MyStage {
                         @Override
                         public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                             super.touchUp(event, x, y, pointer, button);
-                            zoomOut = false;
                         }
 
                         @Override
                         public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
                             super.exit(event, x, y, pointer, toActor);
-                            zoomOut = false;
                         }
                     });
 
