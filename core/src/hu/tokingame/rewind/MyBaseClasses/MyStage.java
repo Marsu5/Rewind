@@ -151,7 +151,7 @@ abstract public class MyStage extends Stage implements InitableInterface {
                     c.zoom -= cameraMoveSpeed*delta;
                 }
             }
-            System.out.println(cameraRotation + " ... " + rotateTo);
+            //System.out.println(cameraRotation + " ... " + rotateTo);
             if (Math.abs(cameraRotation - rotateTo)<0.01f){
                 cameraRotation = rotateTo;
             }else{
@@ -187,12 +187,31 @@ abstract public class MyStage extends Stage implements InitableInterface {
         Camera c = getCamera();
         for (Actor a: getActors()) {
             a.setVisible(isActorShowing(c,a));
-
         }
     }
 
-    private boolean isActorShowing(Camera c, Actor a){
+    public void updateFrustum(float margin){
+        OrthographicCamera c = (OrthographicCamera)getCamera();
+        for (Actor a: getActors()) {
+            a.setVisible(isActorShowing(c,a, margin));
+        }
+    }
+
+    private static boolean isActorShowing(Camera c, Actor a){
         return c.frustum.pointInFrustum(a.getX(), a.getY(), 0) || c.frustum.pointInFrustum(a.getX() + a.getWidth(), a.getY() + a.getHeight(), 0) ||
-                c.frustum.pointInFrustum(a.getX() + a.getWidth(), a.getY(), 0) || c.frustum.pointInFrustum(a.getX(), a.getY() + a.getHeight(), 0) || c.frustum.pointInFrustum(a.getX() + a.getWidth(),a.getY() + a.getHeight(),0);
+                c.frustum.pointInFrustum(a.getX() + a.getWidth(), a.getY(), 0) || c.frustum.pointInFrustum(a.getX(), a.getY() + a.getHeight(), 0);
+    }
+
+    private static boolean isActorShowing(OrthographicCamera c, Actor a, float zoom){
+        float z = c.zoom;
+        c.zoom *= zoom;
+        c.update();
+        boolean b = isActorShowing(c,a);
+        c.zoom = z;
+        c.update();
+        return b;
+        /*return isActorShowing(c, a) || c.frustum.pointInFrustum(a.getX() - margin, a.getY() - margin, 0) || c.frustum.pointInFrustum(a.getX()  + a.getWidth() + margin, a.getY() + a.getHeight() + margin, 0) ||
+                c.frustum.pointInFrustum(a.getX() + a.getWidth() + margin, a.getY() - margin, 0) || c.frustum.pointInFrustum(a.getX() - margin, a.getY() + a.getHeight() + margin, 0);
+    */
     }
 }

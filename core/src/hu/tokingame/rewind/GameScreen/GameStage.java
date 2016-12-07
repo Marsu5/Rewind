@@ -281,11 +281,14 @@ public class GameStage extends MyStage{
 
     @Override
     public void draw() {
+        if (mapLoader==null){
+            return;
+        }
         if (mapLoader.addNext() || car == null){
             mapCreatingStage.draw();
             return;
         }
-        updateFrustum();
+        updateFrustum(1.25f);
         super.draw();
         controlStage.draw();
         box2DDebugRenderer.render(world, getCamera().combined);
