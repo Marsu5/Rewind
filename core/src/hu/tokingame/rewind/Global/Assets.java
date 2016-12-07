@@ -70,13 +70,14 @@ public class Assets {
     public static final AssetDescriptor<Texture> GASPEDAL_DOWN = new AssetDescriptor<Texture>("GameTextures/gazpedal_down.png", Texture.class);
     public static final AssetDescriptor<Texture> BRAKEPEDAL_UP = new AssetDescriptor<Texture>("GameTextures/fekpedal_up.png", Texture.class);
     public static final AssetDescriptor<Texture> BRAKEPEDAL_DOWN = new AssetDescriptor<Texture>("GameTextures/fekpedal_down.png", Texture.class);
-    public static final AssetDescriptor<Texture> TURBO_ON = new AssetDescriptor<Texture>("GameTextures/turbo.png", Texture.class);
-    public static final AssetDescriptor<Texture> TURBO_OFF = new AssetDescriptor<Texture>("GameTextures/noturbo.png", Texture.class);
+    public static final AssetDescriptor<Texture> TURBO_ON = new AssetDescriptor<Texture>("GameTextures/turbo_on.png", Texture.class);
+    public static final AssetDescriptor<Texture> TURBO_OFF = new AssetDescriptor<Texture>("GameTextures/turbo_off.png", Texture.class);
+    public static final AssetDescriptor<Texture> TURBO_UNAVAILABLE = new AssetDescriptor<Texture>("GameTextures/turbo_unavailable.png", Texture.class);
     public static final AssetDescriptor<Texture> STEERLEFT_UP = new AssetDescriptor<Texture>("GameTextures/steer_left.png", Texture.class);
     public static final AssetDescriptor<Texture> STEERLEFT_DOWN = new AssetDescriptor<Texture>("GameTextures/steer_left_down.png", Texture.class);
     public static final AssetDescriptor<Texture> STEERRIGHT_UP = new AssetDescriptor<Texture>("GameTextures/steer_right.png", Texture.class);
     public static final AssetDescriptor<Texture> STEERRIGHT_DOWN = new AssetDescriptor<Texture>("GameTextures/steer_right_down.png", Texture.class);
-    public static final AssetDescriptor<Texture> PINGAS = new AssetDescriptor<Texture>("GameTextures/p.png", Texture.class);
+    public static final AssetDescriptor<Texture> FORD = new AssetDescriptor<Texture>("GameTextures/ford.png", Texture.class);
     public static final AssetDescriptor<Texture> ZOOMOUT = new AssetDescriptor<Texture>("GameTextures/zoom_out.png", Texture.class);
     //</editor-fold>
 
@@ -129,11 +130,12 @@ public class Assets {
         manager.load(BRAKEPEDAL_UP);
         manager.load(TURBO_OFF);
         manager.load(TURBO_ON);
+        manager.load(TURBO_UNAVAILABLE);
         manager.load(STEERLEFT_DOWN);
         manager.load(STEERLEFT_UP);
         manager.load(STEERRIGHT_DOWN);
         manager.load(STEERRIGHT_UP);
-        manager.load(PINGAS);
+        manager.load(FORD);
         manager.load(ZOOMOUT);
 
         //car textures

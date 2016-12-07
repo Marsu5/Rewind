@@ -15,8 +15,10 @@ import java.util.Scanner;
 
 import hu.tokingame.rewind.Bodies.Barricade;
 import hu.tokingame.rewind.GameScreen.GameStage;
+import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
+import hu.tokingame.rewind.MyBaseClasses.OneSpriteStaticActor;
 import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
 
 /**
@@ -137,7 +139,7 @@ public class MapLoader{
 
         }catch(Exception e){
             System.out.println(e);
-            System.out.println("nincsen filé");
+            System.out.println("nincsen filé ");
         }
         be.close();
 
