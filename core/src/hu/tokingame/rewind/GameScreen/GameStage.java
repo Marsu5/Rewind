@@ -41,7 +41,6 @@ public class GameStage extends MyStage{
     World world;
     WorldBodyEditorLoader loader;
     Car car;
-    Barricade barricade;
     ControlStage controlStage;
     MapCreatingStage mapCreatingStage;
     MapLoader mapLoader;
@@ -114,10 +113,8 @@ public class GameStage extends MyStage{
                 addActor(car = new Car(world, loader, 1,1));
 
                 car.setRotation(Globals.carRotation);
-                addActor(barricade = new Barricade(world, loader, 1, 1));
                 car.setPosition(Globals.carPositionX,Globals.carPositionY);
 
-                barricade.setPosition(3f, 6.5f);
                 addActor(finish = new FinishSensor(world, Globals.finishPositionX, Globals.finishPositionY));
                 finish.setRotation(Globals.finishRotation);
 
@@ -213,7 +210,7 @@ public class GameStage extends MyStage{
                 turboOnFor = 0;
                 controlStage.turboOn = false;
                 turbo = false;
-                controlStage.getTurbo().setTexture(Assets.manager.get(Assets.TURBO_OFF));
+                controlStage.getTurbo().setTexture(Assets.manager.get(Assets.TURBO_UNAVAILABLE));
                 car.divSpeed(2f);
 
             }
@@ -279,7 +276,7 @@ public class GameStage extends MyStage{
         if(input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.getAccelerometerY()-1.5 > rotationBase || controlStage.turnRight){
             car.turnRight((Gdx.input.getAccelerometerY()-rotationBase) * 0.15f * delta);
         }
-        System.out.println(car.getX()+";"+car.getY());
+        System.out.println(car.getX()+";"+car.getY()+";"+car.getRotation());
     }
 
     @Override

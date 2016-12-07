@@ -13,6 +13,11 @@ public class UpDownButton extends OneSpriteStaticActor implements InitableInterf
 
     private Texture up, down;
 
+    @Override
+    public void setTexture(Texture texture) {
+        super.setTexture(texture);
+    }
+
     public UpDownButton(Texture up, Texture down) {
         super(up);
         this.up = up;

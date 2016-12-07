@@ -22,6 +22,8 @@ public class ControlStage extends MyStage {
 
     UpDownButton Gaspedal, BrakePedal, Turbo, LeftButton, RightButton;
     private ControlStage controlStage;
+    private boolean turboReloading = false;
+    private float elapstime = 0;
 
 
 
@@ -29,7 +31,15 @@ public class ControlStage extends MyStage {
         super(new ExtendViewport(16,9), batch, game);
         setDebugAll(true);
     }
+    @Override
+    public void act(float delta) {
+        super.act(delta);
 
+        if (turboReloading){
+            elapstime+=delta;
+            if(elapstime > 10) {turboReloading = false; this.getTurbo().setTexture(Assets.manager.get(Assets.TURBO_OFF));}
+        }
+    }
     @Override
     public void init() {
 
@@ -40,8 +50,8 @@ public class ControlStage extends MyStage {
                 @Override
                 public void init() {
                     super.init();
-                    this.setSize(3.5f, 4);
-                    this.setPosition(12.5f, 0);
+                    this.setSize(3f, 3.5f);
+                    this.setPosition(13f, 0);
                     addListener(new InputListener(){
                         @Override
                         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -68,8 +78,8 @@ public class ControlStage extends MyStage {
                 @Override
                 public void init() {
                     super.init();
-                    this.setSize(3.5f, 4);
-                    this.setPosition(9, 0);
+                    this.setSize(3 ,3.5f);
+                    this.setPosition(10, 0);
                     addListener(new InputListener(){
                         @Override
                         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -100,8 +110,13 @@ public class ControlStage extends MyStage {
                     addListener(new InputListener(){
                         @Override
                         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                            turboOn = true;
-                            pressed();
+                            if(!turboReloading){
+                                turboOn = true;
+                                pressed();
+                                turboReloading = true;
+                                elapstime = 0;
+                                setTexture(Assets.manager.get(Assets.TURBO_UNAVAILABLE));
+                            }
                             return super.touchDown(event, x, y, pointer, button);
                         }
 
@@ -122,7 +137,7 @@ public class ControlStage extends MyStage {
                 @Override
                 public void init() {
                     super.init();
-                    this.setSize(3.5f, 4);
+                    this.setSize(3, 3.5f);
                     this.setPosition(0, 0);
                     addListener(new InputListener(){
                         @Override
@@ -150,8 +165,8 @@ public class ControlStage extends MyStage {
                 @Override
                 public void init() {
                     super.init();
-                    this.setSize(3.5f, 4);
-                    this.setPosition(4, 0);
+                    this.setSize(3, 3.5f);
+                    this.setPosition(3.25f, 0);
                     addListener(new InputListener(){
                         @Override
                         public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
@@ -179,7 +194,7 @@ public class ControlStage extends MyStage {
                 public void init() {
                     super.init();
                     setSize(1,1);
-                    setPosition(10, 5);
+                    setPosition(0, 8);
                     addListener(new InputListener(){
                         @Override
                         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -208,8 +223,8 @@ public class ControlStage extends MyStage {
                 @Override
                 public void init() {
                     super.init();
-                    this.setSize(3.5f, 4);
-                    this.setPosition(12.5f, 0);
+                    this.setSize(3, 3.5f);
+                    this.setPosition(13f, 0);
                     addListener(new InputListener(){
                         @Override
                         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -239,7 +254,7 @@ public class ControlStage extends MyStage {
                 @Override
                 public void init() {
                     super.init();
-                    this.setSize(3.5f, 4);
+                    this.setSize(3, 3.5f);
                     this.setPosition(0, 0);
                     addListener(new InputListener(){
                         @Override
@@ -292,7 +307,7 @@ public class ControlStage extends MyStage {
                 }
             });
 
-            addActor(new UpDownButton(Assets.manager.get(Assets.CAR_RED), Assets.manager.get(Assets.CAR_BLUE)){
+            addActor(new UpDownButton(Assets.manager.get(Assets.ZOOMOUT), Assets.manager.get(Assets.ZOOMOUT)){
                 @Override
                 public void init() {
                     super.init();
