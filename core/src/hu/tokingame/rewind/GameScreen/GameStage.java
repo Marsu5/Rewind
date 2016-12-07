@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -13,6 +14,7 @@ import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hu.tokingame.rewind.Bodies.Barricade;
@@ -231,12 +233,14 @@ public class GameStage extends MyStage{
         */
         //car.getBody().getMassData().center.set(getWidth()/2,getHeight()/2);
         if(controlStage.zoomOut){
-            setCameraMoveToXY(8, 8,100, 3, car.getRotation());
+            ExtendViewport vp = (ExtendViewport) getViewport();
+            setCameraMoveToXY( (vp.getWorldWidth() - vp.getMinWorldWidth()),  vp.getWorldWidth() / 2 , 1 + mapLoader.getWidth()>mapLoader.getHeight()?(float)mapLoader.getWidth() / 16.0f * 1.1f : (float)mapLoader.getHeight() / 16.0f * 1.1f, 10, -getCameraRotation());
         }else {
             if(SettingsStage.cameraRotation){
-                setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed), 3, car.getRotation());
+                setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed), 10, (float)Math.toDegrees(car.getBody().getAngle()));
+                System.out.println(car.getBody().getAngle());
             }else{
-                setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed),3);
+                setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed),10);
             }
         }
 

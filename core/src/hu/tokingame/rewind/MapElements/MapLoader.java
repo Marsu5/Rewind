@@ -49,6 +49,8 @@ public class MapLoader{
     private WorldBodyEditorLoader loader;
     private boolean running = true;
 
+    private int width=0, height=0;
+
     public MapLoader(int level, MyStage stage, World world, WorldBodyEditorLoader loader) {
         this.stage = stage;
         this.level = level;
@@ -57,6 +59,14 @@ public class MapLoader{
         //System.out.println("konstruktor");
     }
 
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
 
     public MapLoader load(){
         loadMap();
@@ -129,10 +139,13 @@ public class MapLoader{
                     //addMapElement(vonat.charAt(i),i,vonat.length()-sor);  //későbbre halasztva, lassan adagolva...
                     mapElements.addLast(new MapElement(vonat.charAt(i),i,vonat.length()-sor));
                 }
+                    if (vonat.length()>width) width = vonat.length();
                 sor++;
                 lineAdded();
-            }}
+            }
 
+            }
+            height = sor;
 
 
         }catch(Exception e){
