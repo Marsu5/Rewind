@@ -30,7 +30,7 @@ public class ControlStage extends MyStage {
 
     public ControlStage(Batch batch, MyGdxGame game) {
         super(new ExtendViewport(16,9), batch, game);
-        setDebugAll(true);
+        setDebugAll(false);
     }
     @Override
     public void act(float delta) {
