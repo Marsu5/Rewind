@@ -234,7 +234,8 @@ public class GameStage extends MyStage{
         //car.getBody().getMassData().center.set(getWidth()/2,getHeight()/2);
         if(controlStage.zoomOut){
             ExtendViewport vp = (ExtendViewport) getViewport();
-            setCameraMoveToXY( (vp.getWorldWidth() - vp.getMinWorldWidth()),  vp.getWorldWidth() / 2 , 1 + mapLoader.getWidth()>mapLoader.getHeight()?(float)mapLoader.getWidth() / 16.0f * 1.1f : (float)mapLoader.getHeight() / 16.0f * 1.1f, 10, -getCameraRotation());
+            //setCameraMoveToXY( (vp.getWorldWidth() - vp.getMinWorldWidth()),  vp.getWorldWidth() / 2 , 1 + mapLoader.getWidth()>mapLoader.getHeight()?(float)mapLoader.getWidth() / 16.0f * 1.1f : (float)mapLoader.getHeight() / 16.0f * 1.1f, 10, -getCameraRotation());
+            setCameraMoveToXY( mapLoader.getWidth()/2,  mapLoader.getHeight()/2+1 , 1 + mapLoader.getWidth()>mapLoader.getHeight()?(float)mapLoader.getWidth() / 16.0f * 1.1f : (float)mapLoader.getHeight() / 16.0f * 1.1f, 10, -getCameraRotation());
         }else {
             if(SettingsStage.cameraRotation){
                 setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed), 10, (float)Math.toDegrees(car.getBody().getAngle()));
