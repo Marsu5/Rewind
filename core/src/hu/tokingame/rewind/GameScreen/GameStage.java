@@ -270,13 +270,20 @@ public class GameStage extends MyStage{
                 car.brake(delta);
             }
         }
-        if(input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.getAccelerometerY()+1.5 < rotationBase || controlStage.turnLeft){
-            car.turnLeft((Gdx.input.getAccelerometerY()-rotationBase) * 0.15f * delta);
+        if(input.isKeyPressed(Input.Keys.LEFT)  || controlStage.turnLeft){
+            car.turnLeft(60 * delta);
+        };
+        if(input.isKeyPressed(Input.Keys.RIGHT)  || controlStage.turnRight){
+            car.turnRight(60 * delta);
+        };
+        System.out.println(" X: " + Gdx.input.getAccelerometerX() + " Y: " + Gdx.input.getAccelerometerY() + " Z: " + Gdx.input.getAccelerometerZ());
+        if (Gdx.input.getAccelerometerY() < 0) {
+            car.turnLeft(Math.abs(Gdx.input.getAccelerometerY()) * 6f * delta);
         }
-        if(input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.getAccelerometerY()-1.5 > rotationBase || controlStage.turnRight){
-            car.turnRight((Gdx.input.getAccelerometerY()-rotationBase) * 0.15f * delta);
+        if(Gdx.input.getAccelerometerY() > 0){
+            car.turnRight(Math.abs(Gdx.input.getAccelerometerY()) * 6f * delta);
         }
-        System.out.println(car.getX()+";"+car.getY()+";"+car.getRotation());
+        //System.out.println(car.getX()+";"+car.getY()+";"+car.getRotation());
     }
 
     @Override
