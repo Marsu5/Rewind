@@ -121,8 +121,8 @@ public class GameStage extends MyStage{
                 car.setRotation(Globals.carRotation);
                 car.setPosition(Globals.carPositionX,Globals.carPositionY);
 
-                addActor(finish = new FinishSensor(world, Globals.finishPositionX, Globals.finishPositionY));
-                finish.setRotation(Globals.finishRotation);
+                /*addActor(finish = new FinishSensor(world, Globals.finishPositionX, Globals.finishPositionY));
+                finish.setRotation(Globals.finishRotation);*/
                 startTimer();
                 for (Actor a : me.getActors()) {
                     if (a instanceof Barricade){
@@ -157,7 +157,8 @@ public class GameStage extends MyStage{
                     }
                     if (contact.getFixtureB().getBody().getUserData() instanceof FinishSensor){
                         System.out.println(getTime());
-                        Globals.unlockedLevels[newlevel] = true;
+                        if(newlevel == -1) game.setScreen(new CreditsScreen(game));
+                        else Globals.unlockedLevels[newlevel] = true;
                         m.stop();
                         System.out.println("Next Level");
                         game.setScreen(new GameScreen(game,newlevel));

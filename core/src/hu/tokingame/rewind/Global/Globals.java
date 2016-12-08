@@ -20,7 +20,7 @@ public class Globals {
     public static boolean AccelerometerAvailable = Gdx.input.isPeripheralAvailable(Input.Peripheral.Accelerometer);
 
     public static int[] levels = {0, 1, 2, 3, 4, 5};
-    public static boolean[] unlockedLevels = {true, false, false, false, false, false};
+    public static boolean[] unlockedLevels = {true, true, true, true, true, true};
     public static int currenLevel = 0;
 
     public static float carPositionX = 1;
@@ -28,8 +28,8 @@ public class Globals {
     public static float carRotation = 0;
 
 
-    public static float finishPositionX = 2;
-    public static float finishPositionY = 2;
+    public static float finishPositionX = 10;
+    public static float finishPositionY = 10;
     public static float finishRotation = 0;
 
 

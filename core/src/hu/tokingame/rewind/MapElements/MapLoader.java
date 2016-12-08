@@ -130,8 +130,19 @@ public class MapLoader{
                     vonat = vonat.substring(1);
                     String[] finpos = vonat.split(" ");
                     Globals.finishPositionX = Float.parseFloat(finpos[0]);
+                    System.out.println(Globals.finishPositionX);
                     Globals.finishPositionY = Float.parseFloat(finpos[1]);
+                    System.out.println(Globals.finishPositionY);
                     Globals.finishRotation = Float.parseFloat(finpos[2]);
+                    stage.addActor(new FinishSensor(world, Globals.finishPositionX, Globals.finishPositionY){
+                        @Override
+                        public void init() {
+                            super.init();
+                            this.setPosition(Globals.finishPositionX, Globals.finishPositionY);
+                            this.setRotation(Globals.finishRotation);
+                            this.setSize(5f, 5f);
+                        }
+                    });
                 }
                 else{
                 //System.out.println(vonat.length());

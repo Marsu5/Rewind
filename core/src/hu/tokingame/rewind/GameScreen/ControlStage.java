@@ -26,7 +26,7 @@ public class ControlStage extends MyStage {
     private boolean turboReloading = false;
     private float elapstime = 0;
     private float elapstime2 = 0;
-    public OneSpriteStaticActor mutato;
+    public OneSpriteStaticActor mutato, ora;
 
 
 
@@ -47,6 +47,8 @@ public class ControlStage extends MyStage {
             Gaspedal.setVisible(false);
             Turbo.setVisible(false);
             zoom.setVisible(false);
+            mutato.setVisible(false);
+            ora.setVisible(false);
             if(SettingsStage.onScreenMode){
                 LeftButton.setVisible(false);
                 RightButton.setVisible(false);
@@ -55,6 +57,8 @@ public class ControlStage extends MyStage {
             if(elapstime2 > 3) {zoomOut = false; elapstime2 = 0;
                 BrakePedal.setVisible(true);
                 Gaspedal.setVisible(true);
+                mutato.setVisible(true);
+                ora.setVisible(true);
                 if(SettingsStage.onScreenMode){
                     LeftButton.setVisible(true);
                     RightButton.setVisible(true);
@@ -359,12 +363,12 @@ public class ControlStage extends MyStage {
                 }
             });
         }
-        addActor(new OneSpriteStaticActor(Assets.manager.get(Assets.KMH_DISPLAY)){
+        addActor(ora = new OneSpriteStaticActor(Assets.manager.get(Assets.KMH_DISPLAY)){
             @Override
             public void init() {
                 super.init();
                 setSize(3, 3);
-                setPosition(6, 0);
+                setPosition(6.5f, 0);
             }
         });
         addActor(mutato = new OneSpriteStaticActor(Assets.manager.get(Assets.KMH_POINTER)){
@@ -372,7 +376,7 @@ public class ControlStage extends MyStage {
             public void init() {
                 super.init();
                 setSize(3, 3);
-                setPosition(6, 0);
+                setPosition(6.5f, 0);
                 setOriginCenter();
             }
         });
@@ -380,7 +384,7 @@ public class ControlStage extends MyStage {
     }
 
     public void setSpeed(float kmh){
-        controlStage.mutato.setRotation(-kmh * 1.5f);
+        controlStage.mutato.setRotation(-kmh * 1.3f);
     }
 
     public UpDownButton getTurbo(){
