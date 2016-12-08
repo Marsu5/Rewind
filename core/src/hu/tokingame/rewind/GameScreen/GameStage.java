@@ -47,6 +47,7 @@ public class GameStage extends MyStage{
     MapLoader mapLoader;
     Box2DDebugRenderer box2DDebugRenderer;
     FinishSensor finish;
+    PauseStage pauseStage;
     float turboOnFor;
     boolean turbo = false;
     float rotationBase;
@@ -61,8 +62,8 @@ public class GameStage extends MyStage{
 
     @Override
     public boolean keyDown(int keycode) {
-        if(keycode == Input.Keys.BACK){
-            game.setScreenBackByStackPop();
+        if(keycode == Input.Keys.BACK || keycode == Input.Keys.ESCAPE){
+            pauseStage.draw();
         }
         return false;
     }
@@ -74,13 +75,14 @@ public class GameStage extends MyStage{
         this.level = level;
         System.out.println(level);
 
-        Gdx.input.setCatchBackKey(true); //TODO pause képernyő vagy valami
+        Gdx.input.setCatchBackKey(true);
 
         world = new World(new Vector2(0,0), false);
         box2DDebugRenderer = new Box2DDebugRenderer();
         mapCreatingStage = new MapCreatingStage(getBatch(), game);
         controlStage = new ControlStage(getBatch(), game);
         bgStage = new BgStage(getBatch(), game);
+        pauseStage = new PauseStage(getBatch(),game);
 
         loader = new WorldBodyEditorLoader(Gdx.files.internal("Jsons/physics.json"));
         //(new Thread(new MapLoader(level,this,world,loader))).start();
