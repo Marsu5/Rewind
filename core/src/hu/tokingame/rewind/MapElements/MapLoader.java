@@ -153,6 +153,7 @@ public class MapLoader{
 
         }catch(Exception e){
             System.out.println(e);
+            e.printStackTrace();
             System.out.println("nincsen filé ");
         }
         be.close();
