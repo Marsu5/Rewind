@@ -14,6 +14,8 @@ import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -92,7 +94,7 @@ public class GameStage extends MyStage{
         if(level + 1 < Globals.levels.length) newlevel = level + 1;
         else newlevel = -1;
 
-
+        final Stage me = this;
 
         //https://github.com/libgdx/libgdx/wiki/Threading
         new Thread(new Runnable() {
@@ -122,7 +124,14 @@ public class GameStage extends MyStage{
                 addActor(finish = new FinishSensor(world, Globals.finishPositionX, Globals.finishPositionY));
                 finish.setRotation(Globals.finishRotation);
                 startTimer();
-
+                for (Actor a : me.getActors()) {
+                    if (a instanceof Barricade){
+                        a.setZIndex(Integer.MAX_VALUE);
+                    }
+                    if (a instanceof Road){
+                        a.setZIndex(0);
+                    }
+                }
             }
         }).start();
 
@@ -233,10 +242,10 @@ public class GameStage extends MyStage{
             setCameraMoveToXY( mapLoader.getWidth()/2,  mapLoader.getHeight()/2+1 , 1 + mapLoader.getWidth()>mapLoader.getHeight()?(float)mapLoader.getWidth() / 16.0f * 1.1f : (float)mapLoader.getHeight() / 16.0f * 1.1f, 10, -getCameraRotation());
         }else {
             if(SettingsStage.cameraRotation){
-                setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed), 10, (float)Math.toDegrees(car.getBody().getAngle()));
+                setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.1f * car.getSpeed()/car.maxSpeed), 10, (float)Math.toDegrees(car.getBody().getAngle()));
                 System.out.println(car.getBody().getAngle());
             }else{
-                setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed),10);
+                setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.1f * car.getSpeed()/car.maxSpeed),10);
             }
         }
 /*
@@ -288,7 +297,7 @@ public class GameStage extends MyStage{
         if(input.isKeyPressed(Input.Keys.RIGHT)  || controlStage.turnRight){
             car.turnRight(60 * delta);
         };
-        System.out.println(" X: " + Gdx.input.getAccelerometerX() + " Y: " + Gdx.input.getAccelerometerY() + " Z: " + Gdx.input.getAccelerometerZ());
+        //System.out.println(" X: " + Gdx.input.getAccelerometerX() + " Y: " + Gdx.input.getAccelerometerY() + " Z: " + Gdx.input.getAccelerometerZ());
         if (Gdx.input.getAccelerometerY() < 0) {
             car.turnLeft(Math.abs(Gdx.input.getAccelerometerY()) * 6f * delta);
         }
@@ -298,7 +307,8 @@ public class GameStage extends MyStage{
         //System.out.println(car.getX()+";"+car.getY()+";"+car.getRotation());
 
 
-        controlStage.mutato.setRotation(270 + (getCarVelocity()/20)* 180);
+        controlStage.setSpeed(car.getSpeed());
+        System.out.println(car.getSpeed());
     }
 
     @Override

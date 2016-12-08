@@ -82,6 +82,9 @@ public class Assets {
     public static final AssetDescriptor<Texture> FORD = new AssetDescriptor<Texture>("GameTextures/ford.png", Texture.class);
     public static final AssetDescriptor<Texture> ZOOMOUT = new AssetDescriptor<Texture>("GameTextures/zoom_out.png", Texture.class);
     public static final AssetDescriptor<Texture> BUTTON_BG = new AssetDescriptor<Texture>("ButtonAndOther/buttonbg.png", Texture.class);
+    public static final AssetDescriptor<Texture> KMH_DISPLAY = new AssetDescriptor<Texture>("ButtonAndOther/ora.png", Texture.class);
+    public static final AssetDescriptor<Texture> KMH_POINTER = new AssetDescriptor<Texture>("ButtonAndOther/mutato.png", Texture.class);
+
     //</editor-fold>
 
     //<editor-fold desc="Music">
@@ -142,6 +145,8 @@ public class Assets {
         manager.load(FORD);
         manager.load(ZOOMOUT);
         manager.load(BUTTON_BG);
+        manager.load(KMH_POINTER);
+        manager.load(KMH_DISPLAY);
 
         //car textures
         manager.load(CAR_BLUE);

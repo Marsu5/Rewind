@@ -359,28 +359,28 @@ public class ControlStage extends MyStage {
                 }
             });
         }
-        addActor(new OneSpriteStaticActor(Assets.manager.get(Assets.TURBO_ON)){
+        addActor(new OneSpriteStaticActor(Assets.manager.get(Assets.KMH_DISPLAY)){
             @Override
             public void init() {
                 super.init();
-                setSize(2, 2);
-                setPosition(0, 10);
+                setSize(3, 3);
+                setPosition(6, 0);
             }
         });
-        addActor(mutato = new OneSpriteStaticActor(Assets.manager.get(Assets.TURBO_OFF)){
+        addActor(mutato = new OneSpriteStaticActor(Assets.manager.get(Assets.KMH_POINTER)){
             @Override
             public void init() {
                 super.init();
-                setSize(2, 2);
-                setPosition(0, 10);
+                setSize(3, 3);
+                setPosition(6, 0);
                 setOriginCenter();
             }
         });
 
+    }
 
-
-
-
+    public void setSpeed(float kmh){
+        controlStage.mutato.setRotation(-kmh * 1.5f);
     }
 
     public UpDownButton getTurbo(){

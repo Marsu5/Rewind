@@ -45,7 +45,7 @@ public class Car extends WorldActorGroup {
         }
     }
 
-    public float maxSpeed = 50;
+    public float maxSpeed = 200;
     public float maxTurnVelocity = 0.9f;
     public float turnVelocity = 2f;
     public float accelerateVelocity = 14;
@@ -60,10 +60,6 @@ public class Car extends WorldActorGroup {
     private float accelerateTimer = 0;
     private float turnTimer = 0;
 
-
-    public float getSpeed() {
-        return getBody().getLinearVelocity().len();
-    }
 
     public void accelerate(float delta) {
         accelerateTimer = accelerateTime;
@@ -152,5 +148,10 @@ public class Car extends WorldActorGroup {
         Vector2 v = getBody().getLinearVelocity().cpy();
         v.rotateRad(-getBody().getAngle());
         return v.y<0;
+    }
+
+    public float getSpeed(){
+        //return 200.0f * (getBody().getLinearVelocity().len()/maxSpeed);
+        return getBody().getLinearVelocity().len()*150;
     }
 }

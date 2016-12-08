@@ -16,7 +16,7 @@ public class Barricade extends WorldActorGroup{
     OneSpriteStaticActor actor;
 
     public Barricade(World world, WorldBodyEditorLoader loader, float X, float Y) {
-        super(world, loader, "ford.png", BodyDef.BodyType.DynamicBody, 1000, 0.2f, 10, false);
+        super(world, loader, "ford.png", BodyDef.BodyType.DynamicBody, 100, 0.2f, 100, false);
         actor = new OneSpriteStaticActor(Assets.manager.get(Assets.FORD));
         actor.setSize(0.25f, 0.5f);
         setSize(getWidth() / 4, getHeight() / 4);
