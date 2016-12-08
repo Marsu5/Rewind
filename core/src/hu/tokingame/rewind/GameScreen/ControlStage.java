@@ -43,16 +43,20 @@ public class ControlStage extends MyStage {
         if(zoomOut){
             BrakePedal.setVisible(false);
             Gaspedal.setVisible(false);
-            LeftButton.setVisible(false);
-            RightButton.setVisible(false);
             Turbo.setVisible(false);
             zoom.setVisible(false);
+            if(SettingsStage.onScreenMode){
+                LeftButton.setVisible(false);
+                RightButton.setVisible(false);
+            }
             elapstime2+= delta;
             if(elapstime2 > 3) {zoomOut = false; elapstime2 = 0;
                 BrakePedal.setVisible(true);
                 Gaspedal.setVisible(true);
-                LeftButton.setVisible(true);
-                RightButton.setVisible(true);
+                if(SettingsStage.onScreenMode){
+                    LeftButton.setVisible(true);
+                    RightButton.setVisible(true);
+                }
                 Turbo.setVisible(true);
                 zoom.setVisible(true);
             }
@@ -323,7 +327,7 @@ public class ControlStage extends MyStage {
                 }
             });
 
-            addActor(new UpDownButton(Assets.manager.get(Assets.ZOOMOUT), Assets.manager.get(Assets.ZOOMOUT)){
+            addActor(zoom = new UpDownButton(Assets.manager.get(Assets.ZOOMOUT), Assets.manager.get(Assets.ZOOMOUT)){
                 @Override
                 public void init() {
                     super.init();
@@ -339,13 +343,11 @@ public class ControlStage extends MyStage {
                         @Override
                         public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                             super.touchUp(event, x, y, pointer, button);
-                            zoomOut = false;
                         }
 
                         @Override
                         public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
                             super.exit(event, x, y, pointer, toActor);
-                            zoomOut = false;
                         }
                     });
 
