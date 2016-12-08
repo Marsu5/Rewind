@@ -52,6 +52,7 @@ public class GameStage extends MyStage{
     boolean turbo = false;
     float rotationBase;
     int newlevel;
+    boolean pause = false;
     Music m;
 
 
@@ -63,7 +64,7 @@ public class GameStage extends MyStage{
     @Override
     public boolean keyDown(int keycode) {
         if(keycode == Input.Keys.BACK || keycode == Input.Keys.ESCAPE){
-            pauseStage.draw();
+            pause = true;
         }
         return false;
     }
@@ -82,7 +83,7 @@ public class GameStage extends MyStage{
         mapCreatingStage = new MapCreatingStage(getBatch(), game);
         controlStage = new ControlStage(getBatch(), game);
         bgStage = new BgStage(getBatch(), game);
-        pauseStage = new PauseStage(getBatch(),game);
+        pauseStage = new PauseStage(getBatch(),game,this);
 
         loader = new WorldBodyEditorLoader(Gdx.files.internal("Jsons/physics.json"));
         //(new Thread(new MapLoader(level,this,world,loader))).start();
@@ -132,6 +133,7 @@ public class GameStage extends MyStage{
         InputMultiplexer inputMultiplexer = new InputMultiplexer();
         inputMultiplexer.addProcessor(this);
         inputMultiplexer.addProcessor(controlStage);
+        inputMultiplexer.addProcessor(pauseStage);
         Gdx.input.setInputProcessor(inputMultiplexer);
 
         rotationBase = Gdx.input.getAccelerometerY();
@@ -206,29 +208,20 @@ public class GameStage extends MyStage{
 
     @Override
     public void act(float delta) {
-
-        if (controlStage.turboOn){
-            controlStage.getTurbo().setTexture(Assets.manager.get(Assets.TURBO_ON));
-            turbo = true;
-            turboOnFor += delta;
-            if(turboOnFor > 4){
-                turboOnFor = 0;
-                controlStage.turboOn = false;
-                turbo = false;
-                controlStage.getTurbo().setTexture(Assets.manager.get(Assets.TURBO_UNAVAILABLE));
-                car.divSpeed(2f);
-
-            }
-        }
-
         if (mapLoader.addNext() || car == null){
             mapCreatingStage.setPercent(mapLoader.getPercent());
             mapCreatingStage.act(delta);
             return;
         }
-        world.step(delta,10,10);
-        super.act(delta);
-        controlStage.act(delta);
+        if (!pause) {
+            world.step(delta, 10, 10);
+            super.act(delta);
+            controlStage.act(delta);
+        }else{
+            pauseStage.act(delta);
+            return;
+        }
+
         /*OrthographicCamera c = (OrthographicCamera)getCamera();
         c.zoom = 0.2f;
         set
@@ -246,11 +239,24 @@ public class GameStage extends MyStage{
                 setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed),10);
             }
         }
-
+/*
         if(input.isKeyPressed(Input.Keys.ESCAPE)){
             game.setScreenBackByStackPop();
         }
+*/
+        if (controlStage.turboOn){
+            controlStage.getTurbo().setTexture(Assets.manager.get(Assets.TURBO_ON));
+            turbo = true;
+            turboOnFor += delta;
+            if(turboOnFor > 4){
+                turboOnFor = 0;
+                controlStage.turboOn = false;
+                turbo = false;
+                controlStage.getTurbo().setTexture(Assets.manager.get(Assets.TURBO_UNAVAILABLE));
+                car.divSpeed(2f);
 
+            }
+        }
         if(input.isKeyPressed(Input.Keys.UP) || controlStage.isGasTouched){
             if (car.isStopped()){
                 reverse = false;
@@ -304,6 +310,13 @@ public class GameStage extends MyStage{
         updateFrustum(1.25f);
         bgStage.draw();
         super.draw();
+        if (pause){
+            pauseStage.draw();
+        }
+        else{
+            controlStage.draw();
+        }
+        box2DDebugRenderer.render(world, getCamera().combined);
         controlStage.draw();
         //box2DDebugRenderer.render(world, getCamera().combined);
     }
@@ -313,6 +326,7 @@ public class GameStage extends MyStage{
 
         controlStage.dispose();
         mapCreatingStage.dispose();
+        pauseStage.dispose();
         //world.dispose();
         super.dispose();
     }
