@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
 import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
+import hu.tokingame.rewind.MyBaseClasses.OneSpriteStaticActor;
 import hu.tokingame.rewind.MyBaseClasses.UpDownButton;
 import hu.tokingame.rewind.MyGdxGame;
 import hu.tokingame.rewind.SettingsScreen.SettingsStage;
@@ -25,6 +26,7 @@ public class ControlStage extends MyStage {
     private boolean turboReloading = false;
     private float elapstime = 0;
     private float elapstime2 = 0;
+    public OneSpriteStaticActor mutato;
 
 
 
@@ -61,6 +63,9 @@ public class ControlStage extends MyStage {
                 zoom.setVisible(true);
             }
         }
+
+
+
     }
     @Override
     public void init() {
@@ -354,6 +359,23 @@ public class ControlStage extends MyStage {
                 }
             });
         }
+        addActor(new OneSpriteStaticActor(Assets.manager.get(Assets.TURBO_ON)){
+            @Override
+            public void init() {
+                super.init();
+                setSize(2, 2);
+                setPosition(0, 10);
+            }
+        });
+        addActor(mutato = new OneSpriteStaticActor(Assets.manager.get(Assets.TURBO_OFF)){
+            @Override
+            public void init() {
+                super.init();
+                setSize(2, 2);
+                setPosition(0, 10);
+                setOriginCenter();
+            }
+        });
 
 
 
