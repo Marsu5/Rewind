@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.OneSpriteAnimatedActor;
+import hu.tokingame.rewind.MyBaseClasses.OneSpriteStaticActor;
 import hu.tokingame.rewind.MyGdxGame;
 
 /**
@@ -36,6 +37,55 @@ public class LevelSelectStage extends MyStage {
                 super.init();
                 setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
                 setFps(15);
+            }
+        });
+
+        addActor(new OneSpriteStaticActor(""){ //tootoral
+            @Override
+            public void init() {
+                super.init();
+                this.setSize(200, 100);
+                this.setPosition(100, 500);
+            }
+        });
+        addActor(new OneSpriteStaticActor(""){ //level1
+            @Override
+            public void init() {
+                super.init();
+                this.setSize(200, 100);
+                this.setPosition(100, 500);
+            }
+        });
+        addActor(new OneSpriteStaticActor(""){ //level2
+            @Override
+            public void init() {
+                super.init();
+                this.setSize(200, 100);
+                this.setPosition(100, 500);
+            }
+        });
+        addActor(new OneSpriteStaticActor(""){ //level3
+            @Override
+            public void init() {
+                super.init();
+                this.setSize(200, 100);
+                this.setPosition(100, 500);
+            }
+        });
+        addActor(new OneSpriteStaticActor(""){ //level4
+            @Override
+            public void init() {
+                super.init();
+                this.setSize(200, 100);
+                this.setPosition(100, 500);
+            }
+        });
+        addActor(new OneSpriteStaticActor(""){ //level5
+            @Override
+            public void init() {
+                super.init();
+                this.setSize(200, 100);
+                this.setPosition(100, 500);
             }
         });
 
