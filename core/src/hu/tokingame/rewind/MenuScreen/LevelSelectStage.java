@@ -2,11 +2,18 @@ package hu.tokingame.rewind.MenuScreen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.assets.AssetDescriptor;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import hu.tokingame.rewind.GameScreen.GameScreen;
+import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
+import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
 import hu.tokingame.rewind.MyBaseClasses.OneSpriteAnimatedActor;
 import hu.tokingame.rewind.MyBaseClasses.OneSpriteStaticActor;
 import hu.tokingame.rewind.MyGdxGame;
@@ -40,57 +47,140 @@ public class LevelSelectStage extends MyStage {
             }
         });
 
-        addActor(new OneSpriteStaticActor(""){ //tootoral
+        addActor(new MyTextButton("Tutorial"){
             @Override
-            public void init() {
+            protected void init() {
                 super.init();
-                this.setSize(200, 100);
-                this.setPosition(100, 500);
+                setTexture(Assets.manager.get(Assets.BUTTON_BG));
+                setPosition(100, 500);
+                addListener(new ClickListener(){
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        super.clicked(event, x, y);
+                        start(0);
+                    }
+                });
             }
         });
-        addActor(new OneSpriteStaticActor(""){ //level1
+        addActor(new MyTextButton("Level 1"){
             @Override
-            public void init() {
+            protected void init() {
                 super.init();
-                this.setSize(200, 100);
-                this.setPosition(100, 500);
+                setTexture(Assets.manager.get(Assets.BUTTON_BG));
+                setPosition(350, 500);
+                if(Globals.unlockedLevels[1]) {
+                    addListener(new ClickListener() {
+                        @Override
+                        public void clicked(InputEvent event, float x, float y) {
+                            super.clicked(event, x, y);
+                            start(1);
+                        }
+                    });
+                }else{
+                    setText("Locked.");
+                }
             }
         });
-        addActor(new OneSpriteStaticActor(""){ //level2
+        addActor(new MyTextButton("Level 2"){
             @Override
-            public void init() {
+            protected void init() {
                 super.init();
-                this.setSize(200, 100);
-                this.setPosition(100, 500);
+                setTexture(Assets.manager.get(Assets.BUTTON_BG));
+                setPosition(600, 500);
+                if(Globals.unlockedLevels[2]) {
+                    addListener(new ClickListener() {
+                        @Override
+                        public void clicked(InputEvent event, float x, float y) {
+                            super.clicked(event, x, y);
+                            start(2);
+                        }
+                    });
+                }else{
+                    setText("Locked.");
+                }
             }
         });
-        addActor(new OneSpriteStaticActor(""){ //level3
+        addActor(new MyTextButton("Level 3"){
             @Override
-            public void init() {
+            protected void init() {
                 super.init();
-                this.setSize(200, 100);
-                this.setPosition(100, 500);
+                setTexture(Assets.manager.get(Assets.BUTTON_BG));
+                setPosition(100, 250);
+                if(Globals.unlockedLevels[3]) {
+                    addListener(new ClickListener() {
+                        @Override
+                        public void clicked(InputEvent event, float x, float y) {
+                            super.clicked(event, x, y);
+                            start(3);
+                        }
+                    });
+                }else{
+                    setText("Locked.");
+                }
             }
         });
-        addActor(new OneSpriteStaticActor(""){ //level4
+        addActor(new MyTextButton("Level 4"){
             @Override
-            public void init() {
+            protected void init() {
                 super.init();
-                this.setSize(200, 100);
-                this.setPosition(100, 500);
+                setTexture(Assets.manager.get(Assets.BUTTON_BG));
+                setPosition(350, 250);
+                if(Globals.unlockedLevels[4]) {
+                    addListener(new ClickListener() {
+                        @Override
+                        public void clicked(InputEvent event, float x, float y) {
+                            super.clicked(event, x, y);
+                            start(4);
+                        }
+                    });
+                }else{
+                    setText("Locked.");
+                }
             }
         });
-        addActor(new OneSpriteStaticActor(""){ //level5
+        addActor(new MyTextButton("Level 5"){
             @Override
-            public void init() {
+            protected void init() {
                 super.init();
-                this.setSize(200, 100);
-                this.setPosition(100, 500);
+                setTexture(Assets.manager.get(Assets.BUTTON_BG));
+                setPosition(600, 250);
+                if(Globals.unlockedLevels[5]) {
+                    addListener(new ClickListener() {
+                        @Override
+                        public void clicked(InputEvent event, float x, float y) {
+                            super.clicked(event, x, y);
+                            start(5);
+                        }
+                    });
+                }else{
+                    setText("Locked");
+                }
+            }
+        });
+        addActor(new MyTextButton("Back"){
+            @Override
+            protected void init() {
+                super.init();
+                setPosition(Globals.WORLD_WIDTH-this.getWidth(), 0);
+                addListener(new ClickListener(){
+                    @Override
+                    public void clicked(InputEvent event, float x, float y) {
+                        super.clicked(event, x, y);
+                        game.setScreenBackByStackPop();
+                    }
+                });
             }
         });
 
 
 
+
+
+    }
+
+    private void start(int n){
+        Assets.manager.get(Assets.MUSIC_MENU).stop();
+        game.setScreen(new GameScreen(game, n));
     }
 
     @Override

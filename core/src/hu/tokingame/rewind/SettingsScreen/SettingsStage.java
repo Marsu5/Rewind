@@ -13,6 +13,7 @@ import hu.tokingame.rewind.MenuScreen.MenuScreen;
 import hu.tokingame.rewind.MyBaseClasses.MyLabel;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
+import hu.tokingame.rewind.MyBaseClasses.OneSpriteAnimatedActor;
 import hu.tokingame.rewind.MyGdxGame;
 
 /**
@@ -44,6 +45,14 @@ public class SettingsStage extends MyStage {
 
     @Override
     public void init() {
+        addActor(new OneSpriteAnimatedActor("ButtonAndOther/bg.txt"){
+            @Override
+            public void init() {
+                super.init();
+                setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
+                setFps(15);
+            }
+        });
 
         addActor(new MyTextButton("Back"){
             @Override

@@ -32,7 +32,7 @@ import hu.tokingame.rewind.Global.Assets;
         public static void refresh()
         {
             textButtonStyle = new TextButtonStyle();
-            textButtonStyle.font = Assets.manager.get(Assets.VERMIN_FONT);
+            textButtonStyle.font = Assets.manager.get(Assets.VERMIN_FONT_BIG);
 
             Pixmap p = new Pixmap(1,1, Pixmap.Format.Alpha);
             p.setColor(1);
@@ -60,6 +60,7 @@ import hu.tokingame.rewind.Global.Assets;
             style.up = new TextureRegionDrawable(new TextureRegion(texture));
             style.over = new TextureRegionDrawable(new TextureRegion(texture));
             style.down = new TextureRegionDrawable(new TextureRegion(texture));
+            style.font = Assets.manager.get(Assets.VERMIN_FONT_BIG);
             this.setStyle(style);
         }
         public void setTextureUpDown(Texture up, Texture down){
@@ -81,7 +82,7 @@ import hu.tokingame.rewind.Global.Assets;
 
         protected void init() {
             style = new TextButtonStyle();
-            style.font = Assets.manager.get(Assets.VERMIN_FONT);
+            style.font = Assets.manager.get(Assets.VERMIN_FONT_BIG);
             Pixmap p = new Pixmap(1,1, Pixmap.Format.Alpha);
             p.setColor(1);
             p.fill();

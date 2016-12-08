@@ -32,7 +32,7 @@ public class Assets {
     static final FreetypeFontLoader.FreeTypeFontLoaderParameter fontParameter2 = new FreetypeFontLoader.FreeTypeFontLoaderParameter();
     static {
         fontParameter2.fontFileName = "Fonts/vermin_vibes_1989.ttf";
-        fontParameter2.fontParameters.size = 100;
+        fontParameter2.fontParameters.size = 80;
         fontParameter2.fontParameters.characters = hu.tokingame.rewind.Global.Globals.CHARS;
         fontParameter2.fontParameters.color = Color.WHITE;
     }
@@ -81,6 +81,7 @@ public class Assets {
     public static final AssetDescriptor<Texture> STEERRIGHT_DOWN = new AssetDescriptor<Texture>("GameTextures/steer_right_down.png", Texture.class);
     public static final AssetDescriptor<Texture> FORD = new AssetDescriptor<Texture>("GameTextures/ford.png", Texture.class);
     public static final AssetDescriptor<Texture> ZOOMOUT = new AssetDescriptor<Texture>("GameTextures/zoom_out.png", Texture.class);
+    public static final AssetDescriptor<Texture> BUTTON_BG = new AssetDescriptor<Texture>("ButtonAndOther/buttonbg.png", Texture.class);
     //</editor-fold>
 
     //<editor-fold desc="Music">
@@ -140,6 +141,7 @@ public class Assets {
         manager.load(STEERRIGHT_UP);
         manager.load(FORD);
         manager.load(ZOOMOUT);
+        manager.load(BUTTON_BG);
 
         //car textures
         manager.load(CAR_BLUE);

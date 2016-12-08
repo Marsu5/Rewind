@@ -14,6 +14,7 @@ import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MyBaseClasses.MyLabel;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
+import hu.tokingame.rewind.MyBaseClasses.OneSpriteAnimatedActor;
 import hu.tokingame.rewind.MyGdxGame;
 import hu.tokingame.rewind.SettingsScreen.SettingsScreen;
 import hu.tokingame.rewind.SettingsScreen.SettingsStage;
@@ -46,6 +47,14 @@ public class MenuStage extends MyStage {
 
     @Override
     public void init() {
+        addActor(new OneSpriteAnimatedActor("ButtonAndOther/bg.txt"){
+            @Override
+            public void init() {
+                super.init();
+                setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
+                setFps(15);
+            }
+        });
 
         if(!Globals.AccelerometerAvailable) addActor(new MyLabel("No Accelerometer Found.", MyLabel.style1){
             @Override
@@ -95,9 +104,9 @@ public class MenuStage extends MyStage {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
-                        game.setScreen(new GameScreen(game, 0));
+                        game.setScreen(new LevelSelectScreen(game));
                         //game.setScreen(new LevelSelectScreen(game));
-                        manager.get(MUSIC_MENU).stop();
+
                     }
                 });
             }
@@ -138,6 +147,7 @@ public class MenuStage extends MyStage {
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
                         musicToggle = !musicToggle;
+                        Globals.music = !Globals.music;
                         if(musicToggle){
                             button.setText(text + "on");
                             Assets.manager.get(Assets.MUSIC_MENU).play();

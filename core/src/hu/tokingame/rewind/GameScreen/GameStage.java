@@ -197,7 +197,7 @@ public class GameStage extends MyStage{
             case 10: m = Assets.manager.get(Assets.SZIPU); break;
             default: m = Assets.manager.get(Assets.MUSIC_TUTORIAL); break;
         }
-        m.play();
+        if(Globals.music) m.play();
 
     }
 
@@ -316,6 +316,8 @@ public class GameStage extends MyStage{
             controlStage.draw();
         }
         box2DDebugRenderer.render(world, getCamera().combined);
+        controlStage.draw();
+        //box2DDebugRenderer.render(world, getCamera().combined);
     }
 
     @Override
