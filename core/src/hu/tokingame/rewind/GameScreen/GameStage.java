@@ -309,7 +309,7 @@ public class GameStage extends MyStage{
 
 
         controlStage.setSpeed(car.getSpeed());
-        System.out.println(car.getSpeed());
+        System.out.println("@"+car.getX()+" "+car.getY()+" "+car.getRotation());
     }
 
     @Override
