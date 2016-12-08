@@ -43,6 +43,7 @@ public class GameStage extends MyStage{
     Car car;
     ControlStage controlStage;
     MapCreatingStage mapCreatingStage;
+    BgStage bgStage;
     MapLoader mapLoader;
     Box2DDebugRenderer box2DDebugRenderer;
     FinishSensor finish;
@@ -79,6 +80,7 @@ public class GameStage extends MyStage{
         box2DDebugRenderer = new Box2DDebugRenderer();
         mapCreatingStage = new MapCreatingStage(getBatch(), game);
         controlStage = new ControlStage(getBatch(), game);
+        bgStage = new BgStage(getBatch(), game);
 
         loader = new WorldBodyEditorLoader(Gdx.files.internal("Jsons/physics.json"));
         //(new Thread(new MapLoader(level,this,world,loader))).start();
@@ -86,7 +88,6 @@ public class GameStage extends MyStage{
         turboOnFor = 0;
         if(level + 1 < Globals.levels.length) newlevel = level + 1;
         else newlevel = -1;
-
 
 
 
@@ -298,6 +299,7 @@ public class GameStage extends MyStage{
             return;
         }
         updateFrustum(1.25f);
+        bgStage.draw();
         super.draw();
         controlStage.draw();
         box2DDebugRenderer.render(world, getCamera().combined);
