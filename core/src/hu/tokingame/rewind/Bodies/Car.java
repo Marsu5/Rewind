@@ -21,7 +21,7 @@ public class Car extends WorldActorGroup {
     public static int health = 100;
 
     public Car(World world, WorldBodyEditorLoader loader, float X, float Y) {
-        super(world, loader, "bluecar.png", BodyDef.BodyType.DynamicBody, 1000, 0.2f, 10, false);
+        super(world, loader, "bluecar.png", BodyDef.BodyType.DynamicBody, 1000, 0.02f, 10, false);
         actor = new OneSpriteStaticActor(Assets.manager.get(randomTexture()));
         actor.setSize(0.25f, 0.5f);
         setSize(getWidth() / 4, getHeight() / 4);
@@ -52,7 +52,7 @@ public class Car extends WorldActorGroup {
     public float frictionMultiplier = 0.99f;
     public float breakMultiplier = 0.891f;
     public float turnMultiplier = 0.7f;
-    public float nullSpeed = 0.005f;
+    public float nullSpeed = 0.01f;
 
     public float turnTime = 0.15f;
     public float accelerateTime = 0.1f;
@@ -92,18 +92,18 @@ public class Car extends WorldActorGroup {
     public void turnLeft(float delta) {
         turnTimer = turnTime;
         if (isReversing()){
-            getBody().setAngularVelocity(-getTurnVelocity());
+            getBody().setAngularVelocity(-getTurnVelocity()*delta);
         }else {
-            getBody().setAngularVelocity(getTurnVelocity());
+            getBody().setAngularVelocity(getTurnVelocity()*delta);
         }
     }
 
     public void turnRight(float delta) {
         turnTimer = turnTime;
         if (isReversing()){
-            getBody().setAngularVelocity(getTurnVelocity());
+            getBody().setAngularVelocity(getTurnVelocity()*delta);
         }else{
-            getBody().setAngularVelocity(-getTurnVelocity());
+            getBody().setAngularVelocity(-getTurnVelocity()*delta);
         }
     }
 
