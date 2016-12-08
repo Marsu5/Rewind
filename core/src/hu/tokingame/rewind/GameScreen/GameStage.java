@@ -83,7 +83,7 @@ public class GameStage extends MyStage{
         mapCreatingStage = new MapCreatingStage(getBatch(), game);
         controlStage = new ControlStage(getBatch(), game);
         bgStage = new BgStage(getBatch(), game);
-        pauseStage = new PauseStage(getBatch(),game);
+        pauseStage = new PauseStage(getBatch(),game,this);
 
         loader = new WorldBodyEditorLoader(Gdx.files.internal("Jsons/physics.json"));
         //(new Thread(new MapLoader(level,this,world,loader))).start();
@@ -133,6 +133,7 @@ public class GameStage extends MyStage{
         InputMultiplexer inputMultiplexer = new InputMultiplexer();
         inputMultiplexer.addProcessor(this);
         inputMultiplexer.addProcessor(controlStage);
+        inputMultiplexer.addProcessor(pauseStage);
         Gdx.input.setInputProcessor(inputMultiplexer);
 
         rotationBase = Gdx.input.getAccelerometerY();
@@ -325,6 +326,7 @@ public class GameStage extends MyStage{
 
         controlStage.dispose();
         mapCreatingStage.dispose();
+        pauseStage.dispose();
         //world.dispose();
         super.dispose();
     }

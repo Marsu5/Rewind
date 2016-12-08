@@ -1,5 +1,6 @@
 package hu.tokingame.rewind.GameScreen;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -17,17 +18,23 @@ import hu.tokingame.rewind.MyGdxGame;
 
 public class PauseStage  extends MyStage{
 
-    public PauseStage(Batch batch, MyGdxGame game) {
-        super(new ExtendViewport(512,288,new OrthographicCamera(512,288)), batch, game);
-    }
+    private GameStage stage;
+    private float time=0;
 
+    public PauseStage(Batch batch, MyGdxGame game, GameStage stage) {
+        super(new ExtendViewport(512,288,new OrthographicCamera(512,288)), batch, game);
+        this.stage = stage;
+    }
 
 
 
     @Override
     public boolean keyDown(int keycode) {
         if(keycode == Input.Keys.BACK || keycode == Input.Keys.ESCAPE){
-            //this.dispose();
+            if(time > 10){
+                stage.pause = false;
+                time = 0;
+            }
         }
         return false;
     }
@@ -40,5 +47,11 @@ public class PauseStage  extends MyStage{
 
         addActor(new MyTextButton("fidnflksdjf;lskdjflskfjsdlkfjd;lkfajsdfklasdjl"));
 
+    }
+
+    @Override
+    public void act(float delta) {
+        super.act(delta);
+        time += delta;
     }
 }
