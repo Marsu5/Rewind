@@ -18,14 +18,16 @@ import hu.tokingame.rewind.MyGdxGame;
 public class PauseStage  extends MyStage{
 
     public PauseStage(Batch batch, MyGdxGame game) {
-        super(new ExtendViewport(16,9,new OrthographicCamera(16,9)), batch, game);
+        super(new ExtendViewport(512,288,new OrthographicCamera(512,288)), batch, game);
     }
+
+
 
 
     @Override
     public boolean keyDown(int keycode) {
         if(keycode == Input.Keys.BACK || keycode == Input.Keys.ESCAPE){
-            this.dispose();
+            //this.dispose();
         }
         return false;
     }
