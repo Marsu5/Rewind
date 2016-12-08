@@ -46,12 +46,13 @@ public class Car extends WorldActorGroup {
     }
 
     public float maxSpeed = 50;
-    public float maxTurnVelocity = 0.7f;
+    public float maxTurnVelocity = 0.9f;
     public float turnVelocity = 2f;
     public float accelerateVelocity = 14;
-    public float frictionMultiplier = 0.9f;
-    public float breakMultiplier = 0.8f;
+    public float frictionMultiplier = 0.99f;
+    public float breakMultiplier = 0.891f;
     public float turnMultiplier = 0.7f;
+    public float nullSpeed = 0.005f;
 
     public float turnTime = 0.15f;
     public float accelerateTime = 0.1f;
@@ -124,7 +125,7 @@ public class Car extends WorldActorGroup {
             getBody().setAngularVelocity(getBody().getAngularVelocity() * (1 - ((1 - turnMultiplier) * delta * 60)));
         }
         if (accelerateTime!=accelerateTimer){
-            if (getSpeed() < 0.05f) {
+            if (getSpeed() < nullSpeed) {
                 getBody().setLinearVelocity(0, 0);
             }
         }
