@@ -296,6 +296,9 @@ public class GameStage extends MyStage{
             car.turnRight(Math.abs(Gdx.input.getAccelerometerY()) * 6f * delta);
         }
         //System.out.println(car.getX()+";"+car.getY()+";"+car.getRotation());
+
+
+        controlStage.mutato.setRotation(270 + (getCarVelocity()/20)* 180);
     }
 
     @Override
@@ -335,5 +338,9 @@ public class GameStage extends MyStage{
     public void resize(int screenWidth, int screenHeight) {
         super.resize(screenWidth, screenHeight);
         controlStage.resize(screenWidth, screenHeight);
+    }
+
+    public float getCarVelocity(){
+        return car.getSpeed();
     }
 }
