@@ -43,9 +43,11 @@ public class GameStage extends MyStage{
     Car car;
     ControlStage controlStage;
     MapCreatingStage mapCreatingStage;
+    BgStage bgStage;
     MapLoader mapLoader;
     Box2DDebugRenderer box2DDebugRenderer;
     FinishSensor finish;
+    PauseStage pauseStage;
     float turboOnFor;
     boolean turbo = false;
     float rotationBase;
@@ -60,8 +62,8 @@ public class GameStage extends MyStage{
 
     @Override
     public boolean keyDown(int keycode) {
-        if(keycode == Input.Keys.BACK){
-            game.setScreenBackByStackPop();
+        if(keycode == Input.Keys.BACK || keycode == Input.Keys.ESCAPE){
+            pauseStage.draw();
         }
         return false;
     }
@@ -73,12 +75,14 @@ public class GameStage extends MyStage{
         this.level = level;
         System.out.println(level);
 
-        Gdx.input.setCatchBackKey(true); //TODO pause képernyő vagy valami
+        Gdx.input.setCatchBackKey(true);
 
         world = new World(new Vector2(0,0), false);
         box2DDebugRenderer = new Box2DDebugRenderer();
         mapCreatingStage = new MapCreatingStage(getBatch(), game);
         controlStage = new ControlStage(getBatch(), game);
+        bgStage = new BgStage(getBatch(), game);
+        pauseStage = new PauseStage(getBatch(),game);
 
         loader = new WorldBodyEditorLoader(Gdx.files.internal("Jsons/physics.json"));
         //(new Thread(new MapLoader(level,this,world,loader))).start();
@@ -86,7 +90,6 @@ public class GameStage extends MyStage{
         turboOnFor = 0;
         if(level + 1 < Globals.levels.length) newlevel = level + 1;
         else newlevel = -1;
-
 
 
 
@@ -117,6 +120,7 @@ public class GameStage extends MyStage{
 
                 addActor(finish = new FinishSensor(world, Globals.finishPositionX, Globals.finishPositionY));
                 finish.setRotation(Globals.finishRotation);
+                startTimer();
 
             }
         }).start();
@@ -136,12 +140,12 @@ public class GameStage extends MyStage{
         world.setContactListener(new ContactListener() {
             @Override
             public void beginContact(Contact contact) {
-
                 if(contact.getFixtureA().getBody().getUserData() instanceof Car){
                     if (contact.getFixtureB().getBody().getUserData() instanceof Road || contact.getFixtureB().getBody().getUserData() instanceof Barricade) {
                         ((Car) contact.getFixtureA().getBody().getUserData()).crash();
                     }
                     if (contact.getFixtureB().getBody().getUserData() instanceof FinishSensor){
+                        System.out.println(getTime());
                         Globals.unlockedLevels[newlevel] = true;
                         m.stop();
                         System.out.println("Next Level");
@@ -153,6 +157,7 @@ public class GameStage extends MyStage{
                             ((Car) contact.getFixtureB().getBody().getUserData()).crash();
                         }
                         if (contact.getFixtureA().getBody().getUserData() instanceof FinishSensor){
+                            System.out.println(getTime());
                             Globals.unlockedLevels[newlevel] = true;
                             m.stop();
                             System.out.println("Next Level");
@@ -231,7 +236,8 @@ public class GameStage extends MyStage{
         //car.getBody().getMassData().center.set(getWidth()/2,getHeight()/2);
         if(controlStage.zoomOut){
             ExtendViewport vp = (ExtendViewport) getViewport();
-            setCameraMoveToXY( (vp.getWorldWidth() - vp.getMinWorldWidth()),  vp.getWorldWidth() / 2 , 1 + mapLoader.getWidth()>mapLoader.getHeight()?(float)mapLoader.getWidth() / 16.0f * 1.1f : (float)mapLoader.getHeight() / 16.0f * 1.1f, 10, -getCameraRotation());
+            //setCameraMoveToXY( (vp.getWorldWidth() - vp.getMinWorldWidth()),  vp.getWorldWidth() / 2 , 1 + mapLoader.getWidth()>mapLoader.getHeight()?(float)mapLoader.getWidth() / 16.0f * 1.1f : (float)mapLoader.getHeight() / 16.0f * 1.1f, 10, -getCameraRotation());
+            setCameraMoveToXY( mapLoader.getWidth()/2,  mapLoader.getHeight()/2+1 , 1 + mapLoader.getWidth()>mapLoader.getHeight()?(float)mapLoader.getWidth() / 16.0f * 1.1f : (float)mapLoader.getHeight() / 16.0f * 1.1f, 10, -getCameraRotation());
         }else {
             if(SettingsStage.cameraRotation){
                 setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.5f * car.getSpeed()/car.maxSpeed), 10, (float)Math.toDegrees(car.getBody().getAngle()));
@@ -270,13 +276,20 @@ public class GameStage extends MyStage{
                 car.brake(delta);
             }
         }
-        if(input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.getAccelerometerY()+1.5 < rotationBase || controlStage.turnLeft){
-            car.turnLeft((Gdx.input.getAccelerometerY()-rotationBase) * 0.15f * delta);
+        if(input.isKeyPressed(Input.Keys.LEFT)  || controlStage.turnLeft){
+            car.turnLeft(60 * delta);
+        };
+        if(input.isKeyPressed(Input.Keys.RIGHT)  || controlStage.turnRight){
+            car.turnRight(60 * delta);
+        };
+        System.out.println(" X: " + Gdx.input.getAccelerometerX() + " Y: " + Gdx.input.getAccelerometerY() + " Z: " + Gdx.input.getAccelerometerZ());
+        if (Gdx.input.getAccelerometerY() < 0) {
+            car.turnLeft(Math.abs(Gdx.input.getAccelerometerY()) * 6f * delta);
         }
-        if(input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.getAccelerometerY()-1.5 > rotationBase || controlStage.turnRight){
-            car.turnRight((Gdx.input.getAccelerometerY()-rotationBase) * 0.15f * delta);
+        if(Gdx.input.getAccelerometerY() > 0){
+            car.turnRight(Math.abs(Gdx.input.getAccelerometerY()) * 6f * delta);
         }
-        System.out.println(car.getX()+";"+car.getY()+";"+car.getRotation());
+        //System.out.println(car.getX()+";"+car.getY()+";"+car.getRotation());
     }
 
     @Override
@@ -289,6 +302,7 @@ public class GameStage extends MyStage{
             return;
         }
         updateFrustum(1.25f);
+        bgStage.draw();
         super.draw();
         controlStage.draw();
         //box2DDebugRenderer.render(world, getCamera().combined);

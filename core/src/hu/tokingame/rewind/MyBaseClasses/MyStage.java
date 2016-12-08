@@ -23,6 +23,9 @@ import hu.tokingame.rewind.MyGdxGame;
 abstract public class MyStage extends Stage implements InitableInterface {
     public final MyGdxGame game;
 
+    private float timer = 0;
+    private boolean timerRunning = false;
+
     public MyStage(Viewport viewport, Batch batch, MyGdxGame game) {
         super(viewport, batch);
         this.game = game;
@@ -37,7 +40,7 @@ abstract public class MyStage extends Stage implements InitableInterface {
 
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
-                if(keycode== Input.Keys.BACK) {
+                if(keycode== Input.Keys.BACK || keycode == Input.Keys.ESCAPE) {
                     game.setScreenBackByStackPop();
                 }
                 return true;
@@ -122,6 +125,9 @@ abstract public class MyStage extends Stage implements InitableInterface {
     @Override
     public void act(float delta) {
         super.act(delta);
+        if (timerRunning){
+            timer += delta;
+        }
         OrthographicCamera c = (OrthographicCamera)getCamera();
         if (cameraTargetX!=c.position.x || cameraTargetY!=c.position.y || cameraTargetZoom!=c.zoom){
             if (Math.abs(c.position.x-cameraTargetX)<cameraMoveSpeed*delta) {
@@ -195,6 +201,25 @@ abstract public class MyStage extends Stage implements InitableInterface {
         for (Actor a: getActors()) {
             a.setVisible(isActorShowing(c,a, margin));
         }
+    }
+
+    public void startTimer(){
+        timerRunning = true;
+    }
+    public float getTime(){
+        return timer;
+    }
+
+    public void stopTimer(){
+        timerRunning = false;
+    }
+
+    public void resetTimer(){
+        timer = 0;
+    }
+
+    public boolean isTimerRunning(){
+        return timerRunning;
     }
 
     private static boolean isActorShowing(Camera c, Actor a){

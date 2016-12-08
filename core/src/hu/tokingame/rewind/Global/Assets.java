@@ -49,6 +49,8 @@ public class Assets {
     //</editor-fold>
 
     //<editor-fold desc="Map Elements">
+    public static final AssetDescriptor<Texture> MAP_BG = new AssetDescriptor<Texture>("Map/bg.png", Texture.class);
+
     public static final AssetDescriptor<Texture> ROAD_VERTICAL = new AssetDescriptor<Texture>("Map/vr.png", Texture.class);
     public static final AssetDescriptor<Texture> ROAD_HORIZONTAL = new AssetDescriptor<Texture>("Map/hr.png", Texture.class);
     public static final AssetDescriptor<Texture> ROAD_BLOCK = new AssetDescriptor<Texture>("Map/block.png", Texture.class);
@@ -108,6 +110,7 @@ public class Assets {
         manager.setLoader(BitmapFont.class, ".otf", new FreetypeFontLoader(resolver));
 
         //<editor-fold desc="Loading">
+        manager.load(MAP_BG);
         manager.load(ROAD_VERTICAL);
         manager.load(ROAD_HORIZONTAL);
         manager.load(ROAD_BLOCK);
