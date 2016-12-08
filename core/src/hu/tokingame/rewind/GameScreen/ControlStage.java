@@ -359,7 +359,7 @@ public class ControlStage extends MyStage {
                 }
             });
         }
-        addActor(new OneSpriteStaticActor(Assets.manager.get(Assets.TURBO_ON)){
+        addActor(new OneSpriteStaticActor(Assets.manager.get(Assets.SPEEDOMETER)){
             @Override
             public void init() {
                 super.init();
@@ -367,7 +367,7 @@ public class ControlStage extends MyStage {
                 setPosition(0, 10);
             }
         });
-        addActor(mutato = new OneSpriteStaticActor(Assets.manager.get(Assets.TURBO_OFF)){
+        addActor(mutato = new OneSpriteStaticActor(Assets.manager.get(Assets.SPEEDOMETER_IZE)){
             @Override
             public void init() {
                 super.init();
