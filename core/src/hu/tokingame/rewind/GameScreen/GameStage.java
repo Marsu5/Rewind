@@ -117,6 +117,7 @@ public class GameStage extends MyStage{
 
                 addActor(finish = new FinishSensor(world, Globals.finishPositionX, Globals.finishPositionY));
                 finish.setRotation(Globals.finishRotation);
+                startTimer();
 
             }
         }).start();
@@ -136,12 +137,12 @@ public class GameStage extends MyStage{
         world.setContactListener(new ContactListener() {
             @Override
             public void beginContact(Contact contact) {
-
                 if(contact.getFixtureA().getBody().getUserData() instanceof Car){
                     if (contact.getFixtureB().getBody().getUserData() instanceof Road || contact.getFixtureB().getBody().getUserData() instanceof Barricade) {
                         ((Car) contact.getFixtureA().getBody().getUserData()).crash();
                     }
                     if (contact.getFixtureB().getBody().getUserData() instanceof FinishSensor){
+                        System.out.println(getTime());
                         Globals.unlockedLevels[newlevel] = true;
                         m.stop();
                         System.out.println("Next Level");
@@ -153,6 +154,7 @@ public class GameStage extends MyStage{
                             ((Car) contact.getFixtureB().getBody().getUserData()).crash();
                         }
                         if (contact.getFixtureA().getBody().getUserData() instanceof FinishSensor){
+                            System.out.println(getTime());
                             Globals.unlockedLevels[newlevel] = true;
                             m.stop();
                             System.out.println("Next Level");

@@ -95,7 +95,7 @@ public class MenuStage extends MyStage {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
-                        game.setScreen(new GameScreen(game, 1));
+                        game.setScreen(new GameScreen(game, 0));
                         //game.setScreen(new LevelSelectScreen(game));
                         manager.get(MUSIC_MENU).stop();
                     }
