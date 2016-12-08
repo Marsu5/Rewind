@@ -332,7 +332,7 @@ public class ControlStage extends MyStage {
                 public void init() {
                     super.init();
                     setSize(1,1);
-                    setPosition(10, 5);
+                    setPosition(0, 8);
                     addListener(new InputListener(){
                         @Override
                         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
