@@ -16,7 +16,6 @@ import java.util.Stack;
 import java.lang.reflect.InvocationTargetException;
 
 import hu.tokingame.rewind.Global.Assets;
-import hu.tokingame.rewind.Global.WriteUnlocked;
 import hu.tokingame.rewind.LoadingScreen.LoadingScreen;
 import hu.tokingame.rewind.MyBaseClasses.MyScreen;
 
@@ -69,7 +68,6 @@ public class MyGdxGame extends Game {
 	@Override
 	public void create () {
 		Assets.prepare();
-		WriteUnlocked.ReadUnlocked();
 		setScreen(new LoadingScreen(this));
 	}
 
@@ -82,7 +80,6 @@ public class MyGdxGame extends Game {
 	@Override
 	public void dispose () {
 		super.dispose();
-		WriteUnlocked.WriteUnlocked();
 		Assets.unload();
 	}
 

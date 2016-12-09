@@ -86,7 +86,7 @@ public class PauseStage  extends MyStage{
                                     @Override
                                     public void clicked(InputEvent event, float x, float y) {
                                         super.clicked(event, x, y);
-                                        Gdx.app.exit();
+                                        back = true;
                                     }
                                 });
                             }

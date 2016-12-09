@@ -171,7 +171,7 @@ public class ControlStage extends MyStage {
             });
 
             addActor(LeftButton = new UpDownButton(Assets.manager.get(Assets.STEERLEFT_DOWN),Assets.manager.get(Assets.STEERLEFT_UP)){
-                @Override
+               @Override
                 public void init() {
                     super.init();
                     this.setSize(3, 3.5f);
