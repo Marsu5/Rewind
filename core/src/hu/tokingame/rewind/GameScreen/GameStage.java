@@ -7,6 +7,7 @@ import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.Contact;
@@ -75,9 +76,11 @@ public class GameStage extends MyStage {
         return false;
     }
 
+    private Stage me;
 
     public GameStage(Viewport viewport, Batch batch, final MyGdxGame game, int level) {
         super(viewport, batch, game);
+        me = this;
         if (level == -1) game.setScreen(new CreditsScreen(game));
             this.level = level;
             System.out.println(level);
@@ -86,10 +89,10 @@ public class GameStage extends MyStage {
 
             world = new World(new Vector2(0, 0), false);
             box2DDebugRenderer = new Box2DDebugRenderer();
-            mapCreatingStage = new MapCreatingStage(getBatch(), game);
-            controlStage = new ControlStage(getBatch(), game);
-            bgStage = new BgStage(getBatch(), game);
-            pauseStage = new PauseStage(getBatch(), game, this);
+            mapCreatingStage = new MapCreatingStage(new SpriteBatch(), game);
+            controlStage = new ControlStage(new SpriteBatch(), game);
+            bgStage = new BgStage(new SpriteBatch(), game);
+            pauseStage = new PauseStage(new SpriteBatch(), game, this);
 
             loader = new WorldBodyEditorLoader(Gdx.files.internal("Jsons/physics.json"));
             //(new Thread(new MapLoader(level,this,world,loader))).start();
@@ -98,7 +101,7 @@ public class GameStage extends MyStage {
             if (level + 1 < Globals.levels.length) newlevel = level + 1;
             else newlevel = -1;
 
-            final Stage me = this;
+
 
             //https://github.com/libgdx/libgdx/wiki/Threading
             new Thread(new Runnable() {
@@ -375,11 +378,11 @@ public class GameStage extends MyStage {
 
         super.dispose();
         //world.dispose();
-        /*
+
         controlStage.dispose();
         mapCreatingStage.dispose();
         pauseStage.dispose();
-        */
+        bgStage.dispose();
     }
 
         @Override

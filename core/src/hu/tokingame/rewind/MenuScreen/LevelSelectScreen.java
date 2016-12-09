@@ -1,6 +1,7 @@
 package hu.tokingame.rewind.MenuScreen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
 import hu.tokingame.rewind.Global.Globals;
@@ -16,14 +17,13 @@ public class LevelSelectScreen extends MyScreen {
 
     public LevelSelectScreen(MyGdxGame game) {
         super(game);
-        stage = new LevelSelectStage(new ExtendViewport(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT), spriteBatch, game);
+        stage = new LevelSelectStage(new ExtendViewport(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT), new SpriteBatch(), game);
         Gdx.input.setInputProcessor(stage);
     }
 
     @Override
     public void render(float delta) {
         super.render(delta);
-        spriteBatch.setProjectionMatrix(stage.getCamera().combined);
         stage.act(delta);
         stage.draw();
     }

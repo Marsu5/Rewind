@@ -16,7 +16,7 @@ import hu.tokingame.rewind.*;
  */
 abstract public class MyScreen implements Screen, InitableInterface {
     //public final static float WORLD_WIDTH = 640, WORLD_HEIGHT = 480;
-    protected SpriteBatch spriteBatch = new SpriteBatch();
+    //protected SpriteBatch spriteBatch = new SpriteBatch();
     //protected OrthographicCamera camera = new OrthographicCamera(WORLD_WIDTH, WORLD_HEIGHT);
     //protected ExtendViewport viewport = new ExtendViewport(WORLD_WIDTH, WORLD_HEIGHT, camera);
 
@@ -33,7 +33,7 @@ abstract public class MyScreen implements Screen, InitableInterface {
 
     @Override
     public void dispose() {
-        spriteBatch.dispose();
+        //spriteBatch.dispose();
     }
 
     @Override

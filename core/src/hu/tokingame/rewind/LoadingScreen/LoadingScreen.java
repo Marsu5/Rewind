@@ -1,6 +1,7 @@
 package hu.tokingame.rewind.LoadingScreen;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
 import hu.tokingame.rewind.Global.Assets;
@@ -43,7 +44,6 @@ public class LoadingScreen extends MyScreen {
         //spriteBatch.begin();
         elapsedTime += delta;
         stage.act(delta);
-        spriteBatch.setProjectionMatrix(stage.getCamera().combined);
         stage.draw();
         //Globals.FONT_HOBO_STD.draw(spriteBatch,"Betöltés: " + Assets.manager.getLoadedAssets() + "/" + (Assets.manager.getQueuedAssets()+Assets.manager.getLoadedAssets()) + " (" + ((int)(Assets.manager.getProgress()*100f)) + "%)",0,50);
         //spriteBatch.end();
@@ -57,7 +57,7 @@ public class LoadingScreen extends MyScreen {
     @Override
     public void init() {
         super.init();
-        stage = new LoadingStage(new ExtendViewport(1280,720,new OrthographicCamera(1280,720)), spriteBatch, game);
+        stage = new LoadingStage(new ExtendViewport(1280,720,new OrthographicCamera(1280,720)), new SpriteBatch(), game);
     }
 
     @Override
