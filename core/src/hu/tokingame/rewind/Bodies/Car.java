@@ -154,7 +154,7 @@ public class Car extends WorldActorGroup {
                 case 4: actor.setTexture(Assets.manager.get(Assets.CAR_RED_WRECKED));
             }
         }
-        //else if(health < 1) this.removeFromStage(); //TODO ez nemmüxik valami kell rá hogy összetörik vagy valami
+        //else if(health < 1) this.removeFromStage();
     }}
 
     public boolean isReversing(){
