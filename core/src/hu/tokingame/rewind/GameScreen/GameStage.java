@@ -30,6 +30,7 @@ import hu.tokingame.rewind.MenuScreen.MenuScreen;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
 import hu.tokingame.rewind.MyGdxGame;
+import hu.tokingame.rewind.ScoreScreen.ScoreScreen;
 import hu.tokingame.rewind.SettingsScreen.SettingsStage;
 
 import static com.badlogic.gdx.Gdx.input;
@@ -247,7 +248,8 @@ public class GameStage extends MyStage {
                     game.setScreen(new CreditsScreen(game));
                 }else {
                     Globals.unlockedLevels[newlevel] = true;
-                    game.setScreen(new GameScreen(game, newlevel));
+                    Globals.currenLevel = newlevel;
+                    game.setScreen(new ScoreScreen(game,getTime()),false);
                 }
 
             }
@@ -379,9 +381,11 @@ public class GameStage extends MyStage {
 
         super.dispose();
         //world.dispose();
-/*        controlStage.dispose();
+        /*
+        controlStage.dispose();
         mapCreatingStage.dispose();
-        pauseStage.dispose();*/
+        pauseStage.dispose();
+        */
     }
 
         @Override
