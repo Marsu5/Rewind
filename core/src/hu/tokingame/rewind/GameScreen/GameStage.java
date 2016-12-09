@@ -155,9 +155,6 @@ public class GameStage extends MyStage {
             @Override
             public void beginContact(Contact contact) {
                 if(contact.getFixtureA().getBody().getUserData() instanceof Car){
-                    if (contact.getFixtureB().getBody().getUserData() instanceof Road || contact.getFixtureB().getBody().getUserData() instanceof Barricade) {
-                        ((Car) contact.getFixtureA().getBody().getUserData()).crash();
-                    }
                     if (contact.getFixtureB().getBody().getUserData() instanceof FinishSensor){
                         System.out.println(getTime());
                         setNextLevel = true;
@@ -167,9 +164,6 @@ public class GameStage extends MyStage {
                     }
                 } else {
                     if(contact.getFixtureB().getBody().getUserData() instanceof Car){
-                        if (contact.getFixtureA().getBody().getUserData() instanceof Road || contact.getFixtureA().getBody().getUserData() instanceof Barricade) {
-                            ((Car) contact.getFixtureB().getBody().getUserData()).crash();
-                        }
                         if (contact.getFixtureA().getBody().getUserData() instanceof FinishSensor){
                             System.out.println(getTime());
                             m.stop();

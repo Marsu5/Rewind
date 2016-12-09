@@ -31,14 +31,14 @@ public class Assets {
     }
     static final FreetypeFontLoader.FreeTypeFontLoaderParameter fontParameter2 = new FreetypeFontLoader.FreeTypeFontLoaderParameter();
     static {
-        fontParameter2.fontFileName = "Fonts/vermin_vibe.ttf";
+        fontParameter2.fontFileName = "Fonts/vermin_vibes_1989.ttf";
         fontParameter2.fontParameters.size = 80;
         fontParameter2.fontParameters.characters = hu.tokingame.rewind.Global.Globals.CHARS;
         fontParameter2.fontParameters.color = Color.WHITE;
     }
     static final FreetypeFontLoader.FreeTypeFontLoaderParameter fontParameter3 = new FreetypeFontLoader.FreeTypeFontLoaderParameter();
     static {
-        fontParameter3.fontFileName = "Fonts/8-BIT_WONDER.ttf";
+        fontParameter3.fontFileName = "Fonts/succ.ttf";
         fontParameter3.fontParameters.size = 30;
         fontParameter3.fontParameters.characters = hu.tokingame.rewind.Global.Globals.CHARS;
         fontParameter3.fontParameters.color = Color.WHITE;

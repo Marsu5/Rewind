@@ -135,27 +135,7 @@ public class Car extends WorldActorGroup {
         }
 
     }
-
-    public void crash(){
-        if(GameStage.level != 3){
-        float v = getBody().getLinearVelocity().len();
-        System.out.println(v);
-        if(v > 0.5) health -= v*15;
-        System.out.println(health + " hp");
-        //ControlStage.hp.setText(health + "%");
-
-        if(health < 50) accelerateVelocity = 8;
-        else if(health < 25) {
-            accelerateVelocity = 3;
-            switch(tex){
-                case 1: actor.setTexture(Assets.manager.get(Assets.CAR_BLUE_WRECKED));
-                case 2: actor.setTexture(Assets.manager.get(Assets.CAR_GREEN_WRECKED));
-                case 3: actor.setTexture(Assets.manager.get(Assets.CAR_ORANGE_WRECKED));
-                case 4: actor.setTexture(Assets.manager.get(Assets.CAR_RED_WRECKED));
-            }
-        }
-        //else if(health < 1) this.removeFromStage();
-    }}
+    
 
     public boolean isReversing(){
         Vector2 v = getBody().getLinearVelocity().cpy();
