@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hu.tokingame.rewind.CreditsScreen.CreditsScreen;
+import hu.tokingame.rewind.CreditsScreen.HowToPlayScreen;
 import hu.tokingame.rewind.GameScreen.GameScreen;
 import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.Global.Globals;
@@ -75,7 +76,7 @@ public class MenuStage extends MyStage {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
-                        game.setScreen(new CreditsScreen(game));
+                        game.setScreen(new HowToPlayScreen(game));
                     }
                 });
             }

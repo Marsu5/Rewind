@@ -9,19 +9,19 @@ import hu.tokingame.rewind.MyBaseClasses.MyScreen;
 import hu.tokingame.rewind.MyGdxGame;
 
 /**
- * Created by davimatyi on 2016. 11. 15..
+ * Created by davimatyi on 2016. 12. 09..
  */
 
-public class CreditsScreen extends MyScreen {
-    private CreditsStage stage;
-    public CreditsScreen(MyGdxGame game) {
+public class HowToPlayScreen extends MyScreen {
+    HowToPlayStage stage;
+    public HowToPlayScreen(MyGdxGame game) {
         super(game);
     }
 
     @Override
     public void init() {
         super.init();
-        stage = new CreditsStage(new ExtendViewport(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT,new OrthographicCamera(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT)),spriteBatch,game);
+        stage = new HowToPlayStage(new ExtendViewport(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT,new OrthographicCamera(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT)),spriteBatch,game);
         Gdx.input.setInputProcessor(stage);
     }
 

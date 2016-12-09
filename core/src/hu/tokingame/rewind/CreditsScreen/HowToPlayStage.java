@@ -8,21 +8,20 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hu.tokingame.rewind.Global.Globals;
-import hu.tokingame.rewind.MenuScreen.MenuScreen;
 import hu.tokingame.rewind.MyBaseClasses.MyLabel;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
 import hu.tokingame.rewind.MyGdxGame;
 
 /**
- * Created by davimatyi on 2016. 11. 15..
+ * Created by davimatyi on 2016. 12. 09..
  */
 
-public class CreditsStage extends MyStage {
+public class HowToPlayStage extends MyStage {
     String s;
-    public CreditsStage(Viewport viewport, Batch batch, MyGdxGame game) {
+
+    public HowToPlayStage(Viewport viewport, Batch batch, MyGdxGame game) {
         super(viewport, batch, game);
-        Gdx.input.setCatchBackKey(true);
     }
 
     @Override
@@ -35,20 +34,17 @@ public class CreditsStage extends MyStage {
 
     @Override
     public void init() {
-        s = "Created by: Tokin Game\n" +
-                "Creators:\n" +
-                "  Marcell Schuh\n" +
-                "  Matyas David\n" +
-                "  Zoltan Kovacs\n" +
-                "  Daniel Balint\n" +
-                "Music used:\n" +
-                "  Cosmic Sand - 9h00\n" +
-                "  Stellar Dreams - The Getaway\n" +
-                "  PowerCut - Friendly Zombie\n" +
-                "  Cartridge 1987 - The Chase\n" +
-                "  Lost Years - Converter(V2)\n" +
-                "  Cartridge 1987 - MFOS\n" +
-                "  Bourgeoisie - Industrial Sector 3083\n\n\n";
+        s = "How to play:\n" +
+                " -if you are using on screen controls:\n" +
+                "  -Turn the car using the two turn buttons\n" +
+                "  -Accelerate using the right pedal, brake using\n the left one.\n" +
+                " -If you are using Tilt controls:\n" +
+                "  -Turn the car by tilting the phone left and right\n" +
+                "  -Accelerate by using the right pedal, brake with\n the left one\n" +
+                "\n" +
+                " -Use turbo with the turbo button, the reloading\n time is 10 seconds\n" +
+                " -You can zoom out to see the whole map by\n" +
+                "  pressing the zoom-out button in\n the top left corner\n\n";
         addActor(new MyLabel(s, MyLabel.style2){
             @Override
             public void init() {

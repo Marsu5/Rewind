@@ -347,8 +347,9 @@ public class GameStage extends MyStage {
             leltime += delta;
 
             if(leltime > 0.5f){
+                car.maxSpeed= 200;
                 m.stop();
-                game.setScreen(new LevelSelectScreen(game));
+                game.setScreen(new LevelSelectScreen(game), false);
             }
 
         }
