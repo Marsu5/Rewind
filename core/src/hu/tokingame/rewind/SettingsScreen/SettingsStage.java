@@ -72,7 +72,7 @@ public class SettingsStage extends MyStage {
         addActor(new MyTextButton(camText){
             @Override
             protected void init() {
-                this.setPosition(120,0);
+                this.setPosition(120,40);
                 super.init();
                 final MyTextButton button = this;
                 if(cameraRotation)
@@ -97,7 +97,7 @@ public class SettingsStage extends MyStage {
             addActor(new MyTextButton(onScreen){
                 @Override
                 protected void init() {
-                    this.setPosition(getViewport().getWorldWidth()-this.getWidth()-150,getViewport().getWorldHeight()-this.getHeight());
+                    this.setPosition(20,getViewport().getWorldHeight()-this.getHeight());
                     super.init();
                     final MyTextButton button = this;
                     if(onScreenMode)
@@ -118,11 +118,11 @@ public class SettingsStage extends MyStage {
                 }
             });
         }else {
-            addActor(new MyLabel("Accelerometer is not available! \nOn screen controls will be enabled.",MyLabel.style1){
+            addActor(new MyLabel("Accelerometer was not found. \nOn screen controls will be enabled.",MyLabel.style1){
                 @Override
                 public void init() {
                     super.init();
-                    this.setPosition(getViewport().getWorldWidth()-this.getWidth(),getViewport().getWorldHeight()-this.getHeight());
+                    this.setPosition(20,getViewport().getWorldHeight()-this.getHeight());
                 }
             });
         }
