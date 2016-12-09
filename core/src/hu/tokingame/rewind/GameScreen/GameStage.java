@@ -125,13 +125,15 @@ public class GameStage extends MyStage {
                 /*addActor(finish = new FinishSensor(world, Globals.finishPositionX, Globals.finishPositionY));
                 finish.setRotation(Globals.finishRotation);*/
                     startTimer();
-                    for (Actor a : me.getActors()) {
+                    for (int i = 0; i < me.getActors().size; i++){
+                        Actor a = me.getActors().get(i);
                         if (a instanceof Barricade) {
                             a.setZIndex(Integer.MAX_VALUE);
                         }
                         if (a instanceof Road) {
                             a.setZIndex(0);
                         }
+
                     }
                 }
             }).start();
@@ -334,7 +336,7 @@ public class GameStage extends MyStage {
             System.out.println("@" + car.getX() + " " + car.getY() + " " + car.getRotation());
 
 
-            ControlStage.hp.setText(car.health + "%");
+//            ControlStage.hp.setText(car.health + "%");
         }
 
         @Override
