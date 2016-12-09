@@ -84,6 +84,7 @@ public class Assets {
     public static final AssetDescriptor<Texture> BUTTON_BG = new AssetDescriptor<Texture>("ButtonAndOther/buttonbg.png", Texture.class);
     public static final AssetDescriptor<Texture> KMH_DISPLAY = new AssetDescriptor<Texture>("ButtonAndOther/ora.png", Texture.class);
     public static final AssetDescriptor<Texture> KMH_POINTER = new AssetDescriptor<Texture>("ButtonAndOther/mutato.png", Texture.class);
+    public static final AssetDescriptor<Texture> POINTS_BACKGROUND = new AssetDescriptor<Texture>("ButtonAndOther/points_bg.png", Texture.class);
 
     //</editor-fold>
 
