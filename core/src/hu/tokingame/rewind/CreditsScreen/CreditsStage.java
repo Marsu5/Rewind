@@ -83,7 +83,6 @@ public class CreditsStage extends MyStage {
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
                         game.setScreen(new h(game));
-                        Assets.manager.get(Assets.MUSIC_MENU).stop();
                     }
                 });
             }

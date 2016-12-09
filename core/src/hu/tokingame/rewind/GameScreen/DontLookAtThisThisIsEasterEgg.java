@@ -6,9 +6,11 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
+import hu.tokingame.rewind.MyBaseClasses.OneSpriteStaticActor;
 import hu.tokingame.rewind.MyGdxGame;
 
 /**
@@ -30,7 +32,15 @@ public class DontLookAtThisThisIsEasterEgg extends MyStage {
 
     @Override
     public void init() {
-        addActor(new MyTextButton("ey_b0ss") {
+        addActor (new OneSpriteStaticActor(Assets.manager.get(Assets.POINTS_BACKGROUND)){
+            @Override
+            public void init() {
+                super.init();
+                this.setSize(Globals.WORLD_WIDTH, Globals.WORLD_HEIGHT);
+                setPosition(0, 0);
+            }
+        });
+        addActor(new MyTextButton("ey_b0ss"){
             @Override
             protected void init() {
                 super.init();
@@ -39,6 +49,7 @@ public class DontLookAtThisThisIsEasterEgg extends MyStage {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
+                        Assets.manager.get(Assets.MUSIC_MENU).stop();
                         game.setScreen(new GameScreen(game, 10));
                     }
                 });

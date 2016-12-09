@@ -162,6 +162,7 @@ public class Assets {
         manager.load(KMH_POINTER);
         manager.load(KMH_DISPLAY);
         manager.load(WEED);
+        manager.load(POINTS_BACKGROUND);
 
         //car textures
         manager.load(CAR_BLUE);
