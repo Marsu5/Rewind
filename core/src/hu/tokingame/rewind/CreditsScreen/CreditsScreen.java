@@ -2,6 +2,7 @@ package hu.tokingame.rewind.CreditsScreen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
 import hu.tokingame.rewind.Global.Globals;
@@ -21,14 +22,13 @@ public class CreditsScreen extends MyScreen {
     @Override
     public void init() {
         super.init();
-        stage = new CreditsStage(new ExtendViewport(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT,new OrthographicCamera(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT)),spriteBatch,game);
+        stage = new CreditsStage(new ExtendViewport(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT,new OrthographicCamera(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT)),new SpriteBatch(),game);
         Gdx.input.setInputProcessor(stage);
     }
 
     @Override
     public void render(float delta) {
         super.render(delta);
-        spriteBatch.setProjectionMatrix(stage.getCamera().combined);
         stage.act(delta);
         stage.draw();
     }

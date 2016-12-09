@@ -54,6 +54,7 @@ public class ScoreStage extends MyStage{
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
+                        game.setScreen(new GameScreen(game,Globals.currenLevel));
                         next = true;
                     }
                 });
@@ -66,7 +67,7 @@ public class ScoreStage extends MyStage{
     public void act(float delta) {
         super.act(delta);
         if(next){
-            game.setScreen(new GameScreen(game,Globals.currenLevel));
+
         }
     }
 
