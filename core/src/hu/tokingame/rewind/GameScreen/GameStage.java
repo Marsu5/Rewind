@@ -25,10 +25,12 @@ import hu.tokingame.rewind.CreditsScreen.CreditsScreen;
 import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MapElements.*;
+import hu.tokingame.rewind.MenuScreen.LevelSelectScreen;
 import hu.tokingame.rewind.MenuScreen.MenuScreen;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
 import hu.tokingame.rewind.MyGdxGame;
+import hu.tokingame.rewind.ScoreScreen.ScoreScreen;
 import hu.tokingame.rewind.SettingsScreen.SettingsStage;
 
 import static com.badlogic.gdx.Gdx.input;
@@ -39,7 +41,7 @@ import static com.badlogic.gdx.Gdx.input;
  */
 
 public class GameStage extends MyStage {
-    private int level;
+    public static int level;
     World world;
     WorldBodyEditorLoader loader;
     Car car;
@@ -56,6 +58,7 @@ public class GameStage extends MyStage {
     int newlevel;
     boolean pause = false;
     Music m;
+    float leltime =0;
 
     boolean setNextLevel = false;
 
@@ -125,13 +128,15 @@ public class GameStage extends MyStage {
                 /*addActor(finish = new FinishSensor(world, Globals.finishPositionX, Globals.finishPositionY));
                 finish.setRotation(Globals.finishRotation);*/
                     startTimer();
-                    for (Actor a : me.getActors()) {
+                    for (int i = 0; i < me.getActors().size; i++){
+                        Actor a = me.getActors().get(i);
                         if (a instanceof Barricade) {
                             a.setZIndex(Integer.MAX_VALUE);
                         }
                         if (a instanceof Road) {
                             a.setZIndex(0);
                         }
+
                     }
                 }
             }).start();
@@ -243,7 +248,8 @@ public class GameStage extends MyStage {
                     game.setScreen(new CreditsScreen(game));
                 }else {
                     Globals.unlockedLevels[newlevel] = true;
-                    game.setScreen(new GameScreen(game, newlevel));
+                    Globals.currenLevel = newlevel;
+                    game.setScreen(new ScoreScreen(game,getTime()),false);
                 }
 
             }
@@ -332,6 +338,21 @@ public class GameStage extends MyStage {
 
             controlStage.setSpeed(car.getSpeed());
             System.out.println("@" + car.getX() + " " + car.getY() + " " + car.getRotation());
+
+
+
+        if(car.health < 1){
+            car.maxSpeed = 0;
+            car.actor.setTexture(Assets.manager.get(Assets.CAR_GREEN_WRECKED));
+            leltime += delta;
+
+            if(leltime > 0.5f){
+                m.stop();
+                game.setScreen(new LevelSelectScreen(game));
+            }
+
+        }
+
         }
 
         @Override
@@ -360,9 +381,11 @@ public class GameStage extends MyStage {
 
         super.dispose();
         //world.dispose();
-/*        controlStage.dispose();
+        /*
+        controlStage.dispose();
         mapCreatingStage.dispose();
-        pauseStage.dispose();*/
+        pauseStage.dispose();
+        */
     }
 
         @Override

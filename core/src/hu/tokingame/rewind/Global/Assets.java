@@ -36,16 +36,28 @@ public class Assets {
         fontParameter2.fontParameters.characters = hu.tokingame.rewind.Global.Globals.CHARS;
         fontParameter2.fontParameters.color = Color.WHITE;
     }
+    static final FreetypeFontLoader.FreeTypeFontLoaderParameter fontParameter3 = new FreetypeFontLoader.FreeTypeFontLoaderParameter();
+    static {
+        fontParameter3.fontFileName = "Fonts/vermin_vibes_1989.ttf";
+        fontParameter3.fontParameters.size = 1;
+        fontParameter3.fontParameters.characters = hu.tokingame.rewind.Global.Globals.CHARS;
+        fontParameter3.fontParameters.color = Color.WHITE;
+    }
 
     // Fonts
     public static final AssetDescriptor<BitmapFont> VERMIN_FONT = new AssetDescriptor<BitmapFont>("Fonts/vermin_vibes_1989.ttf", BitmapFont.class, fontParameter);
     public static final AssetDescriptor<BitmapFont> VERMIN_FONT_BIG = new AssetDescriptor<BitmapFont>("Fonts/vermin_vibes_1989.ttf", BitmapFont.class, fontParameter2);
+    public static final AssetDescriptor<BitmapFont> VERMIN_FONT_SMALL = new AssetDescriptor<BitmapFont>("Fonts/vermin_vibes_1989.ttf", BitmapFont.class, fontParameter3);
 
     //<editor-fold desc="Car Textures>
     public static final AssetDescriptor<Texture> CAR_BLUE = new AssetDescriptor<Texture>("GameTextures/bluecar.png", Texture.class);
+    public static final AssetDescriptor<Texture> CAR_BLUE_WRECKED = new AssetDescriptor<Texture>("GameTextures/bluecar_broken.png", Texture.class);
+    public static final AssetDescriptor<Texture> CAR_GREEN_WRECKED = new AssetDescriptor<Texture>("GameTextures/greencar_broken.png", Texture.class);
     public static final AssetDescriptor<Texture> CAR_GREEN = new AssetDescriptor<Texture>("GameTextures/greencar.png", Texture.class);
     public static final AssetDescriptor<Texture> CAR_RED = new AssetDescriptor<Texture>("GameTextures/redcar.png", Texture.class);
+    public static final AssetDescriptor<Texture> CAR_RED_WRECKED = new AssetDescriptor<Texture>("GameTextures/redcar_broken.png", Texture.class);
     public static final AssetDescriptor<Texture> CAR_ORANGE = new AssetDescriptor<Texture>("GameTextures/orangecar.png", Texture.class);
+    public static final AssetDescriptor<Texture> CAR_ORANGE_WRECKED = new AssetDescriptor<Texture>("GameTextures/orangecar_broken.png", Texture.class);
     //</editor-fold>
 
     //<editor-fold desc="Map Elements">
@@ -154,9 +166,14 @@ public class Assets {
         manager.load(CAR_GREEN);
         manager.load(CAR_RED);
         manager.load(CAR_ORANGE);
+        manager.load(CAR_BLUE_WRECKED);
+        manager.load(CAR_GREEN_WRECKED);
+        manager.load(CAR_RED_WRECKED);
+        manager.load(CAR_ORANGE_WRECKED);
 
         manager.load(VERMIN_FONT);
         manager.load(VERMIN_FONT_BIG);
+        manager.load(VERMIN_FONT_SMALL);
 
         manager.load(MUSIC_MENU);
         manager.load(MUSIC_1);
