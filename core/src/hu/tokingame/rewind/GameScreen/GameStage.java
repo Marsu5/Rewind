@@ -369,7 +369,7 @@ public class GameStage extends MyStage {
             } else {
                 controlStage.draw();
             }
-            box2DDebugRenderer.render(world, getCamera().combined);
+            //box2DDebugRenderer.render(world, getCamera().combined);
             //box2DDebugRenderer.render(world, getCamera().combined);
         }
 
