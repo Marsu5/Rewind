@@ -180,10 +180,12 @@ public class MapLoader{
         }
         */
         maxElements = mapElements.size;
+        System.out.println("alma");
         running = false;
     }
 
     public boolean addNext(){
+        System.out.println("addnext");
         if (mapElements.size==0){
             return false;
         }
@@ -243,6 +245,7 @@ public class MapLoader{
     }
 */
     private void addMapElement(char c, int j, int y){
+        System.out.println("addvavan");
         switch(c){
             case '1' : stage.addActor(new RoadVertical(world, loader, j, y)); break;
             case '2' : stage.addActor(new RoadHorizontal(world, loader, j, y)); break;
@@ -265,6 +268,7 @@ public class MapLoader{
     }
 
     protected void lineAdded(){
+        System.out.println("lineAdded");
     }
 
 }
