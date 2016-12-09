@@ -38,7 +38,7 @@ public class Assets {
     }
     static final FreetypeFontLoader.FreeTypeFontLoaderParameter fontParameter3 = new FreetypeFontLoader.FreeTypeFontLoaderParameter();
     static {
-        fontParameter3.fontFileName = "Fonts/succ.ttf";
+        fontParameter3.fontFileName = "Fonts/szutyok.ttf";
         fontParameter3.fontParameters.size = 30;
         fontParameter3.fontParameters.characters = hu.tokingame.rewind.Global.Globals.CHARS;
         fontParameter3.fontParameters.color = Color.WHITE;
@@ -47,7 +47,7 @@ public class Assets {
     // Fonts
     public static final AssetDescriptor<BitmapFont> VERMIN_FONT = new AssetDescriptor<BitmapFont>("Fonts/vermin_vibes_1989.ttf", BitmapFont.class, fontParameter);
     public static final AssetDescriptor<BitmapFont> VERMIN_FONT_BIG = new AssetDescriptor<BitmapFont>("Fonts/vermin_vibes_1989.ttf", BitmapFont.class, fontParameter2);
-    public static final AssetDescriptor<BitmapFont> VERMIN_FONT_SMALL = new AssetDescriptor<BitmapFont>("Fonts/8-BIT_WONDER.ttf", BitmapFont.class, fontParameter3);
+    public static final AssetDescriptor<BitmapFont> VERMIN_FONT_SMALL = new AssetDescriptor<BitmapFont>("Fonts/szutyok.ttf", BitmapFont.class, fontParameter3);
 
     //<editor-fold desc="Car Textures>
     public static final AssetDescriptor<Texture> CAR_BLUE = new AssetDescriptor<Texture>("GameTextures/bluecar.png", Texture.class);
