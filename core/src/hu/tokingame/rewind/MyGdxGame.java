@@ -16,6 +16,7 @@ import java.util.Stack;
 import java.lang.reflect.InvocationTargetException;
 
 import hu.tokingame.rewind.Global.Assets;
+import hu.tokingame.rewind.Global.WriteUnlocked;
 import hu.tokingame.rewind.LoadingScreen.LoadingScreen;
 import hu.tokingame.rewind.MyBaseClasses.MyScreen;
 
@@ -44,23 +45,6 @@ public class MyGdxGame extends Game {
 		return style;
 	}
 
-	/* Majd
-	public TextField.TextFieldStyle getTextFieldStyle() {
-		TextField.TextFieldStyle style = new TextField.TextFieldStyle();
-		style.background = new TextureRegionDrawable(new TextureRegion(Assets.manager.get(Assets.TEXTBOX_TEXTURE)));
-		style.background.setLeftWidth(style.background.getLeftWidth()+20);
-		style.background.setRightWidth(style.background.getRightWidth()+20);
-		style.font = Assets.manager.get(Assets.CALIBRIL_FONT);
-		style.cursor = new TextureRegionDrawable(new TextureRegion(new TextureRegion(Assets.manager.get(Assets.CURSOR_TEXTURE))));
-		style.cursor.setMinWidth(50);
-		style.fontColor = Color.BLACK;
-		Pixmap p = new Pixmap(1,1, Pixmap.Format.RGB888);
-		p.setColor(0.4f,0.2f,0.8f, 0.5f);
-		p.fill();
-		style.selection = new TextureRegionDrawable(new TextureRegion(new Texture(p)));
-		return style;
-	}
-	*/
 
 	public TextButton.TextButtonStyle getTextButtonStyle() {
 
@@ -85,6 +69,7 @@ public class MyGdxGame extends Game {
 	@Override
 	public void create () {
 		Assets.prepare();
+		WriteUnlocked.ReadUnlocked();
 		setScreen(new LoadingScreen(this));
 	}
 
@@ -97,6 +82,7 @@ public class MyGdxGame extends Game {
 	@Override
 	public void dispose () {
 		super.dispose();
+		WriteUnlocked.WriteUnlocked();
 		Assets.unload();
 	}
 

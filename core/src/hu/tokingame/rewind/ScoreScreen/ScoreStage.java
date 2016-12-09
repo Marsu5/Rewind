@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import hu.tokingame.rewind.GameScreen.GameScreen;
 import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.Global.Globals;
+import hu.tokingame.rewind.Global.WriteUnlocked;
 import hu.tokingame.rewind.MyBaseClasses.MyLabel;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
@@ -37,6 +38,7 @@ public class ScoreStage extends MyStage{
 
     @Override
     public void init() {
+        WriteUnlocked.WriteUnlocked();
         addActor(new OneSpriteStaticActor(Assets.manager.get(Assets.POINTS_BACKGROUND)){
             @Override
             public void init() {
