@@ -57,6 +57,7 @@ public class GameStage extends MyStage {
     boolean pause = false;
     Music m;
 
+    boolean setNextLevel = false;
 
     @Override
     public void init() {
@@ -145,35 +146,34 @@ public class GameStage extends MyStage {
             rotationBase = Gdx.input.getAccelerometerY();
 
 
-            world.setContactListener(new ContactListener() {
-                @Override
-                public void beginContact(Contact contact) {
-                    if (contact.getFixtureA().getBody().getUserData() instanceof Car) {
-                        if (contact.getFixtureB().getBody().getUserData() instanceof Road || contact.getFixtureB().getBody().getUserData() instanceof Barricade) {
-                            ((Car) contact.getFixtureA().getBody().getUserData()).crash();
+        world.setContactListener(new ContactListener() {
+            @Override
+            public void beginContact(Contact contact) {
+                if(contact.getFixtureA().getBody().getUserData() instanceof Car){
+                    if (contact.getFixtureB().getBody().getUserData() instanceof Road || contact.getFixtureB().getBody().getUserData() instanceof Barricade) {
+                        ((Car) contact.getFixtureA().getBody().getUserData()).crash();
+                    }
+                    if (contact.getFixtureB().getBody().getUserData() instanceof FinishSensor){
+                        System.out.println(getTime());
+                        setNextLevel = true;
+                        Globals.unlockedLevels[newlevel] = true; // TODO: 2016. 12. 09.
+                        m.stop();
+                        System.out.println("Next Level");
+                        game.setScreen(new GameScreen(game,newlevel), false);
+                    }
+                } else {
+                    if(contact.getFixtureB().getBody().getUserData() instanceof Car){
+                        if (contact.getFixtureA().getBody().getUserData() instanceof Road || contact.getFixtureA().getBody().getUserData() instanceof Barricade) {
+                            ((Car) contact.getFixtureB().getBody().getUserData()).crash();
                         }
-                        if (contact.getFixtureB().getBody().getUserData() instanceof FinishSensor) {
+                        if (contact.getFixtureA().getBody().getUserData() instanceof FinishSensor){
                             System.out.println(getTime());
-                            if (newlevel == -1) game.setScreen(new CreditsScreen(game));
-                            else Globals.unlockedLevels[newlevel] = true;
+                            Globals.unlockedLevels[newlevel] = true;
                             m.stop();
                             System.out.println("Next Level");
-                            game.setScreen(new GameScreen(game, newlevel));
+                            game.setScreen(new GameScreen(game,newlevel));
                         }
-                    } else {
-                        if (contact.getFixtureB().getBody().getUserData() instanceof Car) {
-                            if (contact.getFixtureA().getBody().getUserData() instanceof Road || contact.getFixtureA().getBody().getUserData() instanceof Barricade) {
-                                ((Car) contact.getFixtureB().getBody().getUserData()).crash();
-                            }
-                            if (contact.getFixtureA().getBody().getUserData() instanceof FinishSensor) {
-                                System.out.println(getTime());
-                                if (newlevel == -1) game.setScreen(new CreditsScreen(game));
-                                else Globals.unlockedLevels[newlevel] = true;
-                                m.stop();
-                                System.out.println("Next Level");
-                                game.setScreen(new GameScreen(game, newlevel));
-                            }
-                        }
+                    }
 
                     }
 
@@ -229,21 +229,24 @@ public class GameStage extends MyStage {
 
         private boolean reverse = false;
 
-        @Override
-        public void act ( float delta){
-            if (mapLoader.addNext() || car == null) {
-                mapCreatingStage.setPercent(mapLoader.getPercent());
-                mapCreatingStage.act(delta);
-                return;
+    @Override
+    public void act(float delta) {
+        if (mapLoader.addNext() || car == null){
+            mapCreatingStage.setPercent(mapLoader.getPercent());
+            mapCreatingStage.act(delta);
+            return;
+        }
+        if (!pause) {
+            world.step(delta, 10, 10);
+            super.act(delta);
+            controlStage.act(delta);
+            if (setNextLevel){
+                game.setScreen(new GameScreen(game, newlevel));
             }
-            if (!pause) {
-                world.step(delta, 10, 10);
-                super.act(delta);
-                controlStage.act(delta);
-            } else {
-                pauseStage.act(delta);
-                return;
-            }
+        }else{
+            pauseStage.act(delta);
+            return;
+        }
 
         /*OrthographicCamera c = (OrthographicCamera)getCamera();
         c.zoom = 0.2f;
@@ -352,12 +355,12 @@ public class GameStage extends MyStage {
         @Override
         public void dispose () {
 
-            controlStage.dispose();
-            mapCreatingStage.dispose();
-            pauseStage.dispose();
-            //world.dispose();
-            super.dispose();
-        }
+        super.dispose();
+        //world.dispose();
+/*        controlStage.dispose();
+        mapCreatingStage.dispose();
+        pauseStage.dispose();*/
+    }
 
         @Override
         public void resize ( int screenWidth, int screenHeight){
