@@ -15,6 +15,7 @@ import hu.tokingame.rewind.MenuScreen.MenuScreen;
 import hu.tokingame.rewind.MyBaseClasses.MyLabel;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
+import hu.tokingame.rewind.MyBaseClasses.OneSpriteStaticActor;
 import hu.tokingame.rewind.MyGdxGame;
 
 /**
@@ -85,6 +86,14 @@ public class CreditsStage extends MyStage {
                         game.setScreen(new h(game));
                     }
                 });
+            }
+        });
+        addActor(new OneSpriteStaticActor(Assets.manager.get(Assets.TOKIN)){
+            @Override
+            public void init() {
+                super.init();
+                setSize(100, 100);
+                setPosition(600, 470);
             }
         });
 
