@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hu.tokingame.rewind.GameScreen.GameScreen;
+import hu.tokingame.rewind.GameScreen.h;
 import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MenuScreen.MenuScreen;
@@ -81,8 +82,7 @@ public class CreditsStage extends MyStage {
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
-                        game.setScreen(new GameScreen(game, 10));
-                        Assets.manager.get(Assets.MUSIC_MENU).stop();
+                        game.setScreen(new h(game));
                     }
                 });
             }
