@@ -6,6 +6,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
 
+import hu.tokingame.rewind.GameScreen.ControlStage;
+import hu.tokingame.rewind.GameScreen.GameStage;
 import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.MyBaseClasses.OneSpriteStaticActor;
 import hu.tokingame.rewind.MyBaseClasses.WorldActorGroup;
@@ -17,7 +19,7 @@ import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
 
 public class Car extends WorldActorGroup {
 
-    OneSpriteStaticActor actor;
+    public OneSpriteStaticActor actor;
     public static int health = 100;
     int tex = (int) (Math.random() * (4 - 1 + 1) + 1);
 
@@ -135,10 +137,12 @@ public class Car extends WorldActorGroup {
     }
 
     public void crash(){
+        if(GameStage.level != 3){
         float v = getBody().getLinearVelocity().len();
         System.out.println(v);
         if(v > 0.5) health -= v*15;
         System.out.println(health + " hp");
+        //ControlStage.hp.setText(health + "%");
 
         if(health < 50) accelerateVelocity = 8;
         else if(health < 25) {
@@ -151,7 +155,7 @@ public class Car extends WorldActorGroup {
             }
         }
         //else if(health < 1) this.removeFromStage(); //TODO ez nemmüxik valami kell rá hogy összetörik vagy valami
-    }
+    }}
 
     public boolean isReversing(){
         Vector2 v = getBody().getLinearVelocity().cpy();

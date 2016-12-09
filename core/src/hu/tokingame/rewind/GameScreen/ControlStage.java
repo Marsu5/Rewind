@@ -79,6 +79,8 @@ public class ControlStage extends MyStage {
 
         controlStage = this;
 
+
+
         if (SettingsStage.onScreenMode){
             addActor(Gaspedal = new UpDownButton(Assets.manager.get(Assets.GASPEDAL_UP), Assets.manager.get(Assets.GASPEDAL_DOWN)){
                 @Override
@@ -383,13 +385,7 @@ public class ControlStage extends MyStage {
                 setOriginCenter();
             }
         });
-        /*addActor(hp = new MyLabel("100%", MyLabel.style1){
-            @Override
-            public void init() {
-                super.init();
-                setPosition(0, 0);
-            }
-        });*/
+
 
     }
 

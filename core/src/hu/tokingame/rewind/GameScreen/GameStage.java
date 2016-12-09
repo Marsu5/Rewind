@@ -25,6 +25,7 @@ import hu.tokingame.rewind.CreditsScreen.CreditsScreen;
 import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MapElements.*;
+import hu.tokingame.rewind.MenuScreen.LevelSelectScreen;
 import hu.tokingame.rewind.MenuScreen.MenuScreen;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.WorldBodyEditorLoader;
@@ -40,7 +41,7 @@ import static com.badlogic.gdx.Gdx.input;
  */
 
 public class GameStage extends MyStage {
-    private int level;
+    public static int level;
     World world;
     WorldBodyEditorLoader loader;
     Car car;
@@ -57,6 +58,7 @@ public class GameStage extends MyStage {
     int newlevel;
     boolean pause = false;
     Music m;
+    float leltime =0;
 
     boolean setNextLevel = false;
 
@@ -338,7 +340,19 @@ public class GameStage extends MyStage {
             System.out.println("@" + car.getX() + " " + car.getY() + " " + car.getRotation());
 
 
-//            ControlStage.hp.setText(car.health + "%");
+
+        if(car.health < 1){
+            car.maxSpeed = 0;
+            car.actor.setTexture(Assets.manager.get(Assets.CAR_GREEN_WRECKED));
+            leltime += delta;
+
+            if(leltime > 0.5f){
+                m.stop();
+                game.setScreen(new LevelSelectScreen(game));
+            }
+
+        }
+
         }
 
         @Override

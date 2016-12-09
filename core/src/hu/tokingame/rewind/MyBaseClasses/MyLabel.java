@@ -17,7 +17,7 @@ import hu.tokingame.rewind.MyGdxGame;
  */
 public class MyLabel extends Label implements InitableInterface{
 
-    public static com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle style1;
+    public static com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle style1, style2;
 
     static {
         refresh();
@@ -27,6 +27,10 @@ public class MyLabel extends Label implements InitableInterface{
         style1 = new com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle();
         style1.font = Assets.manager.get(Assets.VERMIN_FONT);
         style1.fontColor = Color.WHITE;
+
+        style2 = new com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle();
+        style2.font = Assets.manager.get(Assets.VERMIN_FONT_SMALL);
+        style2.fontColor = Color.WHITE;
     }
 
     public MyLabel(CharSequence text, LabelStyle style) {
