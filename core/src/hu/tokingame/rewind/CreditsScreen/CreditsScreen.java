@@ -22,4 +22,12 @@ public class CreditsScreen extends MyScreen {
         super.init();
         stage = new CreditsStage(new ExtendViewport(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT,new OrthographicCamera(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT)),spriteBatch,game);
     }
+
+    @Override
+    public void render(float delta) {
+        super.render(delta);
+        spriteBatch.setProjectionMatrix(stage.getCamera().combined);
+        stage.act(delta);
+        stage.draw();
+    }
 }
