@@ -16,3 +16,6 @@ E: zsákutca fel
 F: zsákutca jobb
 G: zsákutca le
 H: zsákutca bal
+
+
+szia hoty faty én naon jol k csókólóm

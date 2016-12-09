@@ -97,6 +97,7 @@ public class Assets {
     public static final AssetDescriptor<Texture> KMH_DISPLAY = new AssetDescriptor<Texture>("ButtonAndOther/ora.png", Texture.class);
     public static final AssetDescriptor<Texture> KMH_POINTER = new AssetDescriptor<Texture>("ButtonAndOther/mutato.png", Texture.class);
     public static final AssetDescriptor<Texture> POINTS_BACKGROUND = new AssetDescriptor<Texture>("ButtonAndOther/points_bg.png", Texture.class);
+    public static final AssetDescriptor<Texture> WEED = new AssetDescriptor<Texture>("Map/kanabia.png", Texture.class);
 
     //</editor-fold>
 
@@ -160,6 +161,7 @@ public class Assets {
         manager.load(BUTTON_BG);
         manager.load(KMH_POINTER);
         manager.load(KMH_DISPLAY);
+        manager.load(WEED);
 
         //car textures
         manager.load(CAR_BLUE);

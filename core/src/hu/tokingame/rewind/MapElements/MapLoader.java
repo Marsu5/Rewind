@@ -263,7 +263,8 @@ public class MapLoader{
             case 'F' : stage.addActor(new DeadEndRight(world, loader, j, y)); break;
             case 'G' : stage.addActor(new DeadEndDown(world, loader, j, y)); break;
             case 'H' : stage.addActor(new DeadEndLeft(world, loader, j, y)); break;
-            case 'C' : stage.addActor(new Decoration(world, loader, j, y, (int)(Math.random()*(5-1+1)+1))); break;
+            case 'C' : if(level != 10)stage.addActor(new Decoration(world, loader, j, y, (int)(Math.random()*(5-1+1)+1)));
+                else stage.addActor(new Weed(world,loader, j, y)); break;
         }
     }
 
