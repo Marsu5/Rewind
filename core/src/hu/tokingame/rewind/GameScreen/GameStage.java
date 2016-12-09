@@ -57,6 +57,7 @@ public class GameStage extends MyStage{
     boolean pause = false;
     Music m;
 
+    boolean setNextLevel = false;
 
     @Override
     public void init() {
@@ -157,11 +158,11 @@ public class GameStage extends MyStage{
                     }
                     if (contact.getFixtureB().getBody().getUserData() instanceof FinishSensor){
                         System.out.println(getTime());
-                        if(newlevel == -1) game.setScreen(new CreditsScreen(game));
-                        else Globals.unlockedLevels[newlevel] = true;
+                        setNextLevel = true;
+                        Globals.unlockedLevels[newlevel] = true; // TODO: 2016. 12. 09.
                         m.stop();
                         System.out.println("Next Level");
-                        game.setScreen(new GameScreen(game,newlevel));
+                        game.setScreen(new GameScreen(game,newlevel), false);
                     }
                 } else {
                     if(contact.getFixtureB().getBody().getUserData() instanceof Car){
@@ -227,6 +228,9 @@ public class GameStage extends MyStage{
             world.step(delta, 10, 10);
             super.act(delta);
             controlStage.act(delta);
+            if (setNextLevel){
+                game.setScreen(new GameScreen(game, newlevel));
+            }
         }else{
             pauseStage.act(delta);
             return;
@@ -338,11 +342,11 @@ public class GameStage extends MyStage{
     @Override
     public void dispose() {
 
-        controlStage.dispose();
-        mapCreatingStage.dispose();
-        pauseStage.dispose();
-        //world.dispose();
         super.dispose();
+        //world.dispose();
+/*        controlStage.dispose();
+        mapCreatingStage.dispose();
+        pauseStage.dispose();*/
     }
 
     @Override
