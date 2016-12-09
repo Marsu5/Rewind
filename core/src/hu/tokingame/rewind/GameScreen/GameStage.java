@@ -156,7 +156,7 @@ public class GameStage extends MyStage {
             public void beginContact(Contact contact) {
                 if(contact.getFixtureA().getBody().getUserData() instanceof Car){
                     if (contact.getFixtureB().getBody().getUserData() instanceof FinishSensor){
-                        System.out.println(getTime());
+                        System.out.println("Time"+getTime());
                         setNextLevel = true;
                         m.stop();
                         System.out.println("Next Level");
@@ -243,6 +243,7 @@ public class GameStage extends MyStage {
                 }else {
                     Globals.unlockedLevels[newlevel] = true;
                     Globals.currenLevel = newlevel;
+                    System.out.println("dklfasjdklf time "+getTime());
                     game.setScreen(new ScoreScreen(game,getTime()),false);
                 }
 
@@ -264,7 +265,6 @@ public class GameStage extends MyStage {
             } else {
                 if (SettingsStage.cameraRotation) {
                     setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.1f * car.getSpeed() / car.maxSpeed), 10, (float) Math.toDegrees(car.getBody().getAngle()));
-                    System.out.println(car.getBody().getAngle());
                 } else {
                     setCameraMoveToXY(car.getX(), car.getY(), 0.12f + (0.1f * car.getSpeed() / car.maxSpeed), 10);
                 }
@@ -327,11 +327,10 @@ public class GameStage extends MyStage {
             if (Gdx.input.getAccelerometerY() > 0) {
                 car.turnRight(Math.abs(Gdx.input.getAccelerometerY()) * 6f * delta);
             }
-            //System.out.println(car.getX()+";"+car.getY()+";"+car.getRotation());
+
 
 
             controlStage.setSpeed(car.getSpeed());
-            System.out.println("@" + car.getX() + " " + car.getY() + " " + car.getRotation());
 
 
 

@@ -76,16 +76,16 @@ public class PauseStage  extends MyStage{
                     @Override
                     public void clicked(InputEvent event, float x, float y) {
                         super.clicked(event, x, y);
-                        thisStag.addActor(new MyTextButton("Press again to confirm"){
+                        thisStag.addActor(new MyTextButton("Press to confirm"){
                             @Override
                             protected void init() {
                                 super.init();
-                                setPosition(512/2f,288/2f);
+                                setPosition((512/2f)-this.getWidth()/2f,288/2f);
                                 addListener(new ClickListener(){
                                     @Override
                                     public void clicked(InputEvent event, float x, float y) {
                                         super.clicked(event, x, y);
-                                        back = true;
+                                        Gdx.app.exit();
                                     }
                                 });
                             }

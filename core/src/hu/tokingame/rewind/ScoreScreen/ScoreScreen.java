@@ -21,6 +21,8 @@ public class ScoreScreen extends MyScreen {
     public ScoreScreen(MyGdxGame game, float time) {
         super(game);
         this.time = time;
+        System.out.println(this.time);
+        init();
     }
 
     @Override

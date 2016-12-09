@@ -6,10 +6,12 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import hu.tokingame.rewind.GameScreen.GameScreen;
+import hu.tokingame.rewind.Global.Assets;
 import hu.tokingame.rewind.Global.Globals;
 import hu.tokingame.rewind.MyBaseClasses.MyLabel;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.MyTextButton;
+import hu.tokingame.rewind.MyBaseClasses.OneSpriteStaticActor;
 import hu.tokingame.rewind.MyGdxGame;
 
 /**
@@ -22,16 +24,25 @@ public class ScoreStage extends MyStage{
 
     public ScoreStage(Viewport viewport, Batch batch, MyGdxGame game, float time) {
         super(viewport, batch, game);
-        this.time = time;
+        this.time = Math.round(time * 100) / 100f;
+        System.out.println("Stage Time" + this.time);
+        addActor(new MyLabel("You completed the level in : " + this.time + " seconds.", MyLabel.style1){
+            @Override
+            public void init() {
+                super.init();
+                this.setPosition(Globals.WORLD_WIDTH/2f - this.getWidth()/2f,Globals.WORLD_HEIGHT/2f - this.getHeight()/2f);
+            }
+        });
     }
 
     @Override
     public void init() {
-        addActor(new MyLabel("You completed the level in : " + time + " seconds.", MyLabel.style1){
+        addActor(new OneSpriteStaticActor(Assets.manager.get(Assets.POINTS_BACKGROUND)){
             @Override
             public void init() {
                 super.init();
-                this.setPosition(Globals.WORLD_WIDTH/2f - this.getWidth(),Globals.WORLD_HEIGHT/2f - this.getHeight());
+                this.setPosition(0,0);
+                this.setSize(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT);
             }
         });
         addActor(new MyTextButton("Continue"){
