@@ -43,9 +43,13 @@ public class Assets {
 
     //<editor-fold desc="Car Textures>
     public static final AssetDescriptor<Texture> CAR_BLUE = new AssetDescriptor<Texture>("GameTextures/bluecar.png", Texture.class);
+    public static final AssetDescriptor<Texture> CAR_BLUE_WRECKED = new AssetDescriptor<Texture>("GameTextures/bluecar_broken.png", Texture.class);
+    public static final AssetDescriptor<Texture> CAR_GREEN_WRECKED = new AssetDescriptor<Texture>("GameTextures/greencar_broken.png", Texture.class);
     public static final AssetDescriptor<Texture> CAR_GREEN = new AssetDescriptor<Texture>("GameTextures/greencar.png", Texture.class);
     public static final AssetDescriptor<Texture> CAR_RED = new AssetDescriptor<Texture>("GameTextures/redcar.png", Texture.class);
+    public static final AssetDescriptor<Texture> CAR_RED_WRECKED = new AssetDescriptor<Texture>("GameTextures/redcar_broken.png", Texture.class);
     public static final AssetDescriptor<Texture> CAR_ORANGE = new AssetDescriptor<Texture>("GameTextures/orangecar.png", Texture.class);
+    public static final AssetDescriptor<Texture> CAR_ORANGE_WRECKED = new AssetDescriptor<Texture>("GameTextures/orangecar_broken.png", Texture.class);
     //</editor-fold>
 
     //<editor-fold desc="Map Elements">
@@ -154,6 +158,10 @@ public class Assets {
         manager.load(CAR_GREEN);
         manager.load(CAR_RED);
         manager.load(CAR_ORANGE);
+        manager.load(CAR_BLUE_WRECKED);
+        manager.load(CAR_GREEN_WRECKED);
+        manager.load(CAR_RED_WRECKED);
+        manager.load(CAR_ORANGE_WRECKED);
 
         manager.load(VERMIN_FONT);
         manager.load(VERMIN_FONT_BIG);

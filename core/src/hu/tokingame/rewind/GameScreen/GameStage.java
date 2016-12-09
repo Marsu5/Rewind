@@ -332,6 +332,9 @@ public class GameStage extends MyStage {
 
             controlStage.setSpeed(car.getSpeed());
             System.out.println("@" + car.getX() + " " + car.getY() + " " + car.getRotation());
+
+
+            ControlStage.hp.setText(car.health + "%");
         }
 
         @Override

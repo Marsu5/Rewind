@@ -140,8 +140,16 @@ public class Car extends WorldActorGroup {
         if(v > 0.5) health -= v*15;
         System.out.println(health + " hp");
 
-        if(health < 50) accelerateTime = 3;
-        else if(health < 25) accelerateTime = 5;
+        if(health < 50) accelerateVelocity = 8;
+        else if(health < 25) {
+            accelerateVelocity = 3;
+            switch(tex){
+                case 1: actor.setTexture(Assets.manager.get(Assets.CAR_BLUE_WRECKED));
+                case 2: actor.setTexture(Assets.manager.get(Assets.CAR_GREEN_WRECKED));
+                case 3: actor.setTexture(Assets.manager.get(Assets.CAR_ORANGE_WRECKED));
+                case 4: actor.setTexture(Assets.manager.get(Assets.CAR_RED_WRECKED));
+            }
+        }
         //else if(health < 1) this.removeFromStage(); //TODO ez nemmüxik valami kell rá hogy összetörik vagy valami
     }
 

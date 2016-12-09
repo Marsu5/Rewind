@@ -8,6 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
 import hu.tokingame.rewind.Global.Assets;
+import hu.tokingame.rewind.Global.Globals;
+import hu.tokingame.rewind.MyBaseClasses.MyLabel;
 import hu.tokingame.rewind.MyBaseClasses.MyStage;
 import hu.tokingame.rewind.MyBaseClasses.OneSpriteStaticActor;
 import hu.tokingame.rewind.MyBaseClasses.UpDownButton;
@@ -23,6 +25,7 @@ public class ControlStage extends MyStage {
 
     UpDownButton Gaspedal, BrakePedal, Turbo, LeftButton, RightButton, zoom;
     private ControlStage controlStage;
+    public static MyLabel hp;
     private boolean turboReloading = false;
     private float elapstime = 0;
     private float elapstime2 = 0;
@@ -380,6 +383,13 @@ public class ControlStage extends MyStage {
                 setOriginCenter();
             }
         });
+        /*addActor(hp = new MyLabel("100%", MyLabel.style1){
+            @Override
+            public void init() {
+                super.init();
+                setPosition(0, 0);
+            }
+        });*/
 
     }
 
