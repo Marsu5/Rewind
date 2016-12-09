@@ -49,11 +49,11 @@ public class Car extends WorldActorGroup {
     public float maxSpeed = 200;
     public float maxTurnVelocity = 0.9f;
     public float turnVelocity = 2f;
-    public float accelerateVelocity = 14;
+    public float accelerateVelocity = 24;
     public float frictionMultiplier = 0.99f;
-    public float breakMultiplier = 0.891f;
+    public float breakMultiplier = 0.95f;
     public float turnMultiplier = 0.7f;
-    public float nullSpeed = 0.01f;
+    public float nullSpeed = 0.03f;
 
     public float turnTime = 0.15f;
     public float accelerateTime = 0.1f;

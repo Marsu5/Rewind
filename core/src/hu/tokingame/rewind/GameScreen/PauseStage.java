@@ -31,10 +31,11 @@ public class PauseStage  extends MyStage{
     @Override
     public boolean keyDown(int keycode) {
         if(keycode == Input.Keys.BACK || keycode == Input.Keys.ESCAPE){
-            if(time > 10){
+           if(time > 10){
                 stage.pause = false;
                 time = 0;
             }
+
         }
         return false;
     }

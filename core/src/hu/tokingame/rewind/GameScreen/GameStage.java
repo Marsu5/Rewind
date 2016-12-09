@@ -156,10 +156,9 @@ public class GameStage extends MyStage {
                     if (contact.getFixtureB().getBody().getUserData() instanceof FinishSensor){
                         System.out.println(getTime());
                         setNextLevel = true;
-                        Globals.unlockedLevels[newlevel] = true; // TODO: 2016. 12. 09.
                         m.stop();
                         System.out.println("Next Level");
-                        game.setScreen(new GameScreen(game,newlevel), false);
+                        //game.setScreen(new GameScreen(game,newlevel), false);
                     }
                 } else {
                     if(contact.getFixtureB().getBody().getUserData() instanceof Car){
@@ -168,10 +167,9 @@ public class GameStage extends MyStage {
                         }
                         if (contact.getFixtureA().getBody().getUserData() instanceof FinishSensor){
                             System.out.println(getTime());
-                            Globals.unlockedLevels[newlevel] = true;
                             m.stop();
                             System.out.println("Next Level");
-                            game.setScreen(new GameScreen(game,newlevel));
+                            //game.setScreen(new GameScreen(game,newlevel));
                         }
                     }
 
@@ -241,7 +239,13 @@ public class GameStage extends MyStage {
             super.act(delta);
             controlStage.act(delta);
             if (setNextLevel){
-                game.setScreen(new GameScreen(game, newlevel));
+                if(newlevel == -1){
+                    game.setScreen(new CreditsScreen(game));
+                }else {
+                    Globals.unlockedLevels[newlevel] = true;
+                    game.setScreen(new GameScreen(game, newlevel));
+                }
+
             }
         }else{
             pauseStage.act(delta);
@@ -348,7 +352,6 @@ public class GameStage extends MyStage {
                 controlStage.draw();
             }
             box2DDebugRenderer.render(world, getCamera().combined);
-            controlStage.draw();
             //box2DDebugRenderer.render(world, getCamera().combined);
         }
 
