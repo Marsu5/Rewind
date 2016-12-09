@@ -58,7 +58,6 @@ public class MapLoader{
         this.level = level;
         this.world = world;
         this.loader = loader;
-        //System.out.println("konstruktor");
     }
 
 
@@ -72,7 +71,6 @@ public class MapLoader{
 
     public MapLoader load(){
         loadMap();
-        //System.out.println("load");
         return this;
     }
 
@@ -89,22 +87,19 @@ public class MapLoader{
             case 5 : map = "CityMap/level5.txt"; break;
             case 10 : map = "CityMap/bonus.txt"; break;
         }
-        System.out.println(map);
         Scanner be = new Scanner(System.in);
         try{
             be = new Scanner(Gdx.files.internal(map).reader());
             int sor = 0;
-            //System.out.println("van file");
             while(be.hasNextLine()){
                 String vonat = be.nextLine();
                 if(vonat.charAt(0)==('#')) {
                     vonat = vonat.substring(1);
                     String[] carpos = vonat.split(" ");
                     Globals.carPositionX = Float.parseFloat(carpos[0]);
-
                     Globals.carPositionY = Float.parseFloat(carpos[1]);
                     Globals.carRotation = Float.parseFloat(carpos[2]);
-                    System.out.println(Globals.carPositionX+ ", "+Globals.carPositionY+", "+Globals.carRotation);
+
                 }
                 else if(vonat.charAt(0) == '@'){
                     vonat = vonat.substring(1);
@@ -113,10 +108,6 @@ public class MapLoader{
                     barikad[0] = Float.parseFloat(sbarikad[0]);
                     barikad[1] = Float.parseFloat(sbarikad[1]);
                     barikad[2] = Float.parseFloat(sbarikad[2]);
-                    System.out.println(barikad);
-                    /*Globals.barricadeX.add(barikad[1]);
-                    Globals.barricadeY.add(barikad[2]);
-                    Globals.barricadeRotation.add(barikad[3]);*/
                     stage.addActor(new Barricade(world, loader, 1, 1){
                         @Override
                         public void init() {
@@ -130,9 +121,7 @@ public class MapLoader{
                     vonat = vonat.substring(1);
                     String[] finpos = vonat.split(" ");
                     Globals.finishPositionX = Float.parseFloat(finpos[0]);
-                    System.out.println(Globals.finishPositionX);
                     Globals.finishPositionY = Float.parseFloat(finpos[1]);
-                    System.out.println(Globals.finishPositionY);
                     Globals.finishRotation = Float.parseFloat(finpos[2]);
                     stage.addActor(new FinishSensor(world, Globals.finishPositionX, Globals.finishPositionY){
                         @Override
@@ -145,12 +134,7 @@ public class MapLoader{
                     });
                 }
                 else{
-                //System.out.println(vonat.length());
-                System.out.println("while");
                 for(int i = 0; i < vonat.length(); i++){
-                    //nyamm[sor][i] = vonat.charAt(i);
-                    //System.out.println("for");
-                    //addMapElement(vonat.charAt(i),i,vonat.length()-sor);  //későbbre halasztva, lassan adagolva...
                     mapElements.addLast(new MapElement(vonat.charAt(i),i,vonat.length()-sor));
                 }
                     if (vonat.length()>width) width = vonat.length();
@@ -165,32 +149,20 @@ public class MapLoader{
         }catch(Exception e){
             System.out.println(e);
             e.printStackTrace();
-            System.out.println("nincsen filé ");
         }
         be.close();
-
-        /*
-        for (int i = nyamm.length -1 ;i >= 0; i--){
-            for (int j = 0; j < nyamm[0].length; j++){
-                char c = nyamm[i][j];
-                System.out.print(c);
-                addMapElement(c,j,i);
-            }
-            System.out.println("\n");
-        }
-        */
         maxElements = mapElements.size;
-        System.out.println("alma");
         running = false;
     }
 
     public boolean addNext(){
-        System.out.println("addnext");
         if (mapElements.size==0){
             return false;
         }
         MapElement m = mapElements.removeFirst();
-        addMapElement(m.t,m.x,m.y);
+        if(m != null){
+            addMapElement(m.t,m.x,m.y);
+        }
         return true;
     }
 
@@ -203,49 +175,7 @@ public class MapLoader{
         return 100 - mapElements.size * 100 / maxElements;
     }
 
-/*
-    private int sor = 0;
-    private Scanner be = null;
-
-    private boolean openMap(){
-        if (be!=null) return false;
-        switch(level){
-            case 0 : map = "CityMap/TOOTOROL1.txt"; break;
-            case 1 : map = "CityMap/level1.txt"; break;
-            case 10 : map = "CityMap/bonus.txt"; break;
-        }
-        System.out.println(map);
-        try{
-            be = new Scanner(Gdx.files.internal(map).reader());}
-        catch (Exception e){
-            System.out.println(e);
-            return false;
-        }
-        return true;
-    }
-
-    public boolean loadMapLine(){
-        if (be==null){
-            openMap();
-        }
-        boolean output;
-        if(output = be.hasNextLine()){
-            String vonat = be.nextLine();
-            //System.out.println(vonat.length());
-            System.out.println("while");
-            for(int i = 0; i < vonat.length(); i++){
-                //nyamm[sor][i] = vonat.charAt(i);
-                //System.out.println("for");
-                addMapElement(vonat.charAt(i),i,vonat.length()-sor);
-            }
-            sor++;
-            lineAdded();
-        }
-        return output;
-    }
-*/
     private void addMapElement(char c, int j, int y){
-        System.out.println("addvavan");
         switch(c){
             case '1' : stage.addActor(new RoadVertical(world, loader, j, y)); break;
             case '2' : stage.addActor(new RoadHorizontal(world, loader, j, y)); break;
@@ -269,7 +199,6 @@ public class MapLoader{
     }
 
     protected void lineAdded(){
-        System.out.println("lineAdded");
     }
 
 }

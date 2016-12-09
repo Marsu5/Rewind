@@ -317,14 +317,19 @@ public class ControlStage extends MyStage {
             addActor(Turbo = new UpDownButton(Assets.manager.get(Assets.TURBO_OFF), Assets.manager.get(Assets.TURBO_ON)){
                 @Override
                 public void init() {
-                    super.init();
+                    //super.init();
                     this.setSize(1.5f,1.5f);
                     this.setPosition(4, 0);
                     addListener(new InputListener(){
                         @Override
                         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                            turboOn = true;
-                            pressed();
+                            if(!turboReloading){
+                                turboOn = true;
+                                pressed();
+                                turboReloading = true;
+                                elapstime = 0;
+                                setTexture(Assets.manager.get(Assets.TURBO_UNAVAILABLE));
+                            }
                             return super.touchDown(event, x, y, pointer, button);
                         }
 

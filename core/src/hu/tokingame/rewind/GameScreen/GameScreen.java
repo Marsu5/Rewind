@@ -23,8 +23,6 @@ public class GameScreen extends MyScreen {
         super(game);
         this.level = level;
         stage = new GameStage(new ExtendViewport(16,16,new OrthographicCamera(Globals.WORLD_WIDTH,Globals.WORLD_HEIGHT)),spriteBatch,game, level);
-
-        System.out.println(level);
     }
 
     @Override

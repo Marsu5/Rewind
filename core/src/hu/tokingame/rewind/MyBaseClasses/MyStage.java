@@ -206,6 +206,7 @@ abstract public class MyStage extends Stage implements InitableInterface {
     public void startTimer(){
         timerRunning = true;
     }
+
     public float getTime(){
         return timer;
     }
