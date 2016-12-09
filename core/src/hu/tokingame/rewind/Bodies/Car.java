@@ -19,18 +19,19 @@ public class Car extends WorldActorGroup {
 
     OneSpriteStaticActor actor;
     public static int health = 100;
+    int tex = (int) (Math.random() * (4 - 1 + 1) + 1);
 
     public Car(World world, WorldBodyEditorLoader loader, float X, float Y) {
         super(world, loader, "bluecar.png", BodyDef.BodyType.DynamicBody, 1000, 0.02f, 10, false);
-        actor = new OneSpriteStaticActor(Assets.manager.get(randomTexture()));
+        actor = new OneSpriteStaticActor(Assets.manager.get(randomTexture(tex)));
         actor.setSize(0.25f, 0.5f);
         setSize(getWidth() / 4, getHeight() / 4);
         addActor(actor);
         addToWorld();
     }
 
-    private static AssetDescriptor<Texture> randomTexture() {
-        int a = (int) (Math.random() * (4 - 1 + 1) + 1);
+    private static AssetDescriptor<Texture> randomTexture(int a) {
+
         switch (a) {
             case 1:
                 return Assets.CAR_BLUE;
