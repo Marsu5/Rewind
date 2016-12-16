@@ -55,7 +55,7 @@ public class Car extends WorldActorGroup {
     public float frictionMultiplier = 0.99f;
     public float breakMultiplier = 0.95f;
     public float turnMultiplier = 0.7f;
-    public float nullSpeed = 0.03f;
+    public float nullSpeed = 4.5f;
 
     public float turnTime = 0.15f;
     public float accelerateTime = 0.1f;
